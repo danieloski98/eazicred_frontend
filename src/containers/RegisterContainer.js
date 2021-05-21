@@ -11,7 +11,6 @@ import {
 } from 'react-router-dom';
 
 import Register from '../components/Register';
-import { validateField } from '../components/validation';
 import { registerUser } from '../redux/actions/authThunks';
 import { DASHBOARD_URL } from '../routes/paths';
 
@@ -26,30 +25,49 @@ const RegisterContainer = () => {
         "phone": "",
         "code": "",
         "password": "",
-        formErrors: {email: '', password: ''},
-        emailValid: false,
-        passwordValid: false,
-        formValid: false
     })
     const error = useSelector(state => state["notify"].message)
     const dispatch = useDispatch()
+    const [fieldErrors, setErrors] = React.useState({})
+    const isValid = () => {
+        const {email, password, firstname, lastname, phone} = field
+        const errors = {}
+        if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+            errors.email = "valid email is invalid"
+        }
+        if(password.length <= 8){
+            errors.password = "password is too short"
+        }
+        if(firstname.length === 0){
+            errors.firstname = "first name is required"
+        }
+        if(lastname.length === 0){
+            errors.lastname = "last name is required"
+        }
+        if(phone.length === 0){
+            errors.phone = "phone number is required"
+        }
+        setErrors(errors)
+        return Object.keys(errors).length === 0
+    }
 
     const handleChange = (e) => {
         const {name, value} = e.target;
         setField({...field, [name]: value})
-        validateField(field, setField, name, value)
+        isValid()
     }
     const history = useHistory()
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (!isValid())return
         dispatch(registerUser(field, history))
     }
     if (isAuthenticated) {
         return <Redirect to={DASHBOARD_URL}/>
     } else {
         return (
-            <Register error={error} handleChange={handleChange} handleSubmit={handleSubmit} field={field}/>
+            <Register fieldErrors={fieldErrors} error={error} handleChange={handleChange} handleSubmit={handleSubmit} field={field}/>
         );
     }
 

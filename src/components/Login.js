@@ -12,27 +12,34 @@ import {
   DASHBOARD_URL,
   REGISTER_URL,
 } from '../routes/paths';
-import { validateField } from './validation';
 
 const Login = ({isAuthenticated, login, error}) => {
     document.title = "Eazicred - Login to eazicred"
-    const [field, setField] = React.useState({
-        email: "",
-        password: "",
-        formErrors: {email: '', password: ''},
-        emailValid: false,
-        passwordValid: false,
-        formValid: false
-    })
+    const [field, setField] = React.useState({email: "", password: ""})
+    const [fieldErrors, setErrors] = React.useState({})
 
     const handleChange = (e) => {
         const {name, value} = e.target;
         setField({...field, [name]: value})
-        validateField(field, setField, name, value)
+        isValid()
+    }
+
+    const isValid = () => {
+        const {email, password} = field
+        const errors = {}
+        if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
+            errors.email = "valid email is invalid"
+        }
+        if(password.length <= 8){
+            errors.password = "password is too short"
+        }
+        setErrors(errors)
+        return Object.keys(errors).length === 0
     }
 
     const handleSubmit = (e) => {
         e.preventDefault()
+        if (!isValid())return
         login(field)
     }
     if(isAuthenticated){
@@ -46,38 +53,35 @@ const Login = ({isAuthenticated, login, error}) => {
                     <div className="account__inner">
                         <h2 className="h-2">Welcome Back</h2>
                         <p>Enter your credentials to continue</p>
-                        <form className="form" onSubmit={handleSubmit}>
-                            {/*<FormValidation formErrors={field.formErrors}/>*/}
+                        <form className="form" onSubmit={handleSubmit} noValidate>
                             <div className="input-group">
                                 <label htmlFor="email">Email Address</label>
                                 <input
-                                    value={field.email}
-                                    name="email"
-                                    id="email" type="email"
-                                    placeholder="example@eazycred.com"
-                                    onChange={handleChange}
-                                    className="email"
-                                    required
+                                    value={field.email} name="email" id="email" type="email" required
+                                    placeholder="example@eazycred.com" onChange={handleChange} className="email"
                                 />
-                                {!field.emailValid && <div style={{color: "red"}}>{field.formErrors.email}</div>}
+                                {fieldErrors.email && <div style={{color: "red"}}>{fieldErrors.email}</div>}
                             </div>
                             <div className="input-group">
                                 <label htmlFor="password">Password</label>
                                 <input
-                                    name="password"
-                                    value={field.password}
-                                    id="password"
-                                    type="password"
-                                    placeholder="***********"
-                                    onChange={handleChange}
-                                    className="password"
+                                    name="password" value={field.password} id="password" type="password" required
+                                    placeholder="***********" onChange={handleChange} className="password"
                                 />
-                                {!field.passwordValid && <div style={{color: "red"}}>{field.formErrors.password}</div>}
+                                {fieldErrors.password && <div style={{color: "red"}}>{fieldErrors.password}</div>}
                             </div>
-                            {!error.show && <input disabled={!field.formValid} type="submit" value="Login" className="btn btn-blue"/>}
-                            {error.show && <MessageAlert><input type="button" value={'Error occurred, check your password and email'} disabled
-                                                                className="alert alert-red"/></MessageAlert>}
-                            <p>Don't Have An Account? <Link to={REGISTER_URL} className="primary-color"> Register</Link>
+                            {!error.show && <input type="submit" value="Login" className="btn btn-blue"/>}
+                            {error.show && <MessageAlert>
+                                <input type="button"
+                                       value={'Error occurred, check your password and email'}
+                                       disabled
+                                       className="alert alert-red"
+                                />
+                            </MessageAlert>}
+                            <p>Don't Have An Account?
+                                <Link to={REGISTER_URL} className="primary-color">
+                                    Register
+                                </Link>
                             </p>
                         </form>
                     </div>
