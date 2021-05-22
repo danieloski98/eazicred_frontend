@@ -13,7 +13,6 @@ import {DASHBOARD_HISTORY_URL,
   DASHBOARD_SETTING_URL,DASHBOARD_URL,HOME_URL,} from '../../routes/paths';
 
 const DashboardContainer = ({children, page='Dashboard'}) => {
-
     const handleMenu = (e) => {
         const menuToggleDb = document.querySelector('.main__menu');
         const sidebar = document.querySelector('.sidebar');
