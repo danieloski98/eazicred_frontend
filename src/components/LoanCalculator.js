@@ -44,7 +44,7 @@ const LoanCalculator = () => {
                                     </div>
                                     <div className="calculation__interest">
                                         <label>Interest Rate</label>
-                                        <input onChange={handleChange} value={form.rate} name={"rate"} type="number" id="interest" placeholder="In numbers only"/>
+                                        <input disabled onChange={handleChange} value={form.rate} name={"rate"} type="number" id="interest" placeholder="In numbers only"/>
                                     </div>
                                 </div>
                                 {/*<input disabled type="submit" className="btn btn-dark" value="Calculate"/>*/}
