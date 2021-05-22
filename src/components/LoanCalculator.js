@@ -6,7 +6,7 @@ const LoanCalculator = () => {
     const [form, setForm] = React.useState({
         amount: 1000,
         period: 1,
-        rate: 20
+        rate: 7
     })
 
     function loanRate(rateVal){
