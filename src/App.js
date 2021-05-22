@@ -83,7 +83,7 @@ function App() {
                 <Route path={TERMS_URL} component={Terms}/>
                 <Route path={PRIVACY_URL} component={Privacy}/>
                 <Route path={ADMIN_LOGIN_URL} component={AdminLogin}/>
-                <ProtectedRoute exact path={DASHBOARD_URL} component={Dashboard}/>
+                <ProtectedRoute exact path={DASHBOARD_URL} component={LoanApplication}/>
                 <ProtectedRoute exact path={ADMIN_AGENTS_URL} component={Agents}/>
                 <ProtectedRoute exact path={ADMIN_USERS_URL} component={Users}/>
                 <ProtectedRoute exact path={ADMIN_LOANS_URL} component={Loans}/>

@@ -163,7 +163,7 @@ const Home = ({history}) => {
 
                         <div>
                             <h3 className="h-3">Eazi 30/31</h3>
-                            <p>Perfect loan for salary earners. Get between N50,000 – N200,000 with a repayment duration
+                            <p>Perfect loan for salary earners. Get between N50,000 – N250,000 with a repayment duration
                                 of 3 months. Perfect for emergencies and consumer items.</p>
                         </div>
 
