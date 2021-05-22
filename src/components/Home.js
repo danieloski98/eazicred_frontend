@@ -73,7 +73,7 @@ const Home = ({history}) => {
                 <div className="container-sm">
                     <div className="stats__inner">
                         <div className="stats__customers">
-                            <h5 className="h-5">1000+</h5>
+                            <h5 className="h-5">800+</h5>
                             <p>Happy Customers</p>
                         </div>
                         <div className="stats__sme">
@@ -139,7 +139,7 @@ const Home = ({history}) => {
 
                         <div>
                             <h3 className="h-3">Eazi 30/31</h3>
-                            <p>Perfect loan for salary earners. Get between N50,000 – N200,000 with a repayment duration
+                            <p>Perfect loan for salary earners. Get between N50,000 – N250,000 with a repayment duration
                                 of 3 months. Perfect for emergencies and consumer items.</p>
                         </div>
 

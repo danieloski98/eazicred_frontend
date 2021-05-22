@@ -12,7 +12,7 @@ const Faqs = () => {
                         <h2 className="h-2">FAQs</h2>
                         <div className="faq">
                             <h6 className="h-6">Q: How do I apply?</h6>
-                            <p>A: Apply on this website or call us on 09016888927</p>
+                            <p>A: Apply on this website or call us on +234 802 074 0286</p>
                         </div>
                         <div className="faq">
                             <h6 className="h-6">Q: Minimum/Maximum amount of loan I can apply for</h6>
@@ -63,6 +63,9 @@ const Faqs = () => {
                         <div className="faq">
                             <h6 className="h-6">Q: Can I manually make a repayment?</h6>
                             <p>A: Yes but repayment can only be made to our EAZICRED bank account</p>
+                        </div>
+                        <div className="faq">
+                            <p>Feel free to contact us if you have any question outside the scope of this FAQs.</p>
                         </div>
                     </div>
                     <div className="hero-faq__image">

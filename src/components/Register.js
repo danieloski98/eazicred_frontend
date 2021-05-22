@@ -3,10 +3,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 
 import MessageAlert from '../Common/MessageAlert';
-import {
-  ABOUT_URL,
-  LOGIN_URL,
-} from '../routes/paths';
+import { LOGIN_URL } from '../routes/paths';
 
 const Register = ({handleChange, field, handleSubmit, error, fieldErrors}) => {
     return (
@@ -55,12 +52,12 @@ const Register = ({handleChange, field, handleSubmit, error, fieldErrors}) => {
                                 <input onChange={handleChange} name='code' value={field.code} id="code" type="text"
                                        className="phone"/>
                             </div>
-                            <p className="blue">Enter the referral code of the person who referred you to join EaziCred.
-                                Don't have a code - <Link to={ABOUT_URL} className="primary-color">Request one from
-                                    us</Link></p>
+                            <p className="blue">Enter the referral code if you have one.</p>
                             {!error.show &&
                             <input type="submit" value="Create Account" id='submit' className="btn btn-blue"/>}
-                            {error.show && <MessageAlert><input type="button" value={"Error occurred, try using another email or try again later"} disabled
+                            {error.show && <MessageAlert><input type="button"
+                                                                value={"Error occurred, try using another email or try again later"}
+                                                                disabled
                                                                 className="alert alert-red"/></MessageAlert>}
                             <p>Already Have An Account? <Link to={LOGIN_URL} className="primary-color">Log In</Link></p>
                         </form>
