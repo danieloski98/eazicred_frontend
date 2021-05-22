@@ -12,6 +12,14 @@ const FormStep2 = ({nextStep, prevStep, handleChange, field}) => {
                     <input value={field.landmark} onChange={handleChange}  type="text" id="landmark" name="landmark" placeholder="Closest Landmark To Your Residence" />
                 </div>
                 <div className="input-group">
+                    <label htmlFor="home_address">Home Address</label>
+                    <input value={field.home_address} onChange={handleChange}  type="text" id="home_address" name="home_address" placeholder="enter your home address"/>
+                </div>
+                <div className="input-group">
+                    <label htmlFor={'state'}>State</label>
+                    <input value={field.state} name={"state"} id="state" onChange={handleChange}  type="text" placeholder="Enter your state of origin"/>
+                </div>
+                <div className="input-group">
                     <label htmlFor="LGA_of_residence">Local Government Area</label>
                     <input value={field.LGA_of_residence} onChange={handleChange}  type="text" name="LGA_of_residence" id="LGA_of_residence" placeholder="Enter your residence's local government area" />
                 </div>

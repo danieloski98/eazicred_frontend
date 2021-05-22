@@ -214,8 +214,7 @@ const Home = ({history}) => {
                                         </div>
                                 </div>
                                 <div className="testimonial__text">
-                                    <p>It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout.</p>
+                                    <p>At the time we needed to fund a project, Eazicred made the whole process and service delivery hassle free.</p>
                                     <div className="rating">
                                         <i className="fas fa-star"/>
                                         <i className="fas fa-star"/>
@@ -235,8 +234,7 @@ const Home = ({history}) => {
                                         </div>
                                 </div>
                                 <div className="testimonial__text">
-                                    <p>It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout.</p>
+                                    <p>The process was quite simple and straightforward, I was really impressed. Thank you Eazicred.</p>
                                     <div className="rating">
                                         <i className="fas fa-star"/>
                                         <i className="fas fa-star"/>
@@ -256,8 +254,7 @@ const Home = ({history}) => {
                             <div className="testimonials__details">
                                 <h3 className="h-3">Our customers have amazing reviews<br/> about our service</h3>
                                 <div className="quote">
-                                    <p>It is a long established fact that a reader will be distracted by the readable
-                                        content of a page when looking at its layout.</p>
+                                    <p>The process was quite simple and straightforward, I was really impressed. Thank you Eazicred</p>
                                 </div>
                                 <div className="user-profile">
                                     <img src={"assets/christian.png"} alt="George Anderson"/>

@@ -10,14 +10,12 @@ const FormStep3 = ({nextStep, prevStep, handleChange, field}) => {
                 <div className="input-group">
                     <label htmlFor="employment_status">Employment Status</label>
                     <select  value={field.employment_status} onChange={handleChange}  name="employment_status" id="employment_status">
-                        {[
-                            'FULLTIME',
-                            'PARTIME',
-                            'RETIRED',
-                            'SELFEMPLOYED',
-                            'TEMPCONTRACT',
-                            'OUTSOURCEDCONTRACT'
-                        ].map(val => <option value={val.toLowerCase()}>{val.toLowerCase()}</option>)}
+                        <option value={'fulltime'}>Fulltime</option>
+                        <option value={'partime'}>Partime</option>
+                        <option value={'retired'}>Retired</option>
+                        <option value={'selfemployed'}>Self Employed</option>
+                        <option value={'tempcontract'}>Temp Contract</option>
+                        <option value={'outsourcredcontract'}>Out Sourced Contract</option>
                     </select>
                 </div>
                 <div className="input-group">
@@ -37,7 +35,7 @@ const FormStep3 = ({nextStep, prevStep, handleChange, field}) => {
                     <input value={field.current_employer_LGA} onChange={handleChange}  type="text" name="current_employer_LGA" id="current_employer_lga" placeholder="Lagos" />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="current_employer_office_number">Current Employer Office Number</label>
+                    <label htmlFor="current_employer_office_number">Current Employer Phone Number</label>
                     <input value={field.current_employer_office_number} onChange={handleChange}  type="text" name="current_employer_office_number" id="current_employer_office_number" placeholder="Number" />
                 </div>
                 <div className="input-group">
@@ -45,7 +43,7 @@ const FormStep3 = ({nextStep, prevStep, handleChange, field}) => {
                     <input value={field.date_employed} onChange={handleChange}  type="date" name="date_employed" id="date_employed" />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="current_employer_landmark">Current Employer Landmark</label>
+                    <label htmlFor="current_employer_landmark">Closest Landmark To Your Office Address</label>
                     <input value={field.current_employer_landmark} onChange={handleChange}  type="text" name="current_employer_landmark" id="current_employer_landmark" placeholder="Closest landmark to the company" />
                 </div>
                 <div className="input-group">
@@ -61,7 +59,7 @@ const FormStep3 = ({nextStep, prevStep, handleChange, field}) => {
                     <input  value={field.jobs_in_last_5_years} onChange={handleChange}  type="number" name="jobs_in_last_5_years" id="jobs_in_last_5_years" placeholder="Number of jobs in the last five years" />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="current_paydate">Current Pay Date</label>
+                    <label htmlFor="current_paydate">Next Pay Date</label>
                     <input value={field.current_paydate} onChange={handleChange}  type="date" name="current_paydate" id="current_paydate" placeholder="Current Paydate" />
                 </div>
             </div>

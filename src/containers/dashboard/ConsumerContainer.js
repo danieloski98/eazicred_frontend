@@ -46,7 +46,7 @@ const ConsumerContainer = ({user}) => {
         next_of_kin_relationship: '',
         next_of_kin_phone: '',
         next_of_kin_address: '',
-        loan_amount: 1000000,
+        loan_amount: 250000,
         loan_tenure: '12',
         account_number: '',
         account_name: '',
@@ -63,7 +63,11 @@ const ConsumerContainer = ({user}) => {
     const prevStep = () => {
         setStep(step - 1)
     }
-
+    const handleKey = e => {
+        if (e.target.value > 250000){
+            e.target.value = 250000
+        }
+    }
     const handleChange = (e) => {
         const {name, value, type, checked} = e.target
         switch(type){
@@ -87,7 +91,7 @@ const ConsumerContainer = ({user}) => {
             case 3:
                 return <FormStep3 field={field} handleChange={handleChange} nextStep={nextStep} prevStep={prevStep}/>
             case 4:
-                return <FormStep4 field={field} handleChange={handleChange} showMsg={showMsg} prevStep={prevStep}/>
+                return <FormStep4 handleKey={handleKey}  field={field} handleChange={handleChange} showMsg={showMsg} prevStep={prevStep}/>
         }
     }
 

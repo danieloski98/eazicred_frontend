@@ -2,7 +2,7 @@ import React from 'react';
 
 import MessageAlert from '../../Common/MessageAlert';
 
-const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
+const FormStep4 = ({showMsg, prevStep, handleChange, handleKey, field}) => {
     return (
         <React.Fragment>
             <span>Step 4 / 4</span>
@@ -16,42 +16,27 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
                 <div className="input-group">
                     <label htmlFor="existing_loan_type">What is your existing loan type?</label>
                     <select  value={field.existing_loan_type} onChange={handleChange}  name="existing_loan_type" id="existing_loan_type">
-                        {[ 'MORTGAGE', 'OVERDRAFT', 'CARLOAN',
-                            'BUSINESSLOAN',
-                            'CREDITCARDLOAN',
-                            'PERSONALLOAN' ].map(value =>
-                            <option value={value.toLowerCase()}>{value.toLowerCase()}</option>
-                        )}
-
+                        <option value={''}>None</option>
+                        <option value={'mortage'}>Mortage</option>
+                        <option value={'overdraft'}>Over Draft</option>
+                        <option value={'carloan'}>Car Loan</option>
+                        <option value={'businessloan'}>Business Loan</option>
+                        <option value={'creditcardloan'}>Credit Card Loan</option>
+                        <option value={'personalloan'}> Personal Loan</option>
                     </select>
                 </div>
                 <div className="input-group">
-                    <label htmlFor="next_of_kin_surname">Surname of Next of Kin</label>
-                    <input value={field.next_of_kin_surname} onChange={handleChange}  type="text" name="next_of_kin_surname" id="next_of_kin_surname" placeholder="Surname of next of kin" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="next_of_kin_firstname">First Name of Next of Kin</label>
-                    <input value={field.next_of_kin_firstname} onChange={handleChange}  type="text" name="next_of_kin_firstname" id="next_of_kin_firstname" placeholder="Firstname of next of kin" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="next_of_kin_relationship">Relationship with Next of Kin</label>
-                    <input value={field.next_of_kin_relationship} onChange={handleChange}  type="text" name="next_of_kin_relationship" id="next_of_kin_relationship" placeholder="State your relationship with next of kin" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="next_of_kin_phone">Phone Number of Next of Kin</label>
-                    <input value={field.next_of_kin_phone} onChange={handleChange}  type="text" name="next_of_kin_phone" id="next_of_kin_phone" placeholder="Phone number of next of kin" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="next_of_kin_address">Address of Next of Kin</label>
-                    <input value={field.next_of_kin_address} onChange={handleChange}  type="text" name="next_of_kin_address" id="next_of_kin_address" placeholder="Address of next of kin" />
-                </div>
-                <div className="input-group">
                     <label htmlFor="loan_amount">Loan Amount</label>
-                    <input value={field.loan_amount} onChange={handleChange}  type="number" name="loan_amount" id="loan_amount" placeholder="₦" />
+                    <input onInput={handleKey} value={field.loan_amount} onChange={handleChange} max={250000} type="number" name="loan_amount" id="loan_amount" placeholder="₦" />
                 </div>
                 <div className="input-group">
-                    <label htmlFor="loan_tenure">Loan Duration</label>
-                    <input value={field.loan_tenure} onChange={handleChange}  type="text" name="loan_tenure" id="loan_tenure" placeholder="Specify in months" />
+                    <label htmlFor="existing_loan_type">Loan Duration</label>
+                    <select value={field.loan_tenure} onChange={handleChange} name="loan_tenure" id="loan_tenure">
+                        <option value={1}>1 Month</option>
+                        <option value={2}>2 Months</option>
+                        <option value={3}>3 Months</option>
+                        <option value={4}>4 Months</option>
+                    </select>
                 </div>
                 <div className="input-group">
                     <label htmlFor="account_number">Account Number</label>
@@ -68,10 +53,6 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
                 <div className="input-group">
                     <label htmlFor="hear_about_us">How did you hear about us?</label>
                     <input value={field.hear_about_us} onChange={handleChange}  type="text" name="hear_about_us" id="hear_about_us" placeholder="How did you hear about us?" />
-                </div>
-                <div className="input-group">
-                    <label htmlFor="bvn">BVN</label>
-                    <input value={field.BVN} onChange={handleChange}  type="text" id="bvn" name="BVN" placeholder="Enter your BVN" />
                 </div>
                 <div className="input-group">
                     <label htmlFor="draft">Save as Draft?</label>

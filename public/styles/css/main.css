@@ -1053,12 +1053,6 @@ section {
   padding: 8rem 8rem 3rem 10rem;
   height: 60rem;
   overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.hero-faq__text-box::-webkit-scrollbar {
-  display: none;
 }
 
 .hero-faq .faq:not(:last-child) {
@@ -1769,14 +1763,6 @@ section {
   width: 70%;
   padding: 4rem 5rem;
   color: #000000;
-  height: 40rem;
-  overflow-y: scroll;
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.dashboard .main__loan--data::-webkit-scrollbar {
-  display: none;
 }
 
 .dashboard .main__loan--data span {
