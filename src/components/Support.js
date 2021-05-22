@@ -16,7 +16,7 @@ const Support = () => {
                                 <div className="support__col--1">
                                     <h3 className="h-3">Lagos</h3>
                                     <p className="address">5 Adebisi Ladejobi street, Ilupeju<br/>
-                                        09016888927<br/>
+                                        +234 802 074 0286<br/>
                                         contact@eazicred.com
                                     </p>
                                 </div>

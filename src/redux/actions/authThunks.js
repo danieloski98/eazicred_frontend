@@ -36,7 +36,6 @@ export const getUser = () => (dispatch, getState) => {
 
 export const loginUser = (data) => (dispatch, getState) => {
     dispatch(loginRequest())
-    const auth = getState().auth
     axiosInstance.post(LOGIN_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
             dispatch(loginSuccess(res.data.data))
@@ -53,7 +52,6 @@ export const loginUser = (data) => (dispatch, getState) => {
 
 export const registerUser = (data, useHistory) => (dispatch, getState) => {
     dispatch(registerRequest())
-    const auth = getState().auth
     axiosInstance.post(REGISTER_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
             dispatch(registerSuccess(res.data.data))

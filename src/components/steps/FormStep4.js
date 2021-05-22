@@ -73,6 +73,10 @@ const FormStep4 = ({showMsg, prevStep, handleChange, field}) => {
                     <label htmlFor="bvn">BVN</label>
                     <input value={field.BVN} onChange={handleChange}  type="text" id="bvn" name="BVN" placeholder="Enter your BVN" />
                 </div>
+                <div className="input-group">
+                    <label htmlFor="draft">Save as Draft?</label>
+                    <input checked={field.draft} onChange={handleChange}  type="checkbox" name="draft" id="draft"/>
+                </div>
             </div>
             {!showMsg && (
                 <div className="form-btns">

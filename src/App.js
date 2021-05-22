@@ -10,17 +10,12 @@ import Footer from './Common/Footer';
 import Navbar from './Common/Navbar';
 import ProtectedRoute from './Common/ProtectedRoute';
 import About from './components/About';
-import AdminLogin from './components/admin/AdminLogin';
-import Agents from './components/admin/Agents';
-import Loans from './components/admin/Loans';
-import Users from './components/admin/Users';
 import Faqs from './components/FAQs';
 import Home from './components/Home';
 import Login from './components/Login';
 import Privacy from './components/Privacy';
 import Support from './components/Support';
 import Terms from './components/Terms';
-import Dashboard from './components/users/Dashboard';
 import History from './components/users/History';
 import LoanApplication from './components/users/LoanApplication';
 import SendPaydayFiles from './components/users/SendPaydayFiles';
@@ -31,10 +26,6 @@ import SMEContainer from './containers/dashboard/SMEContainer';
 import RegisterContainer from './containers/RegisterContainer';
 import {
   ABOUT_URL,
-  ADMIN_AGENTS_URL,
-  ADMIN_LOANS_URL,
-  ADMIN_LOGIN_URL,
-  ADMIN_USERS_URL,
   DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
   DASHBOARD_CONSUMER_LOAN_UPLOAD_URL,
   DASHBOARD_HISTORY_URL,
@@ -64,10 +55,7 @@ function App() {
         DASHBOARD_SME_LOAN_APPLICATION_URL,
         DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
         DASHBOARD_HISTORY_URL,
-        ADMIN_AGENTS_URL,
-        ADMIN_USERS_URL,
-        ADMIN_LOANS_URL,DASHBOARD_CONSUMER_LOAN_UPLOAD_URL,
-        ADMIN_LOGIN_URL
+        DASHBOARD_CONSUMER_LOAN_UPLOAD_URL,
     ]
     return (
         <React.Fragment>
@@ -82,11 +70,7 @@ function App() {
                 <Route path={FAQS_URL} component={Faqs}/>
                 <Route path={TERMS_URL} component={Terms}/>
                 <Route path={PRIVACY_URL} component={Privacy}/>
-                <Route path={ADMIN_LOGIN_URL} component={AdminLogin}/>
                 <ProtectedRoute exact path={DASHBOARD_URL} component={LoanApplication}/>
-                <ProtectedRoute exact path={ADMIN_AGENTS_URL} component={Agents}/>
-                <ProtectedRoute exact path={ADMIN_USERS_URL} component={Users}/>
-                <ProtectedRoute exact path={ADMIN_LOANS_URL} component={Loans}/>
                 <ProtectedRoute path={DASHBOARD_PROFILE_URL} component={ProfileContainer}/>
                 <ProtectedRoute path={DASHBOARD_SETTING_URL} component={SettingsContainer}/>
                 <ProtectedRoute path={DASHBOARD_CONSUMER_LOAN_UPLOAD_URL} component={SendPaydayFiles}/>
