@@ -99,7 +99,7 @@ const Home = ({history}) => {
                             <p>SMEs Loans Disbursed</p>
                         </div>
                         <div>
-                            <h5 className="h-5">500+</h5>
+                            <h5 className="h-5">800+</h5>
                             <p>Consumer Loans Disbursed</p>
                         </div>
                     </div>

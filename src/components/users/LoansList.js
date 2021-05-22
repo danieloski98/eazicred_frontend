@@ -15,7 +15,7 @@ import { DASHBOARD_HISTORY_URL } from '../../routes/paths';
 import EmptyLoanHistory from './EmptyLoanHistory';
 import LoanDetailsModal from './LoanDetailsModal';
 
-export const currency = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'NGN'});
+export const currency = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'NGN', maximumFractionDigits:0});
 
 const LoansList = ({loans, fetchAllLoans}) => {
     useEffect(() => {

@@ -1,18 +1,22 @@
 import React from 'react';
 
+import { currency } from './users/LoansList';
+
 const LoanCalculator = () => {
     const [form, setForm] = React.useState({
-        amount: '',
+        amount: 1000,
         period: 1,
-        rate: 20
+        rate: 7
     })
 
     function loanRate(rateVal){
-        return (rateVal/100) * form.rate;
+        return (rateVal/100) * form.rate * form.period;
     }
 
-    function interest(amount, time){
-        return loanRate(amount) * time
+    function interest(){
+        const amount = parseInt(form.amount)
+        const fv = loanRate(amount) + amount
+        return fv / form.period
     }
 
     const handleChange = e => {
@@ -36,14 +40,14 @@ const LoanCalculator = () => {
                                     </div>
                                     <div className="calculation__period">
                                         <label htmlFor={"period"}>Period (Months)</label>
-                                        <input onChange={handleChange} name="period" min={1} value={form.period} type="number" id="period" placeholder="Month(s)"/>
+                                        <input onChange={handleChange} name="period" value={form.period} type="number" id="period" placeholder="Month(s)"/>
                                     </div>
                                     <div className="calculation__interest">
                                         <label>Interest Rate</label>
-                                        <input onChange={handleChange} value={form.rate} name={"rate"} type="number" min={20} id="interest" placeholder="In numbers only"/>
+                                        <input disabled onChange={handleChange} value={form.rate} name={"rate"} type="number" id="interest" placeholder="In numbers only"/>
                                     </div>
                                 </div>
-                                <input disabled type="submit" className="btn btn-dark" value="Calculate"/>
+                                {/*<input disabled type="submit" className="btn btn-dark" value="Calculate"/>*/}
                             </form>
                         </div>
                         <div className="results">
@@ -53,11 +57,11 @@ const LoanCalculator = () => {
                             </div>
                             <div>
                                 <label>Monthly Payment</label>
-                                <p className="results-payment">₦{loanRate(form.amount)}</p>
+                                <p className="results-payment">{currency.format(loanRate(form.amount))}</p>
                             </div>
                             <div>
                                 <label>Total Interest</label>
-                                <p className="results-payment">₦{interest(form.amount, form.period)}</p>
+                                <p className="results-payment">{currency.format(interest())}</p>
                             </div>
                             <div>
                                 <label>Duration</label>

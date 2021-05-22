@@ -16,8 +16,3 @@ export const DASHBOARD_CONSUMER_LOAN_APPLICATION_URL = '/users/loan/consumer'
 export const DASHBOARD_CONSUMER_LOAN_UPLOAD_URL = '/users/loan/upload'
 export const DASHBOARD_SME_LOAN_APPLICATION_URL = '/users/loan/sme'
 export const DASHBOARD_HISTORY_URL = '/users/history'
-
-export const ADMIN_LOGIN_URL = '/admin'
-export const ADMIN_AGENTS_URL = '/admin/agents'
-export const ADMIN_LOANS_URL = '/admin/loans'
-export const ADMIN_USERS_URL = '/admin/users'

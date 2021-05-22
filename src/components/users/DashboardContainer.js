@@ -51,22 +51,22 @@ const DashboardContainer = ({children, page='Dashboard'}) => {
                     </Link>
                     <h4 className="sidebar__h4">Main</h4>
                     <ul className="sidebar__list">
-                        <li>
-                            <NavLink exact activeClassName="active" to={DASHBOARD_URL}>
-                                <svg xmlns="http://www.w3.org/2000/svg" width={23} height={23} viewBox="0 0 23 23">
-                                    <defs>
-                                        <style
-                                            dangerouslySetInnerHTML={{__html: ".a{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:1.5px;}"}}/>
-                                    </defs>
-                                    <g transform="translate(2.396 1.917)">
-                                        <path className="a"
-                                              d="M6.38,17.989V15.05a1.367,1.367,0,0,1,1.364-1.36H10.51a1.367,1.367,0,0,1,1.374,1.36h0V18a1.174,1.174,0,0,0,1.152,1.168H14.88a3.312,3.312,0,0,0,3.328-3.295h0V7.511a2.338,2.338,0,0,0-.922-1.825L10.98.657a3.048,3.048,0,0,0-3.78,0L.922,5.695A2.32,2.32,0,0,0,0,7.52v8.351a3.312,3.312,0,0,0,3.328,3.295H5.172a1.183,1.183,0,0,0,1.189-1.177h0"
-                                              transform="translate(0 0)"/>
-                                    </g>
-                                </svg>
-                                Dashboard
-                            </NavLink>
-                        </li>
+                        {/*<li>*/}
+                        {/*    <NavLink exact activeClassName="active" to={DASHBOARD_URL}>*/}
+                        {/*        <svg xmlns="http://www.w3.org/2000/svg" width={23} height={23} viewBox="0 0 23 23">*/}
+                        {/*            <defs>*/}
+                        {/*                <style*/}
+                        {/*                    dangerouslySetInnerHTML={{__html: ".a{fill:none;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;stroke-width:1.5px;}"}}/>*/}
+                        {/*            </defs>*/}
+                        {/*            <g transform="translate(2.396 1.917)">*/}
+                        {/*                <path className="a"*/}
+                        {/*                      d="M6.38,17.989V15.05a1.367,1.367,0,0,1,1.364-1.36H10.51a1.367,1.367,0,0,1,1.374,1.36h0V18a1.174,1.174,0,0,0,1.152,1.168H14.88a3.312,3.312,0,0,0,3.328-3.295h0V7.511a2.338,2.338,0,0,0-.922-1.825L10.98.657a3.048,3.048,0,0,0-3.78,0L.922,5.695A2.32,2.32,0,0,0,0,7.52v8.351a3.312,3.312,0,0,0,3.328,3.295H5.172a1.183,1.183,0,0,0,1.189-1.177h0"*/}
+                        {/*                      transform="translate(0 0)"/>*/}
+                        {/*            </g>*/}
+                        {/*        </svg>*/}
+                        {/*        Dashboard*/}
+                        {/*    </NavLink>*/}
+                        {/*</li>*/}
                         <li>
                             <NavLink activeClassName="active" to={DASHBOARD_LOAN_APPLICATION_URL}>
                                 <svg xmlns="http://www.w3.org/2000/svg" width={24} height={24} viewBox="0 0 24 24">
