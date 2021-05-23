@@ -73,7 +73,7 @@ const Home = ({history}) => {
                 <div className="container-sm">
                     <div className="stats__inner">
                         <div className="stats__customers">
-                            <h5 className="h-5">800+</h5>
+                            <h5 className="h-5">1000+</h5>
                             <p>Happy Customers</p>
                         </div>
                         <div className="stats__sme">
@@ -81,7 +81,7 @@ const Home = ({history}) => {
                             <p>SMEs Loans Disbursed</p>
                         </div>
                         <div className="stats__consumer">
-                            <h5 className="h-5">500+</h5>
+                            <h5 className="h-5">800+</h5>
                             <p>Consumer Loans Disbursed</p>
                         </div>
                     </div>

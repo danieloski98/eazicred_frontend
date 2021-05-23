@@ -16,13 +16,13 @@ const FormStep4 = ({showMsg, prevStep, handleChange, handleKey, field}) => {
                 <div className="input-group">
                     <label htmlFor="existing_loan_type">What is your existing loan type?</label>
                     <select  value={field.existing_loan_type} onChange={handleChange}  name="existing_loan_type" id="existing_loan_type">
-                        <option value={''}>None</option>
-                        <option value={'mortage'}>Mortage</option>
-                        <option value={'overdraft'}>Over Draft</option>
-                        <option value={'carloan'}>Car Loan</option>
-                        <option value={'businessloan'}>Business Loan</option>
-                        <option value={'creditcardloan'}>Credit Card Loan</option>
-                        <option value={'personalloan'}> Personal Loan</option>
+                        <option>None</option>
+                        <option value={1}>Mortage</option>
+                        <option value={2}>Over Draft</option>
+                        <option value={3}>Car Loan</option>
+                        <option value={4}>Business Loan</option>
+                        <option value={5}>Credit Card Loan</option>
+                        <option value={6}> Personal Loan</option>
                     </select>
                 </div>
                 <div className="input-group">

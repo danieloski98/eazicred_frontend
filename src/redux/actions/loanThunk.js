@@ -75,11 +75,7 @@ export const fetchAllUserLoans = () => (dispatch, getState) => {
 
 export const applyPaydayLoan = data => (dispatch, getState) => {
     dispatch(applyPaydayRequest())
-    const formData = new FormData()
 
-    for ( let key in data ) {
-        formData.append(key, data[key]);
-    }
     axiosInstance.post(PAYDAY_LOAN_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
             dispatch(applyPaydaySuccess(res.data))

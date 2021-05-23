@@ -32,7 +32,8 @@ const FormStep3 = ({nextStep, prevStep, handleChange, field}) => {
                 </div>
                 <div className="input-group">
                     <label htmlFor="current_employer_lga">Current Employer LGA</label>
-                    <input value={field.current_employer_LGA} onChange={handleChange}  type="text" name="current_employer_LGA" id="current_employer_lga" placeholder="Lagos" />
+                    <input value={field.current_employer_LGA} onChange={handleChange} type="text"
+                           name="current_employer_LGA" id="current_employer_lga" placeholder="Current employer LGA"/>
                 </div>
                 <div className="input-group">
                     <label htmlFor="current_employer_office_number">Current Employer Phone Number</label>

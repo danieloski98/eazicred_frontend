@@ -28,7 +28,7 @@ const Login = ({isAuthenticated, login, error}) => {
         const {email, password} = field
         const errors = {}
         if (!email.match(/^([\w.%+-]+)@([\w-]+\.)+([\w]{2,})$/i)) {
-            errors.email = "valid email is invalid"
+            errors.email = "valid email is required"
         }
         if(password.length <= 8){
             errors.password = "password is too short"
