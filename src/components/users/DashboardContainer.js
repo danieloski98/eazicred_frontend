@@ -7,6 +7,7 @@ import {
   useHistory,
 } from 'react-router-dom';
 import logo from "./logo.png"
+import login from "./login.png"
 import { logoutRequest } from '../../redux/actions/actions';
 import {DASHBOARD_HISTORY_URL,
   DASHBOARD_LOAN_APPLICATION_URL,DASHBOARD_PROFILE_URL,
@@ -139,7 +140,7 @@ const DashboardContainer = ({children, page='Dashboard'}) => {
                         <Link className="main__logo" to={DASHBOARD_URL}>
                             <img src={logo} alt="eazicred logo"/>
                         </Link>
-                        <img alt="" src={"assets/login-image.png"}/>
+                        <img alt="" src={login}/>
                     </div>
                     {children}
                 </main>

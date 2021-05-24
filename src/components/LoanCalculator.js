@@ -1,27 +1,69 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { currency } from './users/LoansList';
 
 const LoanCalculator = () => {
-    const [form, setForm] = React.useState({
+    const [form, setForm] = useState({
         amount: 1000,
         period: 1,
-        rate: 20
+        rate: 7
     })
+    const [results, setResults] = useState({
+        monthlyPayment: 0,
+        interestRate: form.rate,
+        totalInterest: 0,
+    });
 
     function loanRate(rateVal){
-        return (rateVal/100) * form.rate * form.period;
+        return (rateVal/100) * Number(form.rate) * Number(form.period);
     }
 
-    function interest(){
-        const amount = parseInt(form.amount)
+    const interest = () => {
+        const amount = Number(form.amount)
         const fv = loanRate(amount) + amount
-        return fv / form.period
+        return fv / Number(form.period)
+    }
+
+    function getResults() {
+        const {amount, rate, period} = form
+
+        const principal = parseFloat(amount);
+        const interest = parseFloat(rate) / 100;
+        const months = parseFloat(period);
+
+        const monthlyInterest = interest * principal;
+        const totalInterest = parseInt(monthlyInterest * months);
+
+        console.log(interest)
+
+        const totalPayment = principal + totalInterest;
+        const monthlyPayment =  parseInt((totalPayment / months).toFixed(2));
+
+        // PUT THEM ON THE WEBPAGE
+        const interestRate = document.querySelector('.interest');
+        const monthlyPay = document.querySelector('.monthly');
+        const totalInt = document.querySelector('.total-interest');
+        const duration = document.querySelector('.duration');
+
+        //
+        // interestRate.innerHTML = UIinterest;
+        // monthlyPay.innerHTML = monthlyPayment;
+        // totalInt.innerHTML = totalInterest;
+
+        setResults({interestRate: interest, monthlyPayment, totalInterest})
     }
 
     const handleChange = e => {
         const {name, value} = e.target
         setForm({...form, [name]: value})
+    }
+
+    const period = () => {
+        if (form.period > 1) {
+            return `${form.period} months`;
+        } else {
+            return `${form.period} month`;
+        }
     }
 
     return (
@@ -36,7 +78,7 @@ const LoanCalculator = () => {
                                 <div className="form-grid">
                                     <div className="calculation__amount">
                                         <label htmlFor={"amount"}>Amount</label>
-                                        <input onChange={handleChange} name="amount" value={form.amount} type="text" placeholder="₦0.00" id="amount"/>
+                                        <input onChange={handleChange} name="amount" value={form.amount} max={250000} type="number" placeholder="₦0.00" id="amount"/>
                                     </div>
                                     <div className="calculation__period">
                                         <label htmlFor={"period"}>Period (Months)</label>
@@ -47,7 +89,7 @@ const LoanCalculator = () => {
                                         <input disabled onChange={handleChange} value={form.rate} name={"rate"} type="number" id="interest" placeholder="In numbers only"/>
                                     </div>
                                 </div>
-                                {/*<input disabled type="submit" className="btn btn-dark" value="Calculate"/>*/}
+                                <button type="button" className="btn btn-blue" onClick={getResults}>Calculate</button>
                             </form>
                         </div>
                         <div className="results">
@@ -57,15 +99,17 @@ const LoanCalculator = () => {
                             </div>
                             <div>
                                 <label>Monthly Payment</label>
-                                <p className="results-payment">{currency.format(loanRate(form.amount))}</p>
+                                <p className="results-payment">{currency.format(results.monthlyPayment)}</p>
+                                {/*<p className="results-payment">{currency.format(loanRate(form.amount))}</p>*/}
                             </div>
                             <div>
                                 <label>Total Interest</label>
-                                <p className="results-payment">{currency.format(interest())}</p>
+                                <p className="results-payment">{currency.format(results.totalInterest)}</p>
+                                {/*<p className="results-payment">{currency.format(interest())}</p>*/}
                             </div>
                             <div>
                                 <label>Duration</label>
-                                <p className="results-duration">{form.period} month</p>
+                                <p className="results-duration">{period()}</p>
                             </div>
                         </div>
                     </div>
