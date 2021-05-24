@@ -1,19 +1,35 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
-import { useDispatch } from 'react-redux';
+import {
+  connect,
+  useDispatch,
+} from 'react-redux';
 import {
   Link,
   NavLink,
   useHistory,
 } from 'react-router-dom';
-import logo from "./logo.png"
-import login from "./login.png"
-import { logoutRequest } from '../../redux/actions/actions';
-import {DASHBOARD_HISTORY_URL,
-  DASHBOARD_LOAN_APPLICATION_URL,DASHBOARD_PROFILE_URL,
-  DASHBOARD_SETTING_URL,DASHBOARD_URL,HOME_URL,} from '../../routes/paths';
 
-const DashboardContainer = ({children, page='Dashboard'}) => {
+import { logoutRequest } from '../../redux/actions/actions';
+import { getUser } from '../../redux/actions/authThunks';
+import {
+  DASHBOARD_HISTORY_URL,
+  DASHBOARD_LOAN_APPLICATION_URL,
+  DASHBOARD_PROFILE_URL,
+  DASHBOARD_SETTING_URL,
+  DASHBOARD_URL,
+  HOME_URL,
+} from '../../routes/paths';
+import login from './login.png';
+import logo from './logo.png';
+
+const DashboardContainer = ({children, page='Dashboard', auth, loadUser}) => {
+    useEffect(() => {
+        if(auth.token){
+            loadUser()
+        }
+    }, []);
+
     const handleMenu = (e) => {
         const menuToggleDb = document.querySelector('.main__menu');
         const sidebar = document.querySelector('.sidebar');
@@ -149,4 +165,14 @@ const DashboardContainer = ({children, page='Dashboard'}) => {
     );
 }
 
-export default DashboardContainer;
+const mapState = state => {
+    return {
+        auth: state.auth
+    }
+}
+const mapDispatch = dispatch => {
+    return {
+        loadUser: () => dispatch(getUser())
+    }
+}
+export default connect(mapState, mapDispatch)(DashboardContainer);

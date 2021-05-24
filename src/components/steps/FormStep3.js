@@ -55,10 +55,10 @@ const FormStep3 = ({nextStep, prevStep, handleChange, field}) => {
                     <label htmlFor="job_title">Job Title</label>
                     <input value={field.job_title} onChange={handleChange}  type="text" name="job_title" id="job_title" placeholder="Job Title" />
                 </div>
-                <div className="input-group">
-                    <label htmlFor="jobs_in_last_5_years">Number of Jobs</label>
-                    <input  value={field.jobs_in_last_5_years} onChange={handleChange}  type="number" name="jobs_in_last_5_years" id="jobs_in_last_5_years" placeholder="Number of jobs in the last five years" />
-                </div>
+                {/*<div className="input-group">*/}
+                {/*    <label htmlFor="jobs_in_last_5_years">Number of Jobs</label>*/}
+                {/*    <input  value={field.jobs_in_last_5_years} onChange={handleChange}  type="number" name="jobs_in_last_5_years" id="jobs_in_last_5_years" placeholder="Number of jobs in the last five years" />*/}
+                {/*</div>*/}
                 <div className="input-group">
                     <label htmlFor="current_paydate">Next Pay Date</label>
                     <input value={field.current_paydate} onChange={handleChange}  type="date" name="current_paydate" id="current_paydate" placeholder="Current Paydate" />

@@ -140,7 +140,7 @@ const Home = ({history}) => {
                         <div>
                             <h3 className="h-3">Eazi 30/31</h3>
                             <p>Perfect loan for salary earners. Get between N50,000 – N250,000 with a repayment duration
-                                of 3 months. Perfect for emergencies and consumer items.</p>
+                                of 4 months. Perfect for emergencies and consumer items.</p>
                         </div>
 
                         <div>
@@ -164,7 +164,7 @@ const Home = ({history}) => {
                         <div>
                             <h3 className="h-3">Eazi 30/31</h3>
                             <p>Perfect loan for salary earners. Get between N50,000 – N250,000 with a repayment duration
-                                of 3 months. Perfect for emergencies and consumer items.</p>
+                                of 4 months. Perfect for emergencies and consumer items.</p>
                         </div>
 
                         <div>
@@ -204,13 +204,11 @@ const Home = ({history}) => {
                     <p className="p-2">About Us</p>
                     <div className="testimonials__inner">
                         <div className="testimonials__list">
-
                             <div className="testimonial">
                                 <div className="testimonial__user-profile">
-                                    <img src={"assets/george.png"} alt="George Anderson"/>
+                                    <img src={"assets/care.jpg"} alt="George Anderson"/>
                                         <div>
-                                            <h6 className="h-6">George Anderson</h6>
-                                            <p>CEO Johnson LTD</p>
+                                            <h6 className="h-6">Care Affairs</h6>
                                         </div>
                                 </div>
                                 <div className="testimonial__text">
@@ -230,7 +228,6 @@ const Home = ({history}) => {
                                     <img src={"assets/george.png"} alt="George Anderson"/>
                                         <div>
                                             <h6 className="h-6">George Anderson</h6>
-                                            <p>CEO Johnson LTD</p>
                                         </div>
                                 </div>
                                 <div className="testimonial__text">
@@ -257,10 +254,9 @@ const Home = ({history}) => {
                                     <p>The process was quite simple and straightforward, I was really impressed. Thank you Eazicred</p>
                                 </div>
                                 <div className="user-profile">
-                                    <img src={"assets/christian.png"} alt="George Anderson"/>
+                                    <img src={"assets/george.png"} alt="George Anderson"/>
                                         <div>
                                             <h6 className="h-6">George Anderson</h6>
-                                            <p>CEO Johnson LTD</p>
                                         </div>
                                 </div>
                             </div>
