@@ -24,8 +24,6 @@ const LoanCalculator = () => {
         const monthlyInterest = interest * principal;
         const totalInterest = monthlyInterest * months;
 
-        console.log(interest)
-
         const totalPayment = principal + totalInterest;
         const monthlyPayment =  parseInt((totalPayment / months).toFixed(2));
 
