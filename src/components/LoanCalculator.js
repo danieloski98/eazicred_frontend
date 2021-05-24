@@ -6,7 +6,7 @@ const LoanCalculator = () => {
     const [form, setForm] = useState({
         amount: 1000,
         period: 1,
-        rate: 7
+        rate: 20
     })
     const [results, setResults] = useState({
         monthlyPayment: 0,
