@@ -4,10 +4,12 @@ import {
   FETCH_SELECTED_PAYDAYLOAN_ENDPOINT,
   FETCH_SELECTED_SMELOAN_ENDPOINT,
   PAYDAY_LOAN_ENDPOINT,
+  PAYDAY_LOAN_UPLOAD_ENDPOINT,
   SME_LOAN_ENDPOINT,
   USER_PAYDAY_LOANS_ENDPOINT,
   USER_SME_LOANS_ENDPOINT,
 } from '../../routes/endpoints';
+import { DASHBOARD_LOAN_APPLICATION_URL } from '../../routes/paths';
 import {
   showMessage,
   showNotification,
@@ -28,6 +30,11 @@ import {
   fetchUserSelectedSmeLoansSuccess,
   fetchUserSmeLoansFailure,
   fetchUserSmeLoansSuccess,
+  filesUploaded,
+  filesUploadingDone,
+  uploadFilesFailure,
+  uploadFilesRequest,
+  uploadFilesSuccess,
 } from './users/loans';
 
 export const fetchSelectedPaydayLoan = loanId => (dispatch, getState) => {
@@ -41,6 +48,34 @@ export const fetchSelectedPaydayLoan = loanId => (dispatch, getState) => {
                 console.log(err)
             })
     }
+}
+
+export const uploadFiles = (files, history) => (dispatch, getState) => {
+    const token = getState().auth.token
+    const config = {headers: {"Content-Type": "multipart/form-data"}}
+    if(token){config.headers["Authorization"] = `Bearer ${token}`}
+    const loan = localStorage.getItem("loanId")
+    const formData = new FormData()
+    for(let key in files){
+        formData.append(`${key}`, files[key])
+        console.log("form_data", formData.entries().next().value)
+    }
+
+    dispatch(uploadFilesRequest())
+    axiosInstance.post(`${PAYDAY_LOAN_UPLOAD_ENDPOINT}${loan}`, formData, config)
+        .then(res => {
+            dispatch(uploadFilesSuccess(res.data.date))
+            dispatch(filesUploaded())
+            localStorage.removeItem("loanId")
+            setTimeout(() => {
+                history.push(DASHBOARD_LOAN_APPLICATION_URL)
+                dispatch(filesUploadingDone())
+            }, 5000)
+
+        })
+        .catch(err => {
+            dispatch(uploadFilesFailure(err))
+        })
 }
 
 export const fetchSelectedSmeLoan = loanId => (dispatch, getState) => {
@@ -72,14 +107,14 @@ export const fetchAllUserLoans = () => (dispatch, getState) => {
         })
 }
 
-
 export const applyPaydayLoan = data => (dispatch, getState) => {
     dispatch(applyPaydayRequest())
 
     axiosInstance.post(PAYDAY_LOAN_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
-            dispatch(applyPaydaySuccess(res.data))
+            dispatch(applyPaydaySuccess(res.data.data))
             dispatch(showNotification())
+            localStorage.setItem("loanId", res.data.data.id)
         })
         .catch(err => {
             dispatch(applyPaydayFailure(err))

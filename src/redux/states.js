@@ -21,15 +21,18 @@ export const initialStates = {
         smeLoans: [],
         paydayLoans: [],
     },
-    sme:{
-        data: null,
+    loans: {
         loading: false,
-        error: null
-    },
-    payday:{
-        data: null,
-        loading: false,
-        error: null
+        uploaded: false,
+        uploading: false,
+        sme:{
+            data: null,
+            error: null
+        },
+        payday:{
+            data: null,
+            error: null
+        },
     },
     setting:{
         data: null,

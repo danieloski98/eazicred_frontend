@@ -16,6 +16,11 @@ import {
   FETCH_USER_SELECTED_SME_LOAN_SUCCESS,
   FETCH_USER_SME_LOAN_FAILURE,
   FETCH_USER_SME_LOAN_SUCCESS,
+  FILES_UPLOADED,
+  FILES_UPLOADING_DONE,
+  UPLOAD_FILES_FAILURE,
+  UPLOAD_FILES_REQUEST,
+  UPLOAD_FILES_SUCCESS,
 } from '../types';
 
 export const fetchUserSelectedPaydayLoansRequest = () => {
@@ -76,6 +81,26 @@ export const fetchUserSelectedSmeLoansFailure = (error) => {
     return {type: FETCH_USER_SELECTED_SME_LOAN_FAILURE, error}
 }
 
+
+export const uploadFilesRequest = () => {
+    return {type: UPLOAD_FILES_REQUEST}
+}
+
+export const uploadFilesSuccess = (payload) => {
+    return {type: UPLOAD_FILES_SUCCESS, payload}
+}
+
+export const uploadFilesFailure = (error) => {
+    return {type: UPLOAD_FILES_FAILURE, error}
+}
+
+export const filesUploaded = () => {
+    return {type: FILES_UPLOADED}
+}
+
+export const filesUploadingDone = () => {
+    return {type: FILES_UPLOADING_DONE}
+}
 
 export const applySmeRequest = () => {
     return {type: APPLY_SME_LOAN_REQUEST}

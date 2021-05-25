@@ -7,7 +7,6 @@ import {
 
 import {
   DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
-  DASHBOARD_CONSUMER_LOAN_UPLOAD_URL,
   DASHBOARD_SME_LOAN_APPLICATION_URL,
   DASHBOARD_URL,
 } from '../../routes/paths';
@@ -46,8 +45,6 @@ const LoanApplication = () => {
                         </div>
                     </Link>
                 </div>
-                <button onClick={() => history.push(DASHBOARD_CONSUMER_LOAN_UPLOAD_URL)} className="btn btn-blue">
-                    Upload files</button>
             </div>
         </DashboardContainer>
     )

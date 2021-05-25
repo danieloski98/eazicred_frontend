@@ -11,7 +11,7 @@ export const loanStatus = status => {
         case 3:
             return "Rejected"
         default:
-            return "NOT ON API"
+            return "NOT ON (API)"
     }
 }
 
@@ -20,7 +20,7 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
     function percentage(num) {
         return (num/100)*20;
     }
-    function accuredAmount(amount, time) {
+    function accruedAmount(amount, time) {
         return amount * (percentage(amount) * time)
     }
     const handleClose = () => {
@@ -64,7 +64,7 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
                     </div>
                     <div>
                         <span>Total</span>
-                        <span>{currency.format(accuredAmount(loan.loan_amount, loan.loan_tenure))}</span>
+                        <span>{currency.format(accruedAmount(loan.loan_amount, loan.loan_tenure))}</span>
                     </div>
                 </div>
             </div>

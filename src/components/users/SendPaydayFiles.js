@@ -1,47 +1,34 @@
-import React, {
-  useEffect,
-  useState,
-} from 'react';
+import React, { useEffect } from 'react';
 
 import {
   connect,
   useDispatch,
+  useSelector,
 } from 'react-redux';
+import { Redirect } from 'react-router-dom';
 
 import Loader from '../../Common/Loader';
 import MessageAlert from '../../Common/MessageAlert';
-import axiosInstance from '../../helpers/axios';
-import { tokenConfig } from '../../helpers/utilities';
+import { uploadFiles } from '../../redux/actions/loanThunk';
 import {
-  PAYDAY_LOAN_UPLOAD_ENDPOINT,
-  USER_PAYDAY_LOANS_ENDPOINT,
-} from '../../routes/endpoints';
-import { DASHBOARD_LOAN_APPLICATION_URL } from '../../routes/paths';
+  DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
+  DASHBOARD_LOAN_APPLICATION_URL,
+} from '../../routes/paths';
 import DashboardContainer from './DashboardContainer';
-import LoanModal from './LoanModal';
+import FilesLoanModal from './FilesLoanModal';
 
-const SendPaydayFiles = ({history, user}) => {
-    const [loan, setLoan] = React.useState('')
-    const [loans, setLoans] = React.useState([])
-    const [loading, setLoading] = useState(false)
-    const [error, setError] = useState(null)
-    const [sent, setSent] = useState(false)
-    const dispatch = useDispatch()
+const SendPaydayFiles = ({history, loan_id}) => {
+    const uploaded = useSelector(state => state["applyLoan"].uploaded)
+    const uploading = useSelector(state => state["applyLoan"].uploading)
+
     useEffect(() => {
-        const getUserLoans = () => (dispatch, getState) => {
-            setLoading(true)
-            axiosInstance.get(`${USER_PAYDAY_LOANS_ENDPOINT}${user.id}`, tokenConfig(getState))
-                .then(res => {
-                    setLoans(res.data.data)
-                    setLoading(false)
-                })
-                .catch(err => {
-                    setError(err)
-                    setLoading(false)
-                })
+        if(!localStorage.getItem("loanId")){
+            return <Redirect to={DASHBOARD_CONSUMER_LOAN_APPLICATION_URL}/>
         }
-        dispatch(getUserLoans())
-    }, [dispatch, user.id])
+    }, [])
+
+    const error = useSelector(state => state["applyLoan"].payday.error)
+    const dispatch = useDispatch()
     const [field, setField] = React.useState({
         passport: null,
         government_ID: null,
@@ -55,35 +42,12 @@ const SendPaydayFiles = ({history, user}) => {
         const {name, files} = e.target
         setField({...field, [name]: files[0]})
     }
+
     const handleSubmit = e => {
         e.preventDefault()
-        const uploadFiles = (files) => (dispatch, getState) => {
-            const formData = new FormData()
-            for (let id in files) {
-                formData.append(id, files[id])
-            }
-            console.log(formData)
-            console.log(files)
-            axiosInstance.post(`${PAYDAY_LOAN_UPLOAD_ENDPOINT}${loan}`, {...formData}, tokenConfig(getState))
-                .then(res => {
-                    setSent(true)
-                    setTimeout(() => setSent(false), 5000)
-                    setField({
-                        passport: null,
-                        government_ID: null,
-                        company_id: null,
-                        letter_of_employment: null,
-                        HR_letter_of_comfirmation: null,
-                        utility_bill: null,
-                    })
-                })
-                .catch(err => {
-                    console.log(err)
-                })
-        }
-        dispatch(uploadFiles(field))
+        dispatch(uploadFiles(field, history))
     }
-    return (loading ? <Loader/> :
+    return (uploading ? <Loader/> :
             <DashboardContainer page={"Upload files"}>
                 <div className="main__middle">
                         <span onClick={() => history.push(DASHBOARD_LOAN_APPLICATION_URL)} style={{cursor: "pointer"}}
@@ -118,55 +82,45 @@ const SendPaydayFiles = ({history, user}) => {
                         </div>
                     </div>
                     <div className="main__loan--data">
-                        <form onSubmit={handleSubmit} encType="multipart/form-data">
-                            <span>Step 4 / 4</span>
+                        <form onSubmit={handleSubmit}>
+                            <span>Step 5 / 5</span>
                             <h3>Upload required files</h3>
                             <p>Update your existing loan and upload required files</p>
                             <div className="input-groups">
                                 <div className="input-group">
-                                    <label htmlFor="loan">Select existing loan (id)</label>
-                                    <select value={loan} onChange={(e) => setLoan(e.target.value)} name="loan"
-                                            id="loan">
-                                        {loans.map(loan => {
-                                            return <option
-                                                value={loan.id}>{`ID: (${loan.id}) Amount: (${loan.loan_amount})`}</option>
-                                        })}
-                                    </select>
-                                </div>
-                                <div className="input-group">
                                     <label htmlFor="passport">Passport</label>
-                                    <input onChange={handleChange} name={"passport"} type="file" id="passport"/>
+                                    <input required onChange={handleChange} name={"passport"} type="file" id="passport"/>
                                 </div>
                                 <div className="input-group">
                                     <label htmlFor="government_ID">Government ID</label>
-                                    <input onChange={handleChange} name={'government_ID'} type="file"
+                                    <input required onChange={handleChange} name={'government_ID'} type="file"
                                            id="government_ID"/>
                                 </div>
                                 <div className="input-group">
                                     <label htmlFor="company_id">Company ID</label>
-                                    <input onChange={handleChange} name={"company_id"} type="file" id="company_id"/>
+                                    <input required onChange={handleChange} name={"company_id"} type="file" id="company_id"/>
                                 </div>
                                 <div className="input-group">
                                     <label htmlFor="letter_of_employment">Letter of Employment</label>
-                                    <input onChange={handleChange} name={"letter_of_employment"} type="file"
+                                    <input required onChange={handleChange} name={"letter_of_employment"} type="file"
                                            id="letter_of_employment"/>
                                 </div>
                                 <div className="input-group">
                                     <label htmlFor="HR_letter_of_comfirmation">HR Letter of Confirmation</label>
-                                    <input onChange={handleChange} name={"HR_letter_of_comfirmation"} type="file"
+                                    <input required onChange={handleChange} name={"HR_letter_of_comfirmation"} type="file"
                                            id="HR_letter_of_comfirmation"/>
                                 </div>
                                 <div className="input-group">
                                     <label htmlFor="utility_bill">Utility Bill</label>
-                                    <input onChange={handleChange} name={"utility_bill"} type="file" id="utility_bill"/>
+                                    <input required onChange={handleChange} name={"utility_bill"} type="file" id="utility_bill"/>
                                 </div>
                             </div>
                             <div className="form-btns">
                                 <input type="submit" className="btn btn-blue" value="Submit"/>
                             </div>
-                            {error && <MessageAlert></MessageAlert>}
+                            {!!error && <MessageAlert/>}
                         </form>
-                        {sent && <LoanModal/>}
+                        {uploaded && <FilesLoanModal/>}
                     </div>
                 </div>
             </DashboardContainer>
@@ -174,7 +128,7 @@ const SendPaydayFiles = ({history, user}) => {
 }
 const mapState = (state) => {
     return {
-        user: state.auth.user
+        loan_id: state.applyLoan.payday.data.id
     }
 }
 export default connect(mapState)(SendPaydayFiles)

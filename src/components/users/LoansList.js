@@ -13,7 +13,7 @@ import Loader from '../../Common/Loader';
 import { fetchAllUserLoans } from '../../redux/actions/loanThunk';
 import { DASHBOARD_HISTORY_URL } from '../../routes/paths';
 import EmptyLoanHistory from './EmptyLoanHistory';
-import LoanDetailsModal from './LoanDetailsModal';
+import LoanDetailsModal, { loanStatus } from './LoanDetailsModal';
 
 export const currency = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'NGN', maximumFractionDigits:0});
 
@@ -46,6 +46,7 @@ const LoansList = ({loans, fetchAllLoans}) => {
                 return "SME Loan"
         }
     }
+
     const location = useLocation()
     const loanData = [...loans.paydayLoans]
     return isLoading() ? <Loader/> : loanData.length > 0 ? (
@@ -70,7 +71,7 @@ const LoansList = ({loans, fetchAllLoans}) => {
                         <span>#{loan.id}</span>
                         <span>{loanType(loan.type)}</span>
                         <span>{loan.type === 1 && currency.format(loan.loan_amount)}</span>
-                        <span>Status</span>
+                        <span>{loanStatus(loan.status)}</span>
                         <button onClick={() => showLoanDetails(loan)} className="view-details">View Detail</button>
                     </div>
                 ))}

@@ -3,7 +3,7 @@ import React from 'react';
 const FormStep2 = ({nextStep, prevStep, handleChange, field}) => {
     return (
         <React.Fragment>
-            <span>Step 2 / 4</span>
+            <span>Step 2 / 5</span>
             <h3>Location</h3>
             <p>Information about where you are located</p>
             <div className="input-groups">

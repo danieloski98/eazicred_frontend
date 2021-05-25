@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import {
   connect,
@@ -11,7 +11,6 @@ import {
 } from 'react-router-dom';
 
 import { logoutRequest } from '../../redux/actions/actions';
-import { getUser } from '../../redux/actions/authThunks';
 import {
   DASHBOARD_HISTORY_URL,
   DASHBOARD_LOAN_APPLICATION_URL,
@@ -23,12 +22,7 @@ import {
 import login from './login.png';
 import logo from './logo.png';
 
-const DashboardContainer = ({children, page='Dashboard', auth, loadUser}) => {
-    useEffect(() => {
-        if(auth.token){
-            loadUser()
-        }
-    }, []);
+const DashboardContainer = ({children, page='Dashboard'}) => {
 
     const handleMenu = (e) => {
         const menuToggleDb = document.querySelector('.main__menu');
@@ -170,9 +164,4 @@ const mapState = state => {
         auth: state.auth
     }
 }
-const mapDispatch = dispatch => {
-    return {
-        loadUser: () => dispatch(getUser())
-    }
-}
-export default connect(mapState, mapDispatch)(DashboardContainer);
+export default connect(mapState)(DashboardContainer);

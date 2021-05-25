@@ -5,7 +5,7 @@ import MessageAlert from '../../Common/MessageAlert';
 const FormStep4 = ({showMsg, prevStep, handleChange, handleKey, field}) => {
     return (
         <React.Fragment>
-            <span>Step 4 / 4</span>
+            <span>Step 4 / 5</span>
             <h3>Loan &amp; Verification</h3>
             <p>Fill in the required information and upload documents</p>
             <div className="input-groups">
@@ -13,18 +13,20 @@ const FormStep4 = ({showMsg, prevStep, handleChange, handleKey, field}) => {
                     <label htmlFor="existing_loan">Do you have any existing loan?</label>
                     <input checked={field.existing_loan} onChange={handleChange}  type="checkbox" name="existing_loan" id="existing_loan" placeholder="Yes or No" />
                 </div>
-                <div className="input-group">
-                    <label htmlFor="existing_loan_type">What is your existing loan type?</label>
-                    <select  value={field.existing_loan_type} onChange={handleChange}  name="existing_loan_type" id="existing_loan_type">
-                        <option value={0}>None</option>
-                        <option value={1}>Mortgage</option>
-                        <option value={2}>Over Draft</option>
-                        <option value={3}>Car Loan</option>
-                        <option value={4}>Business Loan</option>
-                        <option value={5}>Credit Card Loan</option>
-                        <option value={6}> Personal Loan</option>
-                    </select>
-                </div>
+                {field.existing_loan && (
+                    <div className="input-group">
+                        <label htmlFor="existing_loan_type">What is your existing loan type?</label>
+                        <select  value={field.existing_loan_type} onChange={handleChange}  name="existing_loan_type" id="existing_loan_type">
+                            <option value={0}>None</option>
+                            <option value={1}>Mortgage</option>
+                            <option value={2}>Over Draft</option>
+                            <option value={3}>Car Loan</option>
+                            <option value={4}>Business Loan</option>
+                            <option value={5}>Credit Card Loan</option>
+                            <option value={6}> Personal Loan</option>
+                        </select>
+                    </div>
+                )}
                 <div className="input-group">
                     <label htmlFor="loan_amount">Loan Amount</label>
                     <input onInput={handleKey} value={field.loan_amount} onChange={handleChange} max={250000} type="number" name="loan_amount" id="loan_amount" placeholder="₦" />
