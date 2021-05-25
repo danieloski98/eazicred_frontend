@@ -40,6 +40,9 @@ export const applyLoanReducer = (state=initialStates.loans, action) => {
         case UPLOAD_FILES_FAILURE:
             return {
                 ...state,
+                payday: {
+                    error: action.error
+                },
                 uploading: false
             }
         case FILES_UPLOADING_DONE:

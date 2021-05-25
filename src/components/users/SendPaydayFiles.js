@@ -47,6 +47,7 @@ const SendPaydayFiles = ({history, loan_id}) => {
         e.preventDefault()
         dispatch(uploadFiles(field, history))
     }
+
     return (uploading ? <Loader/> :
             <DashboardContainer page={"Upload files"}>
                 <div className="main__middle">

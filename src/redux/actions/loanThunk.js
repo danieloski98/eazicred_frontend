@@ -58,7 +58,6 @@ export const uploadFiles = (files, history) => (dispatch, getState) => {
     const formData = new FormData()
     for(let key in files){
         formData.append(`${key}`, files[key])
-        console.log("form_data", formData.entries().next().value)
     }
 
     dispatch(uploadFilesRequest())

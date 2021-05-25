@@ -1,4 +1,7 @@
-import React from 'react';
+import React, {
+  useEffect,
+  useState,
+} from 'react';
 
 import { currency } from './LoansList';
 
@@ -15,14 +18,36 @@ export const loanStatus = status => {
     }
 }
 
-
 const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
+    const [results, setResults] = useState({monthlyPayment: 0, interestRate: 7, totalInterest: 0});
+
     function percentage(num) {
-        return (num/100)*20;
+        return (num/100)*7;
     }
-    function accruedAmount(amount, time) {
-        return amount * (percentage(amount) * time)
+    function getResults() {
+        const {loan_amount, loan_tenure} = loan
+        const principal = parseFloat(loan_amount);
+        const interest = 7 / 100;
+        const months = parseFloat(loan_tenure);
+        const monthlyInterest = interest * principal;
+        const totalInterest = monthlyInterest * months;
+        const totalPayment = principal + totalInterest;
+        const monthlyPayment =  parseInt((totalPayment / months).toFixed(2));
+        setResults({interestRate: interest, monthlyPayment, totalInterest})
     }
+
+    const period = (period) => {
+        if (period > 1) {
+            return `${period} months`;
+        } else {
+            return `${period} month`;
+        }
+    }
+
+    useEffect(() => {
+        getResults()
+    }, [])
+    
     const handleClose = () => {
         setOpen(false)
         setLoan(null)
@@ -42,7 +67,7 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
                     </div>
                     <div>
                         <h5>Duration</h5>
-                        <span>{loan.loan_tenure} months</span>
+                        <span>{period(loan.loan_tenure)}</span>
                     </div>
                     <div>
                         <h5>Loan Status</h5>
@@ -60,11 +85,11 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
                     </div>
                     <div>
                         <span>Interest</span>
-                        <span>{currency.format(percentage(loan.loan_amount))}</span>
+                        <span>{currency.format(percentage(results.interestRate))}</span>
                     </div>
                     <div>
                         <span>Total</span>
-                        <span>{currency.format(accruedAmount(loan.loan_amount, loan.loan_tenure))}</span>
+                        <span>{currency.format(results.totalInterest)}</span>
                     </div>
                 </div>
             </div>

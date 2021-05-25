@@ -3,6 +3,7 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import OnPageSignUp from '../Common/OnPageSignUp';
 import { gettingStarted } from '../redux/actions/actions';
 import {
   ABOUT_URL,
@@ -11,7 +12,6 @@ import {
   TERMS_URL,
 } from '../routes/paths';
 import LoanCalculator from './LoanCalculator';
-import OnPageSignUp from './OnPageSignUp';
 
 const Home = ({history}) => {
     document.title = "EaziCred - Better Loan Offers"

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import OnPageSignUp from './OnPageSignUp';
+import OnPageSignUp from '../Common/OnPageSignUp';
 
 const Privacy = () => {
     document.title = 'EaziCred - Privacy Policy'

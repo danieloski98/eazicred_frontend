@@ -1,6 +1,6 @@
 import React from 'react';
 
-import OnPageSignUp from './OnPageSignUp';
+import OnPageSignUp from '../Common/OnPageSignUp';
 
 const Faqs = () => {
     document.title = "EaziCred - FAQs"
