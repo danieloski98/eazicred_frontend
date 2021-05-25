@@ -21,9 +21,6 @@ export const loanStatus = status => {
 const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
     const [results, setResults] = useState({monthlyPayment: 0, interestRate: 7, totalInterest: 0});
 
-    function percentage(num) {
-        return (num/100)*7;
-    }
     function getResults() {
         const {loan_amount, loan_tenure} = loan
         const principal = parseFloat(loan_amount);
@@ -33,7 +30,7 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
         const totalInterest = monthlyInterest * months;
         const totalPayment = principal + totalInterest;
         const monthlyPayment =  parseInt((totalPayment / months).toFixed(2));
-        setResults({interestRate: interest, monthlyPayment, totalInterest})
+        setResults({interestRate: monthlyInterest, monthlyPayment, totalInterest})
     }
 
     const period = (period) => {
@@ -80,15 +77,15 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
                 </div>
                 <div className="modal__bottom">
                     <div>
-                        <span>Amount</span>
+                        <span>Loan Amount</span>
                         <span>{currency.format(loan.loan_amount)}</span>
                     </div>
                     <div>
-                        <span>Interest</span>
-                        <span>{currency.format(percentage(results.interestRate))}</span>
+                        <span>Monthly Interest</span>
+                        <span>{currency.format(results.interestRate)}</span>
                     </div>
                     <div>
-                        <span>Total</span>
+                        <span>Total Interest</span>
                         <span>{currency.format(results.totalInterest)}</span>
                     </div>
                 </div>
