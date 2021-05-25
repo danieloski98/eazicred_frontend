@@ -5,6 +5,7 @@ import { useHistory } from 'react-router-dom';
 import { DASHBOARD_LOAN_APPLICATION_URL } from '../../routes/paths';
 import DashboardContainer from './DashboardContainer';
 import LoanModal from './LoanModal';
+import FilesLoanModal from "./FilesLoanModal";
 
 const SmeLoan = ({showNotification, step, switchForm, handleSubmit}) => {
     document.title = "Eazicred - SME Loan"
@@ -35,7 +36,7 @@ const SmeLoan = ({showNotification, step, switchForm, handleSubmit}) => {
                     <form onSubmit={handleSubmit}>
                         {switchForm()}
                     </form>
-                    {showNotification && <LoanModal/>}
+                    {showNotification && <FilesLoanModal/>}
                 </div>
             </div>
         </DashboardContainer>
