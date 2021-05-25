@@ -61,6 +61,7 @@ const LoansList = ({loans, fetchAllLoans}) => {
                     <span>Transaction ID</span>
                     <span>Transaction Type</span>
                     <span>Amount</span>
+                    <span>Status</span>
                     <span>Action</span>
                 </div>
                 {loanData.map(loan => (
@@ -69,6 +70,7 @@ const LoansList = ({loans, fetchAllLoans}) => {
                         <span>#{loan.id}</span>
                         <span>{loanType(loan.type)}</span>
                         <span>{loan.type === 1 && currency.format(loan.loan_amount)}</span>
+                        <span>Status</span>
                         <button onClick={() => showLoanDetails(loan)} className="view-details">View Detail</button>
                     </div>
                 ))}
