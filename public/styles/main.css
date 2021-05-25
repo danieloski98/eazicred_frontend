@@ -1605,7 +1605,6 @@ section {
 .dashboard .main__loan-history--box {
   background-color: #F8F8F8;
   margin-top: 1rem;
-  height: 28rem;
   overflow-y: scroll;
   -ms-overflow-style: none;
   scrollbar-width: none;
@@ -1617,7 +1616,7 @@ section {
 
 .dashboard .main__loan-history--box .loan__row {
   display: grid;
-  grid-template-columns: repeat(5, 1fr);
+  grid-template-columns: repeat(6, 1fr);
   column-gap: .5rem;
   align-items: center;
   color: #000000;
