@@ -23,10 +23,6 @@ const FormStep2 = ({nextStep, prevStep, handleChange, field}) => {
                     <label htmlFor="state">State Of Residence</label>
                     <input value={field.state} onChange={handleChange}  type="text" id="state" name="state" placeholder="" />
                 </div>
-                {/*<div className="input-group">*/}
-                {/*    <label htmlFor={'state'}>State</label>*/}
-                {/*    <input value={field.state} name={"state"} id="state" onChange={handleChange}  type="text" placeholder="Enter your state of origin"/>*/}
-                {/*</div>*/}
                 <div className="input-group">
                     <label htmlFor='length_of_time_at_current_address'>How Long Have You Lived Here ?</label>
                     <select value={field.length_of_time_at_current_address} onChange={handleChange}  name="length_of_time_at_current_address" id="length_of_time_at_current_address">

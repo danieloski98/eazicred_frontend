@@ -56,9 +56,16 @@ export const uploadFiles = (files, history) => (dispatch, getState) => {
     if(token){config.headers["Authorization"] = `Bearer ${token}`}
     const loan = localStorage.getItem("loanId")
     const formData = new FormData()
-    for(let key in files){
-        formData.append(`${key}`, files[key])
-    }
+    // for(let key in files){
+    //     formData.append(`${key}`, files[key])
+    // }
+    formData.append('passport', files['passport'])
+    formData.append('government_ID', files['government_ID'])
+    formData.append('company_id', files['company_id'])
+    formData.append('letter_of_employment', files['letter_of_employment'])
+    formData.append('HR_letter_of_comfirmation', files['HR_letter_of_comfirmation'])
+    formData.append('utility_bill', files['utility_bill'])
+    console.log(">>>>>>>>>>>........................>>>>>>>>>>>")
 
     dispatch(uploadFilesRequest())
     axiosInstance.post(`${PAYDAY_LOAN_UPLOAD_ENDPOINT}${loan}`, formData, config)
@@ -73,6 +80,7 @@ export const uploadFiles = (files, history) => (dispatch, getState) => {
 
         })
         .catch(err => {
+            console.log(err.response.data)
             dispatch(uploadFilesFailure(err))
         })
 }
@@ -117,7 +125,7 @@ export const applyPaydayLoan = data => (dispatch, getState) => {
         })
         .catch(err => {
             dispatch(applyPaydayFailure(err))
-            dispatch(showMessage({message: "Please all fields are required", type: 'error'}))
+            dispatch(showMessage({message: err.response.data.errorMessage, type: 'error'}))
         })
 }
 

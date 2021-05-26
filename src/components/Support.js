@@ -1,9 +1,31 @@
 import React from 'react';
 
+import emailjs from 'emailjs-com';
+
 import OnPageSignUp from '../Common/OnPageSignUp';
 
 const Support = () => {
     document.title = 'Eazicred - Support'
+    const [form, setForm] = React.useState({name: '', email: '', message: ""})
+    const handleChange = e => {
+        const {name, value} = e.target
+        setForm({...form, [name]: value})
+    }
+
+    function handleSubmit(e) {
+        e.preventDefault()
+        const template_id = 'o9emy69';
+        const service_id = 'gmail';
+        const user_id = 'user_q4Px58peEZuDjpc9c4wh9';
+
+        emailjs.sendForm(service_id, template_id, e.target, user_id)
+            .then((result) => {
+                console.log(result);
+            }, (error) => {
+                console.log(error);
+            });
+    }
+
     return (
         <React.Fragment>
             <header>
@@ -30,22 +52,22 @@ const Support = () => {
                                 </div>
                             </div>
                             <p>Alternatively, You can also fill the form below</p>
-                            <form className="support__form">
+                            <form className="support__form" onSubmit={handleSubmit}>
                                 <div className="input-groups">
                                     <div className="input-group">
-                                        <label htmlFor="">Name</label>
-                                        <input type="text"/>
+                                        <label htmlFor="name">Name</label>
+                                        <input value={form.name} onChange={handleChange} name="name" id="name" type="text"/>
                                     </div>
                                     <div className="input-group">
-                                        <label htmlFor="">Email Address</label>
-                                        <input type="email"/>
+                                        <label htmlFor="email">Email Address</label>
+                                        <input value={form.email} onChange={handleChange} name="email" id="email" type="email"/>
                                     </div>
                                 </div>
                                 <div className="message-box">
-                                    <label htmlFor="">Message</label>
-                                    <textarea/>
+                                    <label htmlFor="message">Message</label>
+                                    <textarea value={form.message} onChange={handleChange} name="message" id='message'/>
                                 </div>
-                                <button className="btn btn-blue">Send Message</button>
+                                <button type="submit" className="btn btn-blue">Send Message</button>
                             </form>
                         </div>
                     </div>
