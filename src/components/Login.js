@@ -72,11 +72,7 @@ const Login = ({isAuthenticated, login, error}) => {
                             </div>
                             {!error.show && <input type="submit" value="Login" className="btn btn-blue"/>}
                             {error.show && <MessageAlert>
-                                <input type="button"
-                                       value={'Error occurred, check your password and email'}
-                                       disabled
-                                       className="alert alert-red"
-                                />
+                                <input type="button" value={error.message} disabled className="alert alert-red"/>
                             </MessageAlert>}
                             <p>Don't Have An Account?
                                 <Link to={REGISTER_URL} className="primary-color">
