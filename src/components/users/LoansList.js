@@ -74,11 +74,21 @@ const LoansList = ({loans, fetchAllLoans}) => {
                 </div>
                 {loanData.map((loan, index) => (
                     <div className="loan__row" key={index}>
-                        <span>{formatDate(loan["created_at"])}</span>
-                        <span>#{loan.id}</span>
-                        <span>{loanType(loan.type)}</span>
-                        <span>{loan.type === 1 ? currency.format(loan.loan_amount) : `For ${loan.purpose_of_loan}`}</span>
-                        <span>{loanStatus(loan.status)}</span>
+                        <span>
+                            {formatDate(loan["created_at"])}
+                        </span>
+                        <span>
+                            #{loan.id}
+                        </span>
+                        <span>
+                            {loanType(loan.type)}
+                        </span>
+                        <span>
+                            {loan.type === 1 ? currency.format(loan.loan_amount) : `For ${loan.purpose_of_loan}`}
+                        </span>
+                        <span>
+                            {loanStatus(loan.status)}
+                        </span>
                         {loan.type === 1 ? <button onClick={() => showLoanDetails(loan)} className="view-details">View
                             Detail</button> : loan.business_name}
                     </div>
