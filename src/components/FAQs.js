@@ -1,5 +1,5 @@
 import React from 'react';
-
+import faq from '../assets/faq-image.png';
 import OnPageSignUp from '../Common/OnPageSignUp';
 
 const Faqs = () => {
@@ -69,7 +69,7 @@ const Faqs = () => {
                         </div>
                     </div>
                     <div className="hero-faq__image">
-                        <img src={"assets/faq-image.png"} alt="a woman sitting on the couch with a laptop"/>
+                        <img src={faq} alt="a woman sitting on the couch with a laptop"/>
                     </div>
                 </div>
             </header>

@@ -6,16 +6,17 @@ import {
   updateSettingRequest,
   updateSettingSuccess,
 } from '../actions';
+import {showError} from "../../../helpers/utilities";
 
 export const changePassword = (data, userID) => dispatch => {
     dispatch(updateSettingRequest())
     axiosInstance.post(`${CHANGE_PASSWORD_ENDPOINT}${userID}`, {...data})
         .then(res => {
             dispatch(updateSettingSuccess(res.data))
-            dispatch(showMessage({message: res.data.successMessage, type: 'success'}))
+            dispatch(showMessage({message: res.data["successMessage"], type: 'success'}))
         })
         .catch(err => {
             dispatch(updateSettingFailure(err))
-            dispatch(showMessage({message: "Error password could not be changed check and try again later", type: 'error'}))
+            dispatch(showMessage({message: showError(err), type: 'error'}))
         })
 }

@@ -19,8 +19,7 @@ import {
   DASHBOARD_URL,
   HOME_URL,
 } from '../../routes/paths';
-import login from './login.png';
-import logo from './logo.png';
+import logo from '../../assets/logo.png';
 
 const DashboardContainer = ({children, page='Dashboard'}) => {
 
@@ -150,7 +149,6 @@ const DashboardContainer = ({children, page='Dashboard'}) => {
                         <Link className="main__logo" to={DASHBOARD_URL}>
                             <img src={logo} alt="eazicred logo"/>
                         </Link>
-                        <img alt="" src={login}/>
                     </div>
                     {children}
                 </main>

@@ -55,16 +55,11 @@ const LoanCalculator = () => {
             case "period":
                 if(value < 1){
                     e.target.value = 1
-                }else if (value > 4){
-                    e.target.value = 4
                 }
                 break;
             case "amount":
-                if(value > 250000){
-                    e.target.value = 250000
-                }
-                if(value < 500){
-                    e.target.value = 500
+                if(value < 1){
+                    e.target.value = 1
                 }
                 break;
         }

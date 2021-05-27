@@ -9,7 +9,7 @@ import {
   USER_PAYDAY_LOANS_ENDPOINT,
   USER_SME_LOANS_ENDPOINT,
 } from '../../routes/endpoints';
-import { DASHBOARD_LOAN_APPLICATION_URL } from '../../routes/paths';
+import {DASHBOARD_HISTORY_URL, DASHBOARD_LOAN_APPLICATION_URL} from '../../routes/paths';
 import {
   showMessage,
   showNotification,
@@ -23,6 +23,7 @@ import {
   applySmeSuccess,
   fetchUserLoansRequest,
   fetchUserPaydayLoansFailure,
+  fetchUserPaydayLoansRequest,
   fetchUserPaydayLoansSuccess,
   fetchUserSelectedPaydayLoansRequest,
   fetchUserSelectedPaydayLoansSuccess,
@@ -50,6 +51,19 @@ export const fetchSelectedPaydayLoan = loanId => (dispatch, getState) => {
     }
 }
 
+export const fetchUserPaydayLoans = () => (dispatch, getState) => {
+    const user_id = getState().auth.user.id
+    dispatch(fetchUserPaydayLoansRequest())
+    axiosInstance.get(`${USER_PAYDAY_LOANS_ENDPOINT}${user_id}`, tokenConfig(getState))
+        .then(res => {
+            dispatch(fetchUserPaydayLoansSuccess(res.data.data))
+        })
+        .catch(err => {
+            console.log(err)
+            dispatch(fetchUserPaydayLoansFailure())
+        })
+}
+
 export const uploadFiles = (files, history) => (dispatch, getState) => {
     const token = getState().auth.token
     const config = {headers: {"Content-Type": "multipart/form-data"}}
@@ -61,7 +75,6 @@ export const uploadFiles = (files, history) => (dispatch, getState) => {
     formData.append('government_ID', files['government_ID'])
     formData.append('company_id', files['company_id'])
     formData.append('letter_of_employment', files['letter_of_employment'])
-    formData.append('HR_letter_of_comfirmation', files['HR_letter_of_comfirmation'])
     formData.append('utility_bill', files['utility_bill'])
 
     dispatch(uploadFilesRequest())
@@ -71,7 +84,7 @@ export const uploadFiles = (files, history) => (dispatch, getState) => {
             dispatch(filesUploaded())
             localStorage.removeItem("loanId")
             setTimeout(() => {
-                history.push(DASHBOARD_LOAN_APPLICATION_URL)
+                history.push(DASHBOARD_HISTORY_URL)
                 dispatch(filesUploadingDone())
             }, 5000)
 
@@ -126,12 +139,13 @@ export const applyPaydayLoan = data => (dispatch, getState) => {
         })
 }
 
-export const applySmeLoan = data => (dispatch, getState) => {
+export const applySmeLoan = (data, history) => (dispatch, getState) => {
     dispatch(applySmeRequest())
     axiosInstance.post(SME_LOAN_ENDPOINT, {...data}, tokenConfig(getState))
         .then(res => {
             dispatch(applySmeSuccess(res.data.data))
             dispatch(showNotification())
+            history.push(DASHBOARD_HISTORY_URL)
         })
         .catch((err) => {
             dispatch(applySmeFailure(err))

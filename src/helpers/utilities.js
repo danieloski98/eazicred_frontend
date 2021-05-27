@@ -13,10 +13,11 @@ export const tokenConfig = (getState) => {
     return config
 }
 
-export const showError = (err, defaultMsg) => {
+export const showError = (err) => {
     if (err.response){
-        return err.response.message
+        return err.response.data['errorMessage']
+    } else{
+        return "Network Connection failed"
     }
-    return defaultMsg
 }
 

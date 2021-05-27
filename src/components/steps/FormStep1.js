@@ -24,6 +24,7 @@ const FormStep1 = ({nextStep, handleChange, field}) => {
                 <div className="input-group">
                     <label htmlFor="means_of_id">Means of ID</label>
                     <select name="Means_of_ID" id="means_of_id" value={field.Means_of_ID} onChange={handleChange}>
+                        <option value="">None</option>
                         <option value="driverlicense">Driver License</option>
                         <option value="governmentid">Government ID</option>
                         <option value="passport">Passport</option>

@@ -19,7 +19,7 @@ export const changeProfile = (data) => (dispatch, getState) => {
             dispatch(showMessage({message: res.data["successMessage"], type: 'success'}))
         })
         .catch(err => {
-            dispatch(updateProfileFailure(showError(err, "Error profile could not be updated check and try again later")))
-            dispatch(showMessage({message: getState().auth.error, type: 'error'}))
+            dispatch(updateProfileFailure(showError(err)))
+            dispatch(showMessage({message: showError(err), type: 'error'}))
         })
 }

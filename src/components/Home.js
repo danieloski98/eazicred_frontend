@@ -3,6 +3,11 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
+import care from '../assets/care.jpg';
+import choice from '../assets/choice-img.png';
+import eligibility_img from '../assets/eligibility-img.png';
+import george from '../assets/george.png';
+import hero from '../assets/hero-image.png';
 import OnPageSignUp from '../Common/OnPageSignUp';
 import { gettingStarted } from '../redux/actions/actions';
 import {
@@ -64,7 +69,7 @@ const Home = ({history}) => {
                             </p>
                         </div>
                         <div className="hero__image">
-                            <img src={"assets/hero-image.png"} alt="a woman smiling"/>
+                            <img src={hero} alt="a woman smiling"/>
                         </div>
                     </div>
                 </div>
@@ -122,7 +127,7 @@ const Home = ({history}) => {
                             </div>
                         </div>
                         <div className="choice__image-box">
-                            <img src={"assets/choice-img.png"} alt="a guy who is surprised"/>
+                            <img src={choice} alt="a guy who is surprised"/>
                         </div>
                     </div>
                 </div>
@@ -179,7 +184,7 @@ const Home = ({history}) => {
                 <div className="container">
                     <div className="eligibility__inner">
                         <div className="eligibility__image-box">
-                            <img src={"assets/eligibility-img.png"} alt="a woman laughing"/>
+                            <img src={eligibility_img} alt="a woman laughing"/>
                         </div>
                         <div className="eligibility__text-box">
                             <h2 className="h-2">Check If You Are Eligible</h2>
@@ -206,10 +211,10 @@ const Home = ({history}) => {
                         <div className="testimonials__list">
                             <div className="testimonial">
                                 <div className="testimonial__user-profile">
-                                    <img src={"assets/care.jpg"} alt="George Anderson"/>
-                                        <div>
-                                            <h6 className="h-6">Care Affairs</h6>
-                                        </div>
+                                    <img src={care} alt="George Anderson"/>
+                                    <div>
+                                        <h6 className="h-6">Care Affairs</h6>
+                                    </div>
                                 </div>
                                 <div className="testimonial__text">
                                     <p>At the time we needed to fund a project, Eazicred made the whole process and service delivery hassle free.</p>
@@ -225,10 +230,10 @@ const Home = ({history}) => {
 
                             <div className="testimonial">
                                 <div className="testimonial__user-profile">
-                                    <img src={"assets/george.png"} alt="George Anderson"/>
-                                        <div>
-                                            <h6 className="h-6">George Anderson</h6>
-                                        </div>
+                                    <img src={george} alt="George Anderson"/>
+                                    <div>
+                                        <h6 className="h-6">George Anderson</h6>
+                                    </div>
                                 </div>
                                 <div className="testimonial__text">
                                     <p>The process was quite simple and straightforward, I was really impressed. Thank you Eazicred.</p>
@@ -254,10 +259,10 @@ const Home = ({history}) => {
                                     <p>The process was quite simple and straightforward, I was really impressed. Thank you Eazicred</p>
                                 </div>
                                 <div className="user-profile">
-                                    <img src={"assets/george.png"} alt="George Anderson"/>
-                                        <div>
-                                            <h6 className="h-6">George Anderson</h6>
-                                        </div>
+                                    <img src={george} alt="George Anderson"/>
+                                    <div>
+                                        <h6 className="h-6">George Anderson</h6>
+                                    </div>
                                 </div>
                             </div>
                         </div>

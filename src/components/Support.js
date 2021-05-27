@@ -1,5 +1,6 @@
 import React from 'react';
-
+import phone from '../assets/phone.svg';
+import message from '../assets/message.svg';
 import emailjs from 'emailjs-com';
 
 import OnPageSignUp from '../Common/OnPageSignUp';
@@ -44,10 +45,10 @@ const Support = () => {
                                 </div>
                                 <div className="support__col--1">
                                     <a href="tel:+2349016888927">
-                                        <img src={"assets/phone.svg"} alt="phone icon"/>
+                                        <img src={phone} alt="phone icon"/>
                                     </a>
                                     <a href="mailto:contact@eazicred.com">
-                                        <img src={"assets/message.svg"} alt="message icon"/>
+                                        <img src={message} alt="message icon"/>
                                     </a>
                                 </div>
                             </div>

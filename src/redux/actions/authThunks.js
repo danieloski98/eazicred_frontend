@@ -1,5 +1,8 @@
 import axiosInstance from '../../helpers/axios';
-import { tokenConfig } from '../../helpers/utilities';
+import {
+  showError,
+  tokenConfig,
+} from '../../helpers/utilities';
 import {
   GET_USER_ENDPOINT,
   LOGIN_ENDPOINT,
@@ -39,9 +42,9 @@ export const loginUser = (data) => (dispatch, getState) => {
             dispatch(getUser)
         })
         .catch(err => {
-            dispatch(loginFailed(err.response.data['errorMessage']))
+            dispatch(loginFailed(showError(err)))
             dispatch(showMessage({
-                message: err.response.data['errorMessage'],
+                message: showError(err),
                 type: 'error'
             }))
         })
@@ -55,9 +58,9 @@ export const registerUser = (data, useHistory) => (dispatch, getState) => {
             useHistory.push(LOGIN_URL)
         })
         .catch(err => {
-            dispatch(registerFailed(err.response.data['errorMessage']))
+            dispatch(registerFailed(showError(err)  ))
             dispatch(showMessage({
-                message: err.response.data['errorMessage'],
+                message: showError(err),
                 type: 'error'
             }))
         })

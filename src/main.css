@@ -1094,7 +1094,7 @@ section {
 }
 
 .hero-support {
-  background-image: url("../assets/support-image.png");
+  background-image: url("assets/support-image.png");
   background-size: cover;
   padding: 5rem 0;
 }
@@ -1238,19 +1238,23 @@ section {
 }
 
 .account .register__image {
-  background-image: url("../assets/account-image.png");
+  background-image: url("assets/account-image.png");
+  background-size: cover;
 }
 
 .account .login__image {
-  background-image: url("../assets/login-image.png");
+  background-image: url("assets/login-image.png");
+  background-size: cover;
 }
 
 .account .verify-email__image {
-  background-image: url("../assets/verify-image.png");
+  background-image: url("assets/verify-image.png");
+  background-size: cover;
 }
 
 .account .verify-email__image2 {
-  background-image: url("../assets/verify-image-2.png");
+  background-image: url("assets/verify-image-2.png");
+  background-size: cover;
 }
 
 .account__details {
@@ -1460,7 +1464,7 @@ section {
   height: 12rem;
   padding: 3rem;
   border-radius: 5px;
-  background-image: url("../assets/Patterns.svg");
+  background-image: url("assets/Patterns.svg");
   color: #FFFFFF;
 }
 
@@ -2195,19 +2199,19 @@ section {
 }
 
 .account .register__image {
-  background-image: url("../assets/account-image.png");
+  background-image: url("assets/account-image.png");
 }
 
 .account .login__image {
-  background-image: url("../assets/login-image.png");
+  background-image: url("assets/login-image.png");
 }
 
 .account .verify-email__image {
-  background-image: url("../assets/verify-image.png");
+  background-image: url("assets/verify-image.png");
 }
 
 .account .verify-email__image2 {
-  background-image: url("../assets/verify-image-2.png");
+  background-image: url("assets/verify-image-2.png");
 }
 
 .account__details {

@@ -2,6 +2,7 @@ import React from 'react';
 
 import { Link } from 'react-router-dom';
 
+import logo from '../assets/eazicred-logo.svg';
 import {
   ABOUT_URL,
   FAQS_URL,
@@ -45,11 +46,9 @@ const Navbar = () => {
                         <i className="fas fa-bars open"/>
                         <i className="fas fa-times close"/>
                     </button>
-
                     <Link to={HOME_URL} className="nav__logo">
-                        <img src={"assets/eazicred-logo.svg"} alt="Eazicred logo"/>
+                        <img src={logo} alt="Eazicred logo"/>
                     </Link>
-
                     <ul className="nav__list">
                         <li className="nav__item">
                             <Link to={HOME_URL} className="nav__link">Home</Link>

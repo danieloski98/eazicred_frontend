@@ -59,7 +59,6 @@ function App() {
     ]
     return (
         <React.Fragment>
-
             {!auth.includes(location.pathname) && <Navbar/>}
             <Switch>
                 <Route path={LOGIN_URL} component={Login}/>

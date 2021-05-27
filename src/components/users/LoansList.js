@@ -15,7 +15,9 @@ import { DASHBOARD_HISTORY_URL } from '../../routes/paths';
 import EmptyLoanHistory from './EmptyLoanHistory';
 import LoanDetailsModal, { loanStatus } from './LoanDetailsModal';
 
-export const currency = new Intl.NumberFormat('en-US', {style: 'currency', currency: 'NGN', maximumFractionDigits:0});
+export const currency = new Intl.NumberFormat('en-US',
+    {style: 'currency', currency: 'NGN', maximumFractionDigits:0}
+    );
 
 const LoansList = ({loans, fetchAllLoans}) => {
     useEffect(() => {
@@ -33,6 +35,10 @@ const LoansList = ({loans, fetchAllLoans}) => {
         return new Date(date).toDateString()
     }
 
+    function sortDate(date) {
+        return new Date(date)
+    }
+
     const history = useHistory()
     const showLoanDetails = (loan) => {
         setOpen(true)
@@ -48,7 +54,8 @@ const LoansList = ({loans, fetchAllLoans}) => {
     }
 
     const location = useLocation()
-    const loanData = [...loans.paydayLoans]
+    const loanData = [...loans.paydayLoans, ...loans.smeLoans].sort((a, b) => sortDate(b.created_at) - sortDate(a.created_at))
+//ff
     return isLoading() ? <Loader/> : loanData.length > 0 ? (
         <div className="main__loan-history">
             <div className="main__loan-history--top">
@@ -61,18 +68,19 @@ const LoansList = ({loans, fetchAllLoans}) => {
                     <span>Date</span>
                     <span>Transaction ID</span>
                     <span>Transaction Type</span>
-                    <span>Amount</span>
+                    <span>Loan</span>
                     <span>Status</span>
                     <span>Action</span>
                 </div>
-                {loanData.map(loan => (
-                    <div className="loan__row" key={loan.id}>
-                        <span>{formatDate(loan.created_at)}</span>
+                {loanData.map((loan, index) => (
+                    <div className="loan__row" key={index}>
+                        <span>{formatDate(loan["created_at"])}</span>
                         <span>#{loan.id}</span>
                         <span>{loanType(loan.type)}</span>
-                        <span>{loan.type === 1 && currency.format(loan.loan_amount)}</span>
+                        <span>{loan.type === 1 ? currency.format(loan.loan_amount) : `For ${loan.purpose_of_loan}`}</span>
                         <span>{loanStatus(loan.status)}</span>
-                        <button onClick={() => showLoanDetails(loan)} className="view-details">View Detail</button>
+                        {loan.type === 1 && <button onClick={() => showLoanDetails(loan)} className="view-details">View Detail</button>}
+
                     </div>
                 ))}
             </div>

@@ -7,6 +7,7 @@ import {
   APPLY_SME_LOAN_SUCCESS,
   FETCH_USER_LOANS_REQUEST,
   FETCH_USER_PAYDAY_LOAN_FAILURE,
+  FETCH_USER_PAYDAY_LOAN_REQUEST,
   FETCH_USER_PAYDAY_LOAN_SUCCESS,
   FETCH_USER_SELECTED_PAYDAY_LOAN_FAILURE,
   FETCH_USER_SELECTED_PAYDAY_LOAN_REQUEST,
@@ -35,9 +36,12 @@ export const fetchUserSelectedPaydayLoansFailure = (error) => {
     return {type: FETCH_USER_SELECTED_PAYDAY_LOAN_FAILURE, error}
 }
 
-
 export const fetchUserLoansRequest = () => {
     return {type: FETCH_USER_LOANS_REQUEST}
+}
+
+export const fetchUserPaydayLoansRequest = () => {
+    return {type: FETCH_USER_PAYDAY_LOAN_REQUEST}
 }
 
 export const fetchUserPaydayLoansSuccess = (payload) => {

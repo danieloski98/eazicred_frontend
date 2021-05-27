@@ -34,6 +34,7 @@ const FormStep4 = ({showMsg, prevStep, handleChange, handleKey, field}) => {
                 <div className="input-group">
                     <label htmlFor="existing_loan_type">Loan Duration</label>
                     <select value={field.loan_tenure} onChange={handleChange} name="loan_tenure" id="loan_tenure">
+                        <option>Select duration</option>
                         <option value={1}>1 Month</option>
                         <option value={2}>2 Months</option>
                         <option value={3}>3 Months</option>

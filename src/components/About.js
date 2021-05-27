@@ -1,5 +1,6 @@
 import React from 'react';
 
+import eazicred_team from '../assets/eazicred-team.jpg';
 import OnPageSignUp from '../Common/OnPageSignUp';
 
 const About = () => {
@@ -8,7 +9,7 @@ const About = () => {
         <React.Fragment>
             <header>
                 <div className="hero-abt">
-                    <img src={"assets/eazicred-team.jpg"} alt="eazicred team thumbnail"/>
+                    <img src={eazicred_team} alt="eazicred team thumbnail"/>
                 </div>
             </header>
             <section className="about">

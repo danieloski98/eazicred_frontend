@@ -5,11 +5,11 @@ import {
   useSelector,
 } from 'react-redux';
 
-import SmeForm1 from '../../components/steps/SMEForm1';
 import SmeLoan from '../../components/users/SmeLoan';
 import { applySmeLoan } from '../../redux/actions/loanThunk';
 
-const SMEContainer = () => {
+const SMEContainer = ({history}) => {
+    document.title = "Eazicred - SME Loan"
     const userID = useSelector(state => state["auth"].user.id)
     const [field, setField] = React.useState({
         "user_id": userID,
@@ -23,7 +23,7 @@ const SMEContainer = () => {
         "type": 2
     })
 
-    const step = React.useState(1)[0]
+    const dispatch = useDispatch()
 
     const handleChange = (e) => {
         const {name, value, type, checked} = e.target
@@ -37,25 +37,15 @@ const SMEContainer = () => {
         }
     }
 
-    const dispatch = useDispatch()
-
     const handleSubmit = (e) => {
         e.preventDefault()
-        dispatch(applySmeLoan(field))
+        dispatch(applySmeLoan(field, history))
     }
 
-    document.title = "Eazicred - SME Loan"
-
-    const switchForm = () => {
-        switch (step) {
-            default:
-                return <SmeForm1 showMsg={showMsg} field={field} handleChange={handleChange}/>
-        }
-    }
     const showNotification = useSelector(state => state["notify"].show)
     const showMsg = useSelector(state => state["notify"].message.show)
     return (
-        <SmeLoan showNotification={showNotification} switchForm={switchForm} step={step} handleSubmit={handleSubmit}/>
+        <SmeLoan showMsg={showMsg} field={field} handleChange={handleChange} showNotification={showNotification} handleSubmit={handleSubmit}/>
     );
 }
 

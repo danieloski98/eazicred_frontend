@@ -13,7 +13,6 @@ import {
   REGISTER_FAILED,
   REGISTER_REQUEST,
   REGISTER_SUCCESS,
-  UPDATE_PROFILE_FAILURE,
   UPDATE_PROFILE_REQUEST,
   UPDATE_PROFILE_SUCCESS,
 } from '../actions/types';
@@ -56,7 +55,7 @@ export const authReducer = (state = initialStates.auth, action) => {
                 loading: false,
                 isAuthenticated: true
             }
-        case UPDATE_PROFILE_FAILURE:
+        // case UPDATE_PROFILE_FAILURE:
         case LOGIN_FAILED:
         case LOGOUT_REQUEST:
         case REGISTER_FAILED:
