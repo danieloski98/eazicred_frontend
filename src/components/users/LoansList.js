@@ -16,8 +16,8 @@ import EmptyLoanHistory from './EmptyLoanHistory';
 import LoanDetailsModal, { loanStatus } from './LoanDetailsModal';
 
 export const currency = new Intl.NumberFormat('en-US',
-    {style: 'currency', currency: 'NGN', maximumFractionDigits:0}
-    );
+    {style: 'currency', currency: 'NGN', maximumFractionDigits: 0}
+);
 
 const LoansList = ({loans, fetchAllLoans}) => {
     useEffect(() => {
@@ -70,7 +70,7 @@ const LoansList = ({loans, fetchAllLoans}) => {
                     <span>Transaction Type</span>
                     <span>Loan</span>
                     <span>Status</span>
-                    <span>Action</span>
+                    <span>Info</span>
                 </div>
                 {loanData.map((loan, index) => (
                     <div className="loan__row" key={index}>
@@ -79,8 +79,8 @@ const LoansList = ({loans, fetchAllLoans}) => {
                         <span>{loanType(loan.type)}</span>
                         <span>{loan.type === 1 ? currency.format(loan.loan_amount) : `For ${loan.purpose_of_loan}`}</span>
                         <span>{loanStatus(loan.status)}</span>
-                        {loan.type === 1 && <button onClick={() => showLoanDetails(loan)} className="view-details">View Detail</button>}
-
+                        {loan.type === 1 ? <button onClick={() => showLoanDetails(loan)} className="view-details">View
+                            Detail</button> : loan.business_name}
                     </div>
                 ))}
             </div>

@@ -1,7 +1,7 @@
 import React from 'react';
 
 import { Link } from 'react-router-dom';
-import empty from "./empty.svg"
+import empty from "../../assets/empty.svg"
 import { DASHBOARD_LOAN_APPLICATION_URL } from '../../routes/paths';
 
 const EmptyLoanHistory = () => {
