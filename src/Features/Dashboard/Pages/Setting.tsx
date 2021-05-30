@@ -1,7 +1,5 @@
 import React from 'react';
 
-import MessageAlert from '../../Common/MessageAlert';
-import DashboardContainer from './DashboardContainer';
 
 const Setting = () => {
     return (
