@@ -9,6 +9,7 @@ import Setting from './Setting'
 import LoanApplication from './LoanApplication'
 import Home from './Home'
 import SMEloancreation from './SMEloancreation'
+import Paydayloancreation from './Paydayloancreate'
 
 export default function Dashboard() {
   const location = useLocation();
@@ -30,7 +31,7 @@ export default function Dashboard() {
 
           <NavLink to="/dashboard/application" className={location.pathname === '/dashboard/application' ? "flex pl-16 mt-10 text-customGreen border-l-4 border-customGreen h-16 items-center":"flex pl-16 mt-10 text-gray-500 border-l-4 border-white h-16 items-center"}>
             <FiActivity size={20} />
-            <p className="ml-3 mt-1">Loan Applications</p>
+            <p className="ml-3 mt-1">Loan Application</p>
           </NavLink>
 
           <NavLink to="/dashboard/history" className={location.pathname === '/dashboard/history' ? "flex pl-16 mt-10 text-customGreen border-l-4 border-customGreen h-16 items-center":"flex pl-16 mt-10 text-gray-500 border-l-4 border-white h-16 items-center"}>
@@ -58,6 +59,7 @@ export default function Dashboard() {
             <Route path="/dashboard" component={Home} exact  />
             <Route path="/dashboard/application" component={LoanApplication} exact />
             <Route path="/dashboard/createsmeloan" component={SMEloancreation} exact  />
+            <Route path="/dashboard/createpaydayloan" component={Paydayloancreation} exact  />
             <Route path="/dashboard/history" component={History} exact  />
             <Route path="/dashboard/settings" component={Setting} exact />
             <Route path="/dashboard/profile" component={Profile} exact />
