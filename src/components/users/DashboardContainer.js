@@ -20,6 +20,7 @@ import {
   HOME_URL,
 } from '../../routes/paths';
 import logo from '../../assets/logo.png';
+import History from './History';
 
 const DashboardContainer = ({children, page='Dashboard'}) => {
 
@@ -150,7 +151,9 @@ const DashboardContainer = ({children, page='Dashboard'}) => {
                             <img src={logo} alt="eazicred logo"/>
                         </Link>
                     </div>
-                    {children}
+                    {/* {children} */}
+                    <History />
+                    <div className="w-full h-full bg-green-400"></div>
                 </main>
             </div>
         </div>

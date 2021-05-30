@@ -22,7 +22,7 @@ const LoanApplication = () => {
     }
     const history = useHistory()
     return (
-        <DashboardContainer page={'Loan Applications'}>
+        <>
             <div className="main__middle">
                 <span onClick={() => history.push(DASHBOARD_URL)} style={{cursor: "pointer"}} className="go-back">&lt; Go Back</span>
                 <h2 className="h2-db">Apply For Loan</h2>
@@ -46,7 +46,7 @@ const LoanApplication = () => {
                     </Link>
                 </div>
             </div>
-        </DashboardContainer>
+        </>
     )
 }
 

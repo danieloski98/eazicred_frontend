@@ -9,21 +9,6 @@ import {
 import Footer from './Common/Footer';
 import Navbar from './Common/Navbar';
 import ProtectedRoute from './Common/ProtectedRoute';
-import About from './components/About';
-import Faqs from './components/FAQs';
-import Home from './components/Home';
-import Login from './components/Login';
-import Privacy from './components/Privacy';
-import Support from './components/Support';
-import Terms from './components/Terms';
-import History from './components/users/History';
-import LoanApplication from './components/users/LoanApplication';
-import SendPaydayFiles from './components/users/SendPaydayFiles';
-import ConsumerContainer from './containers/dashboard/ConsumerContainer';
-import ProfileContainer from './containers/dashboard/ProfileContainer';
-import SettingsContainer from './containers/dashboard/SettingsContainer';
-import SMEContainer from './containers/dashboard/SMEContainer';
-import RegisterContainer from './containers/RegisterContainer';
 import {
   ABOUT_URL,
   DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
@@ -43,6 +28,8 @@ import {
   TERMS_URL,
 } from './routes/paths';
 
+import Navigation from './navigation'
+
 function App() {
     const location = useLocation()
     const auth = [
@@ -56,11 +43,12 @@ function App() {
         DASHBOARD_CONSUMER_LOAN_APPLICATION_URL,
         DASHBOARD_HISTORY_URL,
         DASHBOARD_CONSUMER_LOAN_UPLOAD_URL,
+        'dashboard'
     ]
     return (
         <React.Fragment>
-            {!auth.includes(location.pathname) && <Navbar/>}
-            <Switch>
+            {!location.pathname.includes('/dashboard') && <Navbar/>}
+            {/* <Switch>
                 <Route path={LOGIN_URL} component={Login}/>
                 <Route path={REGISTER_URL} component={RegisterContainer}/>
                 <Route path={ABOUT_URL} component={About}/>
@@ -77,8 +65,9 @@ function App() {
                 <ProtectedRoute path={DASHBOARD_SME_LOAN_APPLICATION_URL} component={SMEContainer}/>
                 <ProtectedRoute path={DASHBOARD_LOAN_APPLICATION_URL} component={LoanApplication}/>
                 <ProtectedRoute path={DASHBOARD_HISTORY_URL} component={History}/>
-            </Switch>
-            {!auth.includes(location.pathname) && <Footer/>}
+            </Switch> */}
+            <Navigation />
+            {!location.pathname.includes('/dashboard') && <Footer/>}
         </React.Fragment>
     );
 }

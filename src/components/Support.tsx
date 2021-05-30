@@ -8,12 +8,12 @@ import OnPageSignUp from '../Common/OnPageSignUp';
 const Support = () => {
     document.title = 'Eazicred - Support'
     const [form, setForm] = React.useState({name: '', email: '', message: ""})
-    const handleChange = e => {
+    const handleChange = (e: any) => {
         const {name, value} = e.target
         setForm({...form, [name]: value})
     }
 
-    function handleSubmit(e) {
+    function handleSubmit(e: any) {
         e.preventDefault()
         const template_id = 'o9emy69';
         const service_id = 'gmail';
@@ -34,11 +34,11 @@ const Support = () => {
                     <div className="container">
                         <div className="support-box">
                             <h2 className="h-2">Support</h2>
-                            <p>Get in touch and a representative will respond shortly</p>
+                            <p className="pt-14">Get in touch and a representative will respond shortly</p>
                             <div className="support__inner">
                                 <div className="support__col--1">
                                     <h3 className="h-3">Lagos</h3>
-                                    <p className="address">5 Adebisi Ladejobi street, Ilupeju<br/>
+                                    <p className="address pt-5">5 Adebisi Ladejobi street, Ilupeju<br/>
                                         +234 802 074 0286<br/>
                                         contact@eazicred.com
                                     </p>

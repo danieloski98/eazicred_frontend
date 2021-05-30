@@ -18,9 +18,9 @@ const LoanCalculator = () => {
     function getResults() {
         const {amount, rate, period} = form
 
-        const principal = parseFloat(amount);
-        const interest = parseFloat(rate) / 100;
-        const months = parseFloat(period);
+        const principal = parseFloat(amount.toString());
+        const interest = parseFloat(rate.toString()) / 100;
+        const months = parseFloat(period.toString());
 
         const monthlyInterest = interest * principal;
         const totalInterest = monthlyInterest * months;
@@ -31,7 +31,7 @@ const LoanCalculator = () => {
         setResults({interestRate: interest, monthlyPayment, totalInterest})
     }
 
-    const handleChange = e => {
+    const handleChange = (e: any) => {
         const {name, value} = e.target
         setForm({...form, [name]: value})
     }
@@ -44,7 +44,7 @@ const LoanCalculator = () => {
         }
     }
 
-    const handleKey = e => {
+    const handleKey = (e: any) => {
         let {value, name} = e.target
         switch (name) {
             case "rate":
@@ -72,7 +72,7 @@ const LoanCalculator = () => {
                     <div>
                         <div className="calculation">
                             <h2 className="h-2">Loan Calculator</h2>
-                            <p>Quickly calculate, how much you have to pay back</p>
+                            <p className="xl:pt-14 lg:pt-14 md:pt-24 sm:pt-24">Quickly calculate, how much you have to pay back</p>
                             <form className="form">
                                 <div className="form-grid">
                                     <div className="calculation__amount">

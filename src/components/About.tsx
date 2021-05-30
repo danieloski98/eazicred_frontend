@@ -16,7 +16,7 @@ const About = () => {
                 <div className="container">
                     <div className="about__inner">
                         <h2 className="h-2">About Us</h2>
-                        <p>Eazicred is a leading financial services company established in 2020 with a simple mission to
+                        <p className="pt-14">Eazicred is a leading financial services company established in 2020 with a simple mission to
                             simplify the consumer loan process.</p>
 
                         <p>We offer up to N250,000 consumer loans, and up to N2,000,000 SME loans. We offer the best
@@ -25,11 +25,11 @@ const About = () => {
                             particular needs. Start your journey with us today.</p>
 
                         <h2 className="h-2">Our Mission</h2>
-                        <p>To simplify the consumer loan process by providing quick and affordable loans using tech
+                        <p className="pt-14">To simplify the consumer loan process by providing quick and affordable loans using tech
                             innovations.</p>
 
                         <h2 className="h-2">Our Vision</h2>
-                        <p>To become the number one fintech company in Africa.</p>
+                        <p className="pt-14">To become the number one fintech company in Africa.</p>
                     </div>
                 </div>
             </section>

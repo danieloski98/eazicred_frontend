@@ -11,8 +11,8 @@ const Faqs = () => {
                     <div className="hero-faq__text-box">
                         <h2 className="h-2">FAQs</h2>
                         <div className="faq">
-                            <h6 className="h-6">Q: How do I apply?</h6>
-                            <p>A: Apply on this website or call us on +234 802 074 0286</p>
+                            <h6 className="h-6 pt-10">Q: How do I apply?</h6>
+                            <p className="pt-10">A: Apply on this website or call us on +234 802 074 0286</p>
                         </div>
                         <div className="faq">
                             <h6 className="h-6">Q: Minimum/Maximum amount of loan I can apply for</h6>

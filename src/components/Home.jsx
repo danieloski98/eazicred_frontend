@@ -17,8 +17,10 @@ import {
   TERMS_URL,
 } from '../routes/paths';
 import LoanCalculator from './LoanCalculator';
+import { useHistory } from 'react-router-dom'
 
-const Home = ({history}) => {
+const Home = () => {
+  const history = useHistory();
     document.title = "EaziCred - Better Loan Offers"
     React.useEffect(() => {
         window.$('.stats__inner-mobile').slick({
@@ -57,7 +59,7 @@ const Home = ({history}) => {
                     <div className="hero__inner">
                         <div className="hero__text-box">
                             <h1 className="h-1">Loans For Everyone</h1>
-                            <p className="p-1">Apply &amp; Get Credited</p>
+                            <p className="p-1 md:mt-32 sm:mt-32 xl:mt-20 lg:mt-20">Apply &amp; Get Credited</p>
 
                             <form>
                                 <input value={form} onChange={(e) => setForm(e.target.value)} type="email" className="email" placeholder="Type your e-mail"/>
@@ -75,19 +77,19 @@ const Home = ({history}) => {
                 </div>
             </header>
             <section className="stats stats-pc">
-                <div className="container-sm">
-                    <div className="stats__inner">
-                        <div className="stats__customers">
+                <div className="container-sm  h-20 p">
+                    <div className="stats__inner h-full fg">
+                        <div className="stats__customers h-full">
                             <h5 className="h-5">1000+</h5>
-                            <p>Happy Customers</p>
+                            <p className="pt-5">Happy Customers</p>
                         </div>
-                        <div className="stats__sme">
+                        <div className="stats__sme h-full">
                             <h5 className="h-5">500+</h5>
-                            <p>SMEs Loans Disbursed</p>
+                            <p className="pt-5">SMEs Loans Disbursed</p>
                         </div>
-                        <div className="stats__consumer">
+                        <div className="stats__consumer h-full">
                             <h5 className="h-5">800+</h5>
-                            <p>Consumer Loans Disbursed</p>
+                            <p className="pt-5">Consumer Loans Disbursed</p>
                         </div>
                     </div>
                 </div>
@@ -97,15 +99,15 @@ const Home = ({history}) => {
                     <div className="stats__inner-mobile">
                         <div>
                             <h5 className="h-5">1000+</h5>
-                            <p>Happy Customers</p>
+                            <p className="pt-5">Happy Customers</p>
                         </div>
                         <div>
                             <h5 className="h-5">500+</h5>
-                            <p>SMEs Loans Disbursed</p>
+                            <p className="pt-5">SMEs Loans Disbursed</p>
                         </div>
                         <div>
                             <h5 className="h-5">800+</h5>
-                            <p>Consumer Loans Disbursed</p>
+                            <p className="pt-5" >Consumer Loans Disbursed</p>
                         </div>
                     </div>
                 </div>
@@ -115,7 +117,7 @@ const Home = ({history}) => {
                     <div className="choice__inner">
                         <div className="choice__text-box">
                             <h2 className="h-2">Why EaziCred Is The Best</h2>
-                            <p className="p-2">Choice For You</p>
+                            <p className="pt-20 mb-10">Choice For You</p>
 
                             <p className="p">Life happens, emergencies happens. Eazicred is your trusted partner to fill
                                 in those financial gaps till you get back on your feet. From the application process to
@@ -137,20 +139,20 @@ const Home = ({history}) => {
                     <div className="loans__inner-pc">
                         <div>
                             <h3 className="h-3">Eazi SME Support</h3>
-                            <p>Are you a small or medium enterprise seeking IPO financing, working capital financing, or
+                            <p className="pt-10">Are you a small or medium enterprise seeking IPO financing, working capital financing, or
                                 contract financing? We have got you covered. Get up to 2 million naira with repayment
                                 duration of 1-6months with a flexible monthly interest rate</p>
                         </div>
 
                         <div>
                             <h3 className="h-3">Eazi 30/31</h3>
-                            <p>Perfect loan for salary earners. Get between N50,000 – N250,000 with a repayment duration
+                            <p className="pt-10">Perfect loan for salary earners. Get between N50,000 – N250,000 with a repayment duration
                                 of 4 months. Perfect for emergencies and consumer items.</p>
                         </div>
 
                         <div>
                             <h3 className="h-3">Emergency Loans</h3>
-                            <p>Emergencies happen. Eazicred is your trusted partner to fill in those financial gaps till
+                            <p className="pt-10">Emergencies happen. Eazicred is your trusted partner to fill in those financial gaps till
                                 you get back on your feet.</p>
                         </div>
                     </div>
@@ -161,20 +163,20 @@ const Home = ({history}) => {
                     <div className="loans__inner-mobile">
                         <div>
                             <h3 className="h-3">Eazi SME Support</h3>
-                            <p>Are you a small or medium enterprise seeking IPO financing, working capital financing, or
+                            <p className="pt-10">Are you a small or medium enterprise seeking IPO financing, working capital financing, or
                                 contract financing? We have got you covered. Get up to 2 million naira with repayment
                                 duration of 1-6months with a flexible monthly interest rate</p>
                         </div>
 
                         <div>
                             <h3 className="h-3">Eazi 30/31</h3>
-                            <p>Perfect loan for salary earners. Get between N50,000 – N250,000 with a repayment duration
+                            <p className="pt-10">Perfect loan for salary earners. Get between N50,000 – N250,000 with a repayment duration
                                 of 4 months. Perfect for emergencies and consumer items.</p>
                         </div>
 
                         <div>
                             <h3 className="h-3">Emergency Loans</h3>
-                            <p>Emergencies happen. Eazicred is your trusted partner to fill in those financial gaps till
+                            <p className="pt-10">Emergencies happen. Eazicred is your trusted partner to fill in those financial gaps till
                                 you get back on your feet.</p>
                         </div>
                     </div>
@@ -188,7 +190,7 @@ const Home = ({history}) => {
                         </div>
                         <div className="eligibility__text-box">
                             <h2 className="h-2">Check If You Are Eligible</h2>
-                            <p className="p-2">For An EaziCred Loan</p>
+                            <p className="pt-14">For An EaziCred Loan</p>
                             <p className="p">To be eligible for an Eazicred loan:</p>
                             <ul>
                                 <li>You must be between 22 – 58 years old</li>
@@ -206,7 +208,7 @@ const Home = ({history}) => {
             <section className="testimonials">
                 <div className="container">
                     <h2 className="h-2">What People Are Saying</h2>
-                    <p className="p-2">About Us</p>
+                    <p className="pt-14 mb-10">About Us</p>
                     <div className="testimonials__inner">
                         <div className="testimonials__list">
                             <div className="testimonial">
