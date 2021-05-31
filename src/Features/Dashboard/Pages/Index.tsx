@@ -52,6 +52,9 @@ export default function Dashboard() {
           </NavLink>
 
         </div>
+        <div className="w-full h-40 flex justify-center items-center">
+          <button className="text-customGreen cursor-pointer">Logout</button>
+        </div>
       </div>
       <div className="flex-1 flex flex-col overflow-hidden">
         <Navbar />
