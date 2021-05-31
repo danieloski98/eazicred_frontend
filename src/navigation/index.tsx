@@ -18,7 +18,6 @@ import Privacy from "../components/Privacy";
 import Support from "../components/Support";
 import Terms from "../components/Terms";
 import DashboardContainer from "../components/users/DashboardContainer";
-import History from "../components/users/History";
 import LoanApplication from "../Features/Dashboard/Pages/LoanApplication";
 import SendPaydayFiles from "../components/users/SendPaydayFiles";
 import ConsumerContainer from "../containers/dashboard/ConsumerContainer";

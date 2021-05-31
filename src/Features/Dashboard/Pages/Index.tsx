@@ -1,6 +1,6 @@
 import React from 'react'
 import { Route, Switch } from 'react-router'
-import History from '../../../components/users/History'
+import History from './History'
 import Navbar from '../Components/Navbar'
 import { FiHome, FiActivity, FiClock, FiSettings, FiUser } from 'react-icons/fi'
 import {useLocation, NavLink} from 'react-router-dom'
@@ -53,9 +53,9 @@ export default function Dashboard() {
 
         </div>
       </div>
-      <div className="flex-1 flex flex-col">
+      <div className="flex-1 flex flex-col overflow-hidden">
         <Navbar />
-        <div className="flex-1 xl:px-16 lg:px-16 md:px-10 sm:px-10 pt-16 overflow-auto">
+        <div className="flex-1 w-full h-full xl:px-16 lg:px-16 md:px-10 sm:px-10 pt-16 overflow-y-scroll overflow-x-hidden">
             <Route path="/dashboard" component={Home} exact  />
             <Route path="/dashboard/application" component={LoanApplication} exact />
             <Route path="/dashboard/createsmeloan" component={SMEloancreation} exact  />
