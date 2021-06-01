@@ -54,7 +54,7 @@ export default function Home() {
               <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">{new Date(item.created_at).toDateString()}</p>
               <p className="ttext-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">#{item.id}</p>
               <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">{item.type === 1 ? 'Payday loan':'SME loan'}</p>
-              <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">{item.type === 1 ? item.amount: 'null'}</p>
+              <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">N{item.type === 1 ? item.loan_amount: 'null'}</p>
               <div className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">
                 <button className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
               </div>

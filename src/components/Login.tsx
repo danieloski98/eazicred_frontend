@@ -58,6 +58,8 @@ const Login = () => {
         setToken(() => tok);
         setTimeout(() => { console.log(user, token)}, 3000);
         setLoading(false);
+        localStorage.setItem('user', JSON.stringify(user));
+        localStorage.setItem('token', tok);
         location.push('dashboard');
       }
     }

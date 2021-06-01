@@ -1,37 +1,66 @@
 import React from 'react'
 import * as yup from 'yup';
 import { useFormik } from 'formik'
-import { Select } from '@chakra-ui/react'
+import useUser from '../../../../hooks/useUser';
+import { useRecoilState } from 'recoil'
+import { paydayloanAtom } from '../../../../States/paydayloanstate';
+import { useToast } from '@chakra-ui/react'
+
+interface IProps {
+  move: Function;
+}
 
 // validation schema
 const validationSchema = yup.object({
-  business_name: yup.string().required('This field is required'),
-  business_address: yup.string().required('This field is required'),
-  RC_number: yup.string().required('This field required'),
-  TIN_number: yup.string().required('This field is required'),
-  business_up_time: yup.string().required('This field is required'),
-  purpose_of_loan: yup.string().required('This field is required'),
+  state: yup.string().required('This field is required'),
+  landmark: yup.string().required('This field is required'),
+  LGA_of_residence: yup.string().required('This field is required'),
+  home_address: yup.string().required(),
 });
 
-export default function PaydayloanForm2() {
+export default function PaydayloanForm2(props: IProps) {
+  const { user } = useUser();
+  const [loan, setLoan] = useRecoilState(paydayloanAtom);
+  const toast = useToast();
 
   // formik
   const formik = useFormik({
     initialValues: {
-      business_name: '',
-      business_address: '',
-      RC_number: '',
-      TIN_number: '',
-      business_up_time: '',
-      purpose_of_loan: '',
+     state: '',
+     landmark: '',
+     LGA_of_residence: '',
+     home_address: ''
     },
     onSubmit: () => {},
     validationSchema
   })
 
   const submit = () => {
-    console.log(formik.values);
-  }
+    if (!formik.dirty) {
+      toast({
+        title: 'Attention',
+        description: 'You have to fill in the form to continue',
+        position: 'top',
+        status: 'error',
+        isClosable: true
+      });
+      return;
+    }
+    if (!formik.isValid) {
+       toast({
+         title: 'Attention',
+         description: 'You have to fill in the form correctly to continue',
+         position: 'top',
+         status: 'error',
+         isClosable: true
+       })
+       return;
+    }else {
+      setLoan({...loan, ...formik.values});
+      console.log(loan);
+      props.move(3);
+    }
+   }
 
 
   return (
@@ -40,17 +69,17 @@ export default function PaydayloanForm2() {
 
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>LGA of residence</label>
-            <input type="text" name="business_name" value={formik.values.business_name} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('business_name', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <input type="text" name="LGA_of_residence" value={formik.values.LGA_of_residence} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('LGA_of_residence', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
-              formik.errors.business_name && <p className="text-sm text-red-500 mt-3">{formik.errors.business_name}</p>
+              formik.errors.LGA_of_residence && <p className="text-sm text-red-500 mt-3">{formik.errors.LGA_of_residence}</p>
             }
         </div>
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
             <label htmlFor={'newpassword'}>State</label>
-            <input type="text" name="business_address" value={formik.values.business_address} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('business_address', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <input type="text" name="state" value={formik.values.state} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('state', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
-              formik.errors.business_address && <p className="text-sm text-red-500 mt-3">{formik.errors.business_address}</p>
+              formik.errors.state && <p className="text-sm text-red-500 mt-3">{formik.errors.state}</p>
             }
         </div>
 
@@ -60,17 +89,17 @@ export default function PaydayloanForm2() {
 
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Landmark</label>
-            <input  type="text" name="RC_number" value={formik.values.RC_number} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('RC_number', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <input  type="text" name="landmark" value={formik.values.landmark} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('landmark', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
-              formik.errors.RC_number && <p className="text-sm text-red-500 mt-3">{formik.errors.RC_number}</p>
+              formik.errors.landmark && <p className="text-sm text-red-500 mt-3">{formik.errors.landmark}</p>
             }
         </div>
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
             <label htmlFor={'newpassword'}>Home Address</label>
-            <input  type="text" name="TIN_number" value={formik.values.TIN_number} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('TIN_number', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <input  type="text" name="home_address" value={formik.values.home_address} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('home_address', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
-              formik.errors.TIN_number && <p className="text-sm text-red-500 mt-3">{formik.errors.TIN_number}</p>
+              formik.errors.home_address && <p className="text-sm text-red-500 mt-3">{formik.errors.home_address}</p>
             }
         </div>
 

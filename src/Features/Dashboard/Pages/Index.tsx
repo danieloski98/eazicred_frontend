@@ -1,5 +1,5 @@
 import React from 'react'
-import { Route, Switch } from 'react-router'
+import { Route, Switch, useHistory } from 'react-router'
 import History from './History'
 import Navbar from '../Components/Navbar'
 import { FiHome, FiActivity, FiClock, FiSettings, FiUser } from 'react-icons/fi'
@@ -10,6 +10,7 @@ import LoanApplication from './LoanApplication'
 import Home from './Home'
 import SMEloancreation from './SMEloancreation'
 import Paydayloancreation from './Paydayloancreate'
+import useUser from '../../../hooks/useUser'
 
 export default function Dashboard() {
   const location = useLocation();

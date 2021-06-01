@@ -1,7 +1,9 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom'
+import useUser from '../../../hooks/useUser';
 import PaydayloanHistory from '../Components/Paydayloan/History';
 import SMEloanHistory from '../Components/smeloan/History';
+import { Badge } from '@chakra-ui/react'
 
 const ACTIVE = "xl:flex-1 lg:flex-1 md:flex-0 sm:flex-0 xl:w-0 lg:w-0 md:w-40 sm:w-40 border-b-4 border-customGreen h-24 text-center flex items-center justify-center mx-16 cursor-pointer hover:bg-gray-100 text-xl font-bold";
 
@@ -12,6 +14,7 @@ const History = () => {
   document.title = "EaziCred - Loan History"
   const history = useHistory();
   const [page, setPage] = React.useState(1);
+  const { user } = useUser()
 
   const changePage = (pg: number) => {
     setPage(pg);
@@ -32,8 +35,8 @@ const History = () => {
 
               <div className="w-full h-full border-2 border-gray-200 rounded-lg mb-16 mt-16 px-14 flex flex-col overflow-auto">
                 <div className="w-full h-24 border-b-2 border-gray-100 flex items-center flex-nowrap">
-                  <div className={page === 1 ? ACTIVE:INACTIVE} onClick={() => changePage(1)}>Payday Loans</div>
-                  <div className={page ===2 ? ACTIVE:INACTIVE} onClick={() => changePage(2)}>SME Loans</div>
+                  <div className={page === 1 ? ACTIVE:INACTIVE} onClick={() => changePage(1)}>Payday Loans <Badge colorScheme="blue" variant="subtle" > <span className="text-xl">{user.paydayloans.length}</span> </Badge></div>
+                  <div className={page ===2 ? ACTIVE:INACTIVE} onClick={() => changePage(2)}>SME Loans <Badge colorScheme="blue" variant="subtle" > <span className="text-xl">{user.SMEloans.length}</span> </Badge></div>
                 </div>
                 <div className="flex-1 py-6">
                   {

@@ -78,19 +78,19 @@ export default function Paydayloancreation() {
   const form = () => {
     switch(stage) {
       case 1:{
-        return <PaydayloanForm1 />
+        return <PaydayloanForm1 move={changeStage} />
       }
       case 2: {
-        return <PaydayloanForm2 />
+        return <PaydayloanForm2 move={changeStage} />
       }
       case 3: {
-        return <PaydayloanForm3 />
+        return <PaydayloanForm3 move={changeStage} />
       }
       case 4: {
-        return <PaydayloanForm4 />
+        return <PaydayloanForm4 move={changeStage}  />
       }
       case 5: {
-        return <PaydayloanForm5 />
+        return <PaydayloanForm5 move={changeStage} />
       }
     }
   }

@@ -4,7 +4,6 @@ import { useHistory } from 'react-router-dom'
 import useUser from '../../../../hooks/useUser';
 
 export default function SMEloanHistory() {
-  const [loans, setLoans] = React.useState([] as Array<any>);
   const history = useHistory();
   const {user} = useUser();
 
