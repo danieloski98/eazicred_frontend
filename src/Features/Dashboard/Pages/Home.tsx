@@ -5,6 +5,21 @@ import { useHistory } from 'react-router-dom'
 export default function Home() {
   const { user } = useUser()
   const history = useHistory();
+  const [ploans, setPLoans] = React.useState([] as Array<any>)
+
+  React.useMemo(() => {
+    if (user.paydayloans.length < 1) {
+      if (user.SMEloans.length < 1) {
+        return;
+      }else {
+        alert(JSON.stringify(user.SMEloans[0]))
+        setPLoans([user.SMEloans[0]])
+      }
+    }else {
+      setPLoans([user.paydayloans[0]]);
+    }
+  }, [user.SMEloans, user.paydayloans])
+
 
   const navigate = () => {
     history.push('/dashboard/history');
@@ -33,7 +48,27 @@ export default function Home() {
           <p></p>
         </div>
 
-        <div className="flex justify-between w-full mt-16 h-16 border-b-2  border-gray-200 items-center pb-8 xl:mr-0 lg:mr-0 md:mr-10 sm:pr-10">
+        {
+          ploans.length >= 1 ?
+          ploans.map((item, index) => (
+            <div key={index} className="flex justify-between w-full mt-16 h-16 border-b-2  border-gray-200 items-center pb-8 xl:mr-0 lg:mr-0 md:mr-10 sm:pr-10">
+              <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">{new Date(item.created_at).toDateString()}</p>
+              <p className="ttext-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">#{item.id}</p>
+              <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">{item.type === 1 ? 'Payday loan':'SME loan'}</p>
+              <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">{item.type === 1 ? item.amount: 'null'}</p>
+              <div className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">
+                <button className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
+              </div>
+            </div>
+          ))
+          :
+          <div className="w-full h-16 flex justify-center items-end">
+            <p>No Payday loans or SME loans created</p>
+          </div>
+
+        }
+
+        {/* <div className="flex justify-between w-full mt-16 h-16 border-b-2  border-gray-200 items-center pb-8 xl:mr-0 lg:mr-0 md:mr-10 sm:pr-10">
           <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">December 2 2021</p>
           <p className="ttext-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">#1</p>
           <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">Pay Day Loan</p>
@@ -41,27 +76,9 @@ export default function Home() {
           <div className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">
             <button className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
           </div>
-        </div>
-
-        <div className="flex justify-between w-full mt-16 h-16 border-b-2  border-gray-200 items-center pb-8 xl:mr-0 lg:mr-0 md:mr-10 sm:pr-10">
-          <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">December 2 2021</p>
-          <p className="ttext-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">#5</p>
-          <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">Pay Day Loan</p>
-          <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">N200,000.00</p>
-          <div className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">
-            <button className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
-          </div>
-        </div>
-
-        {/* <div className="flex justify-between w-full mt-16 h-16 border-b-2  border-gray-200 items-center pb-8">
-          <p className="text-xl font w-40 flex-1">December 2 2021</p>
-          <p className="text-xl font w-40 flex-1">#5</p>
-          <p className="text-xl font w-40 flex-1">SME Loan</p>
-          <p className="text-xl font w-40 flex-1">N2,000,000.00</p>
-          <div className="text-xl font w-40 flex-1">
-            <button className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
-          </div>
         </div> */}
+
+
 
       </div>
 

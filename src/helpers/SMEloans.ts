@@ -10,4 +10,5 @@ export interface ISMELoans {
   type: number;
   status: number;
   draft: boolean;
+  created_at: any;
 }
