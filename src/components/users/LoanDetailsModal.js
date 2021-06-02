@@ -43,8 +43,8 @@ const LoanDetailsModal = ({setOpen, loan, setLoan}) => {
 
     useEffect(() => {
         getResults()
-    }, [])
-    
+    })
+
     const handleClose = () => {
         setOpen(false)
         setLoan(null)

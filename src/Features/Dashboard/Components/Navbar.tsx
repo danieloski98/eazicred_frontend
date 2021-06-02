@@ -4,8 +4,6 @@ import { FiMenu, FiTrash2 } from 'react-icons/fi'
 import {
   Drawer,
   DrawerBody,
-  DrawerFooter,
-  DrawerHeader,
   DrawerOverlay,
   DrawerContent,
   DrawerCloseButton,
@@ -34,14 +32,13 @@ const notiFunc = async(id: string) => {
 }
 
 export default function Navbar() {
-  const btnRef = React.useRef();
   const location = useLocation();
   const toast = useToast();
   const { user } = useUser();
   const [notifications, setNot] = React.useState([] as Array<INoti>);
   const [isOpen, setIsopen] = React.useState(false);
   const [noti, setNoti] = React.useState(false);
-  const query = useQuery(['notifications', user.id], () => notiFunc(user.id), {
+  useQuery(['notifications', user.id], () => notiFunc(user.id), {
     onSuccess: (data: IReturn) => {
       const noties = data.data as Array<INoti>;
       setNot(noties);
@@ -180,7 +177,7 @@ export default function Navbar() {
                   <div className="w-full flex flex-col">
                     {
                       notifications.map((item, index) => (
-                        <div className="w-full px-5 my-6">
+                        <div key={index} className="w-full px-5 my-6">
                           <div className="flex justify-between items-center">
                             <div key={index} className="mb-6 flex-1 mr-5">{item.message}</div>
                             <div className="justify-e">

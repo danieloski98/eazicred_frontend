@@ -1,7 +1,7 @@
 import React from 'react'
 import * as yup from 'yup';
 import { useFormik } from 'formik'
-import { Spinner, useToast, Alert, AlertDialogOverlay, AlertDialogBody, AlertDialogContent} from '@chakra-ui/react'
+import { Spinner, useToast } from '@chakra-ui/react'
 import { URL } from '../../../../helpers/url';
 import useUser from '../../../../hooks/useUser';
 import { IReturn } from '../../../../helpers/ApiReturnType';
@@ -76,7 +76,7 @@ export default function SMELoanForm() {
 
       if (json.statusCode === 200) {
         setShowModal(true);
-        const q = await queryclient.invalidateQueries();
+        await queryclient.invalidateQueries();
       }else {
         toast({
           title: 'Error',

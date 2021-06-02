@@ -1,8 +1,5 @@
 import React, { useState } from 'react';
-import * as yup from 'yup'
-import {useFormik} from 'formik'
-
-import { currency } from './users/LoansList';
+import { currency } from './LoansList';
 
 const LoanCalculator = () => {
     const initialRateValue = 7

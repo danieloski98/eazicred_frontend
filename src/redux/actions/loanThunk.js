@@ -9,7 +9,7 @@ import {
   USER_PAYDAY_LOANS_ENDPOINT,
   USER_SME_LOANS_ENDPOINT,
 } from '../../routes/endpoints';
-import {DASHBOARD_HISTORY_URL, DASHBOARD_LOAN_APPLICATION_URL} from '../../routes/paths';
+import {DASHBOARD_HISTORY_URL} from '../../routes/paths';
 import {
   showMessage,
   showNotification,

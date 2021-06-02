@@ -3,19 +3,19 @@ import React from 'react';
 import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-import care from '../assets/care.jpg';
-import choice from '../assets/choice-img.png';
-import eligibility_img from '../assets/eligibility-img.png';
-import george from '../assets/george.png';
-import hero from '../assets/hero-image.png';
-import OnPageSignUp from '../Common/OnPageSignUp';
-import { gettingStarted } from '../redux/actions/actions';
+import care from '../../assets/care.jpg';
+import choice from '../../assets/choice-img.png';
+import eligibility_img from '../../assets/eligibility-img.png';
+import george from '../../assets/george.png';
+import hero from '../../assets/hero-image.png';
+import OnPageSignUp from './OnPageSignUp';
+import { gettingStarted } from '../../redux/actions/actions';
 import {
   ABOUT_URL,
-  DASHBOARD_LOAN_APPLICATION_URL,
+  // DASHBOARD_LOAN_APPLICATION_URL,
   REGISTER_URL,
   TERMS_URL,
-} from '../routes/paths';
+} from '../../routes/paths';
 import LoanCalculator from './LoanCalculator';
 import { useHistory } from 'react-router-dom'
 

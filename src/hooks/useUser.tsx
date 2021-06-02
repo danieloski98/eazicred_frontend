@@ -24,9 +24,9 @@ const fetchDetails = async(id: string, token: string) => {
 
 export default function useUser() {
   const history = useHistory();
-  const [user, setUser] = useRecoilState(UserState);
-  const [token, setToken] = useRecoilState(TokenState);
-  const {data} = useQuery(['getuserdetails', user.id, token], () => fetchDetails(user.id, token), {
+  const [user, seUser] = useRecoilState(UserState);
+  const [token, seToken] = useRecoilState(TokenState);
+  useQuery(['getuserdetails', user.id, token], () => fetchDetails(user.id, token), {
     onSuccess: (dt: IReturn) => {
       setUser({...dt.data});
       console.log(user);
@@ -34,24 +34,32 @@ export default function useUser() {
   });
 
 
-  React.useMemo(() => {
+  React.useEffect(() => {
     if (localStorage.getItem('user') === null) {
       history.push('/login');
   }else {
     const user = localStorage.getItem('user') as string;
-    setUser(JSON.parse(user));
+    seUser(JSON.parse(user));
 
     // check for token
     if (localStorage.getItem('token') === null) {
       history.push('/login');
     }else {
-      setToken(localStorage.getItem('token') as string);
+      seToken(localStorage.getItem('token') as string);
     }
   }
-  }, [history, setToken, setUser])
+  }, [history, seToken, seUser])
   // React.useEffect(() => {
 
   // });
+
+  const setUser = (det: any) => {
+    seUser(det);
+  }
+
+  const setToken = (tok: string) => {
+    seToken(tok);
+  }
 
 
   return {

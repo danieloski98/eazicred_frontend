@@ -1,7 +1,6 @@
 import React from 'react'
 import * as yup from 'yup';
 import { useFormik } from 'formik'
-import { Select } from '@chakra-ui/react'
 import useUser from '../../../../hooks/useUser';
 import { useRecoilState } from 'recoil'
 import { paydayloanAtom } from '../../../../States/paydayloanstate';

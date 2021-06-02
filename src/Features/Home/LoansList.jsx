@@ -12,8 +12,8 @@ import {
 import Loader from '../../Common/Loader';
 import { fetchAllUserLoans } from '../../redux/actions/loanThunk';
 import { DASHBOARD_HISTORY_URL } from '../../routes/paths';
-import EmptyLoanHistory from './EmptyLoanHistory';
-import LoanDetailsModal, { loanStatus } from './LoanDetailsModal';
+import EmptyLoanHistory from '../../components/users/EmptyLoanHistory';
+import LoanDetailsModal, { loanStatus } from '../../components/users/LoanDetailsModal';
 
 export const currency = new Intl.NumberFormat('en-US',
     {style: 'currency', currency: 'NGN', maximumFractionDigits: 0}
@@ -53,9 +53,8 @@ const LoansList = ({loans, fetchAllLoans}) => {
               return "SME Loan"
             }
             default: {
-              return null
+              return null;
             }
-
         }
     }
 

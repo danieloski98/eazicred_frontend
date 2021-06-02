@@ -1,6 +1,6 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
-import { FiUser, FiBriefcase } from 'react-icons/fi'
+import { FiBriefcase } from 'react-icons/fi'
 import SMELoanForm from '../Components/smeloan/form';
 
 // classname

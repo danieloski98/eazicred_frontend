@@ -4,7 +4,6 @@ import {
  ModalOverlay,
  ModalContent,
  ModalBody,
-  Button
 } from "@chakra-ui/react"
 
 interface IProps {
@@ -13,7 +12,7 @@ interface IProps {
 }
 
 export default function SMEDialog(props: IProps) {
-  const [isOpen, setIsOpen] = React.useState(true)
+  const [, setIsOpen] = React.useState(true)
   const onClose = () => setIsOpen(false);
 
   return (

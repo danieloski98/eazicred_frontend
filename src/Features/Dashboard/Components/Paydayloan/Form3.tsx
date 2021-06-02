@@ -3,7 +3,7 @@ import * as yup from 'yup';
 import { useFormik } from 'formik'
 import { useToast } from '@chakra-ui/react';
 import { useRecoilState } from 'recoil';
-import useUser from '../../../../hooks/useUser';
+// import useUser from '../../../../hooks/useUser';
 import { paydayloanAtom } from '../../../../States/paydayloanstate';
 
 interface IProps {
@@ -29,7 +29,7 @@ const validationSchema = yup.object({
 });
 
 export default function PaydayloanForm3(props: IProps) {
-  const { user } = useUser();
+  // const { user } = useUser();
   const [loan, setLoan] = useRecoilState(paydayloanAtom);
   const toast = useToast();
   const detailsRef = React.useRef(null as any);

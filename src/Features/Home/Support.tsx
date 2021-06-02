@@ -1,9 +1,8 @@
 import React from 'react';
-import phone from '../assets/phone.svg';
-import message from '../assets/message.svg';
+import phone from '../../assets/phone.svg';
+import message from '../../assets/message.svg';
 import emailjs from 'emailjs-com';
-
-import OnPageSignUp from '../Common/OnPageSignUp';
+import OnPageSignUp from './OnPageSignUp';
 
 const Support = () => {
     document.title = 'Eazicred - Support'

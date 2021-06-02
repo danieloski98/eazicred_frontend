@@ -56,7 +56,7 @@ const Profile = () => {
         position: 'top',
         isClosable: true
       });
-      const validate = await queryclient.invalidateQueries();
+      await queryclient.invalidateQueries();
     }else {
       toast({
         title: 'Error',

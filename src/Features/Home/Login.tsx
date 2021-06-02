@@ -1,24 +1,14 @@
 import React from 'react';
-
-import { connect } from 'react-redux';
 import {
   Link,
-  Redirect,
   useHistory
 } from 'react-router-dom';
-
-import MessageAlert from '../Common/MessageAlert';
-import { loginUser } from '../redux/actions/authThunks';
-import {
-  DASHBOARD_URL,
-  REGISTER_URL,
-} from '../routes/paths';
 
 // formik and yup
 import * as yup from 'yup'
 import { useFormik } from 'formik'
-import { LoginController } from '../controllers/Login/Index';
-import useUser from '../hooks/useUser';
+import { LoginController } from '../../controllers/Login/Index';
+import useUser from '../../hooks/useUser';
 
 // validation schema
 const validationSchema = yup.object({
@@ -29,7 +19,7 @@ const validationSchema = yup.object({
 
 const Login = () => {
     document.title = "Eazicred - Login to eazicred"
-    const {setUser, user, token, setToken} = useUser();
+    const {setUser, setToken} = useUser();
     const [loading, setLoading] = React.useState(false);
     const location = useHistory();
 
@@ -54,13 +44,13 @@ const Login = () => {
         const tok = data.data['token'];
         const user = data.data['user'];
         // const obj = {token:token, ...user};
-        setUser(() => ({...user}));
-        setToken(() => tok);
-        setTimeout(() => { console.log(user, token)}, 3000);
+        setUser(user);
+        setToken(tok);
         setLoading(false);
         localStorage.setItem('user', JSON.stringify(user));
         localStorage.setItem('token', tok);
-        location.push('dashboard');
+        location.push('/dashboard/');
+
       }
     }
 
@@ -97,7 +87,7 @@ const Login = () => {
                               }
                             </button>
                             <p className="text-center mt-5">Don't Have An Account?
-                                <Link to={REGISTER_URL} className="primary-color">
+                                <Link to='/register' className="primary-color">
                                     Register
                                 </Link>
                             </p>

@@ -1,6 +1,6 @@
 import React from 'react';
-import faq from '../assets/faq-image.png';
-import OnPageSignUp from '../Common/OnPageSignUp';
+import faq from '../../assets/faq-image.png';
+import OnPageSignUp from './OnPageSignUp';
 
 const Faqs = () => {
     document.title = "EaziCred - FAQs"

@@ -1,7 +1,7 @@
 import React from 'react';
 
-import eazicred_team from '../assets/eazicred-team.jpg';
-import OnPageSignUp from '../Common/OnPageSignUp';
+import eazicred_team from '../../assets/eazicred-team.jpg';
+import OnPageSignUp from './OnPageSignUp';
 
 const About = () => {
     document.title = "EaziCred - About Us"

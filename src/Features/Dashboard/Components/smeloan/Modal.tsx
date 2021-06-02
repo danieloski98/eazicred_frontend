@@ -3,11 +3,7 @@ import {
   Modal,
   ModalOverlay,
   ModalContent,
-  ModalHeader,
-  ModalFooter,
   ModalBody,
-  ModalCloseButton,
-  Divider
 } from "@chakra-ui/react"
 import { FiX } from 'react-icons/fi'
 import { ISMELoans } from '../../../../helpers/SMEloans'

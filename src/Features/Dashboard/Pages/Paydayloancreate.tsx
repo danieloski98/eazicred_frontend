@@ -1,7 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router-dom'
 import { FiUser, FiBriefcase, FiMapPin, FiDollarSign, FiFile } from 'react-icons/fi'
-import SMELoanForm from '../Components/smeloan/form';
+//import SMELoanForm from '../Components/smeloan/form';
 import PaydayloanForm1 from '../Components/Paydayloan/Form1';
 import PaydayloanForm2 from '../Components/Paydayloan/Form2';
 import PaydayloanForm3 from '../Components/Paydayloan/Form3';

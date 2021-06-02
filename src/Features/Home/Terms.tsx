@@ -1,6 +1,6 @@
 import React from 'react';
 
-import OnPageSignUp from '../Common/OnPageSignUp';
+import OnPageSignUp from './OnPageSignUp';
 
 const Terms = () => {
     document.title = 'Eazicred - Terms of Services'
