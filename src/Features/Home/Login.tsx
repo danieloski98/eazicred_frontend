@@ -9,6 +9,7 @@ import * as yup from 'yup'
 import { useFormik } from 'formik'
 import { LoginController } from '../../controllers/Login/Index';
 import useUser from '../../hooks/useUser';
+import { Spinner, useToast } from '@chakra-ui/react'
 
 // validation schema
 const validationSchema = yup.object({
@@ -20,6 +21,7 @@ const validationSchema = yup.object({
 const Login = () => {
     document.title = "Eazicred - Login to eazicred"
     const {setUser, setToken} = useUser();
+    const toast = useToast();
     const [loading, setLoading] = React.useState(false);
     const location = useHistory();
 
@@ -41,15 +43,27 @@ const Login = () => {
       }else {
         setLoading(true);
         const data = await loginController.login(formik.values);
-        const tok = data.data['token'];
-        const user = data.data['user'];
-        // const obj = {token:token, ...user};
-        setUser(user);
-        setToken(tok);
-        setLoading(false);
-        localStorage.setItem('user', JSON.stringify(user));
-        localStorage.setItem('token', tok);
-        location.push('/dashboard/');
+        if (data.statusCode === 200) {
+
+          const tok = data.data['token'];
+          const user = data.data['user'];
+          // const obj = {token:token, ...user};
+          setUser(user);
+          setToken(tok);
+          setLoading(false);
+          localStorage.setItem('user', JSON.stringify(user));
+          localStorage.setItem('token', tok);
+          location.push('/dashboard/');
+        }else {
+          setLoading(false);
+          toast({
+            title: 'Error',
+            description: `${data.errorMessage}`,
+            position: 'top',
+            isClosable: true,
+            status: 'error'
+          })
+        }
 
       }
     }
@@ -81,7 +95,7 @@ const Login = () => {
                             <button className="btn btn-blue w-full h-20" onClick={submit} disabled={loading}>
                               {
                                 loading ?
-                                <span>Login...</span>
+                                <Spinner color="white" size="md" />
                                 :
                                 <span>Login</span>
                               }
