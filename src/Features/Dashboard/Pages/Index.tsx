@@ -14,6 +14,12 @@ import useUser from '../../../hooks/useUser'
 
 export default function Dashboard() {
   const location = useLocation();
+  const history = useHistory()
+
+  const logout = () => {
+    history.push('/');
+    localStorage.clear()
+  }
 
   return (
     <div className="w-full h-screen flex overflow-hidden">
@@ -54,7 +60,7 @@ export default function Dashboard() {
 
         </div>
         <div className="w-full h-40 flex justify-center items-center">
-          <button className="text-customGreen cursor-pointer">Logout</button>
+          <button onClick={logout} className="text-customGreen cursor-pointer">Logout</button>
         </div>
       </div>
       <div className="flex-1 flex flex-col overflow-hidden">

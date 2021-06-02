@@ -2,9 +2,11 @@ import React from 'react'
 import { FiBox } from 'react-icons/fi'
 import { useHistory } from 'react-router-dom'
 import useUser from '../../../../hooks/useUser';
+import PaydayModal from './Modal';
 
 export default function PaydayloanHistory() {
-  const [loans, setLoans] = React.useState([] as Array<any>);
+  const [loan, setLoan] = React.useState({} as any);
+  const [modalOpen, setModalOpen] = React.useState(false);
   const { user } = useUser();
   const history = useHistory();
 
@@ -22,8 +24,19 @@ export default function PaydayloanHistory() {
     }
   }
 
+  const close = () => {
+    setModalOpen(false);
+    setLoan({});
+  }
+
+  const open = (ln: any) => {
+    setLoan(ln);
+    setModalOpen(true);
+  }
+
   return (
     <div className="w-full h-full">
+      <PaydayModal isOpen={modalOpen} loan={loan} onClose={close}  />
       {
         user.paydayloans.length < 1 ?
         <div className="w-full h-full flex-col flex items-center justify-center">
@@ -56,7 +69,7 @@ export default function PaydayloanHistory() {
             </div>
 
             <div className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">
-              <button className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
+              <button onClick={() => open(item)} className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
             </div>
           </div>
         ))

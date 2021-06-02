@@ -1,30 +1,65 @@
 import React from 'react'
 import useUser from '../../../hooks/useUser'
 import { useHistory } from 'react-router-dom'
+import PaydayModal from '../Components/Paydayloan/Modal';
+import SMEModal from '../Components/smeloan/Modal';
 
 export default function Home() {
   const { user } = useUser()
   const history = useHistory();
   const [ploans, setPLoans] = React.useState([] as Array<any>)
+  const [loan, setLoan] = React.useState({} as any);
+  const [modalOpen, setModalOpen] = React.useState(false);
+  const [p, setP] = React.useState(false);
 
   React.useMemo(() => {
     if (user.paydayloans.length < 1) {
       if (user.SMEloans.length < 1) {
         return;
       }else {
-        setPLoans([user.SMEloans[0]])
+        if(user.SMEloans.length > 1) {
+          setPLoans([user.SMEloans[0], user.SMEloans[1]])
+        }else {
+          setPLoans([user.SMEloans[0]])
+        }
       }
     }else {
-      setPLoans([user.paydayloans[0]]);
+      if (user.paydayloans.length > 1) {
+        setPLoans([user.paydayloans[0], user.paydayloans[1]]);
+      }else {
+        setPLoans([user.paydayloans[0]]);
+      }
+
     }
   }, [user.SMEloans, user.paydayloans])
 
+  const close = () => {
+    setModalOpen(false);
+    setLoan({});
+  }
+
+  const closep = () => {
+    setP(false);
+    setLoan({});
+  }
+
+  const open = (ln: any) => {
+    setLoan(ln);
+    setModalOpen(true);
+  }
+
+  const openp = (ln: any) => {
+    setLoan(ln);
+    setP(true);
+  }
 
   const navigate = () => {
     history.push('/dashboard/history');
   }
   return (
     <div className="flex flex-col w-full h-full overflow-x-hidden">
+      <PaydayModal loan={loan} onClose={closep} isOpen={p} />
+      <SMEModal loan={loan} onClose={close} isOpen={modalOpen} />
       <div className="flex">
         <h1 className="text-4xl font-bold text-black">Welcome</h1>
         <h1 className="text-4xl font-normal text-gray-600 ml-4">{user.firstname.toUpperCase()}</h1>
@@ -56,7 +91,7 @@ export default function Home() {
               <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">{item.type === 1 ? 'Payday loan':'SME loan'}</p>
               <p className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">N{item.type === 1 ? item.loan_amount: 'null'}</p>
               <div className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">
-                <button className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
+                <button onClick={() => item.type === 1 ? openp(item):open(item)} className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
               </div>
             </div>
           ))

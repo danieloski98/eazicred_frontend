@@ -2,8 +2,11 @@ import React from 'react'
 import { FiBox } from 'react-icons/fi'
 import { useHistory } from 'react-router-dom'
 import useUser from '../../../../hooks/useUser';
+import SMEModal from './Modal';
 
 export default function SMEloanHistory() {
+  const [loan, setLoan] = React.useState({} as any);
+  const [modalOpen, setModalOpen] = React.useState(false);
   const history = useHistory();
   const {user} = useUser();
 
@@ -21,8 +24,19 @@ export default function SMEloanHistory() {
     }
   }
 
+  const close = () => {
+    setModalOpen(false);
+    setLoan({});
+  }
+
+  const open = (ln: any) => {
+    setLoan(ln);
+    setModalOpen(true);
+  }
+
   return (
     <div className="w-full h-full">
+      <SMEModal loan={loan} onClose={close} isOpen={modalOpen} />
       {
         user.SMEloans.length < 1 ?
         <div className="w-full h-full flex-col flex items-center justify-center">
@@ -55,7 +69,7 @@ export default function SMEloanHistory() {
             </div>
 
             <div className="text-xl font xl:flex-1 lg:flex-1 sm:flex-none md:flex-none xl:w-0 lg:w-0 md:w-40 sm:w-40">
-              <button className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
+              <button onClick={() => open(item)} className="w-40 h-14 rounded-lg bg-customGreen text-white text-xl ">View Details</button>
             </div>
           </div>
         ))
