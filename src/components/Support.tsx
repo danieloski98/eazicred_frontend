@@ -27,6 +27,10 @@ const Support = () => {
             });
     }
 
+    React.useEffect(() => {
+      window.scrollTo(0,0);
+    })
+
     return (
         <React.Fragment>
             <header>

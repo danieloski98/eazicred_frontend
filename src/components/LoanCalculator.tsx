@@ -1,4 +1,6 @@
 import React, { useState } from 'react';
+import * as yup from 'yup'
+import {useFormik} from 'formik'
 
 import { currency } from './users/LoansList';
 
@@ -53,9 +55,7 @@ const LoanCalculator = () => {
                 }
                 break;
             case "period":
-                if(value < 1){
                     e.target.value = 1
-                }
                 break;
             case "amount":
                 if(value < 1){
@@ -81,11 +81,11 @@ const LoanCalculator = () => {
                                     </div>
                                     <div className="calculation__period">
                                         <label htmlFor={"period"}>Period (Months)</label>
-                                        <input onInput={handleKey} onChange={handleChange} min={1} max={4} name="period" value={form.period} type="number" id="period" placeholder="Month(s)"/>
+                                        <input onChange={handleChange}  name="period" value={form.period} type="number" id="period" placeholder="Month(s)"/>
                                     </div>
                                     <div className="calculation__interest">
                                         <label>Interest Rate</label>
-                                        <input onInput={handleKey} min={7} onChange={handleChange} value={form.rate} name={"rate"} type="number" id="interest" placeholder="In numbers only"/>
+                                        <input onInput={handleKey} disabled min={7} onChange={handleChange} value={form.rate} name={"rate"} type="number" id="interest" placeholder="In numbers only"/>
                                     </div>
                                 </div>
                                 <button type="button" className="btn btn-blue" onClick={getResults}>Calculate</button>

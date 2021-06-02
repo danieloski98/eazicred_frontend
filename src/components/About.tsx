@@ -5,6 +5,9 @@ import OnPageSignUp from '../Common/OnPageSignUp';
 
 const About = () => {
     document.title = "EaziCred - About Us"
+    React.useEffect(() => {
+      window.scrollTo(0,0);
+    })
     return (
         <React.Fragment>
             <header>

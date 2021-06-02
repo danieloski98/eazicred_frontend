@@ -124,7 +124,7 @@ const Home = () => {
                                 the disbursement of funds, we make it an EAZI experience for you</p>
 
                             <div>
-                                <Link to={DASHBOARD_LOAN_APPLICATION_URL} className="btn btn-blue">Apply For A Loan</Link>
+                                <Link to="/register" className="btn btn-blue">Apply For A Loan</Link>
                                 <Link to={ABOUT_URL} className="btn btn-dark">Learn More</Link>
                             </div>
                         </div>

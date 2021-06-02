@@ -4,6 +4,9 @@ import OnPageSignUp from '../Common/OnPageSignUp';
 
 const Terms = () => {
     document.title = 'Eazicred - Terms of Services'
+    React.useEffect(() => {
+      window.scrollTo(0,0);
+    })
     return (
         <React.Fragment>
             <section className="terms">

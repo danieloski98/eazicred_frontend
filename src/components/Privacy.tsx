@@ -4,6 +4,9 @@ import OnPageSignUp from '../Common/OnPageSignUp';
 
 const Privacy = () => {
     document.title = 'EaziCred - Privacy Policy'
+    React.useEffect(() => {
+      window.scrollTo(0,0);
+    })
     return (
         <React.Fragment>
             <section className="terms">

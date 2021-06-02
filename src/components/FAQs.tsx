@@ -4,6 +4,9 @@ import OnPageSignUp from '../Common/OnPageSignUp';
 
 const Faqs = () => {
     document.title = "EaziCred - FAQs"
+    React.useEffect(() => {
+      window.scrollTo(0,0);
+    })
     return (
         <div>
             <header>

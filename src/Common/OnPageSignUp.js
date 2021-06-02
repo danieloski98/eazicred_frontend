@@ -12,7 +12,7 @@ const OnPageSignUp = () => {
                 <p className="pt-20">You're one step away from financial freedom. Apply for a loan today, payback and access more
                     loans
                 </p>
-                <Link to={DASHBOARD_LOAN_APPLICATION_URL}><span>Get Started</span><i
+                <Link to='/register'><span>Get Started</span><i
                     className="fas fa-arrow-right"/></Link>
             </div>
         </section>
