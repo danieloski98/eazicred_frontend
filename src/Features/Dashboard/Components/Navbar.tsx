@@ -19,6 +19,7 @@ import { URL } from '../../../helpers/url'
 import useUser from '../../../hooks/useUser'
 import { IReturn } from '../../../helpers/ApiReturnType'
 import { INoti } from '../../../helpers/NotificationType'
+import { queryclient } from '../../../index'
 
 // get notification
 
@@ -69,6 +70,7 @@ export default function Navbar() {
         status: 'success',
         isClosable: true
       })
+      queryclient.invalidateQueries();
     }else {
       toast({
         title: 'Error',
