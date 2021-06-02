@@ -106,7 +106,7 @@ export default function Paydayloancreation() {
             <div className="w-full h-full border-t-2 border-gray-200 mt-16 flex mb-10">
 
               <div className="w-1/4 h-full border-r-2 border-gray-200 xl:flex lg:flex md:hidden sm:hidden flex-col justify-center">
-                  <div className="flex items-center justify-between px-6 cursor-pointer" onClick={() => changeStage(1)}>
+                  <div className="flex items-center justify-between px-6 cursor-pointer">
                     <div className="w-56 text-right">
                       <p className={stage === 1 ? ACTIVE_TEXT:INACTIVE_TEXT}>Personal Info</p>
                       <p className={stage === 1 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Enter your personal information</p>
@@ -118,7 +118,7 @@ export default function Paydayloancreation() {
                     <div className={stage === 1 ? ACTIVE_BGS:INACTIVE_BGS}></div>
                   </div>
 
-                  <div className="flex items-center justify-between px-6 cursor-pointer mt-16" onClick={() => changeStage(2)}>
+                  <div className="flex items-center justify-between px-6 cursor-pointer mt-16">
                     <div className="w-56 text-right">
                       <p className={stage === 2 ? ACTIVE_TEXT:INACTIVE_TEXT}>Location</p>
                       <p className={stage === 2 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Information about where you are located</p>
@@ -130,7 +130,7 @@ export default function Paydayloancreation() {
                     <div className={stage === 2 ? ACTIVE_BGS:INACTIVE_BGS}></div>
                   </div>
 
-                  <div className="flex items-center justify-between px-6 cursor-pointer mt-16" onClick={() => changeStage(3)}>
+                  <div className="flex items-center justify-between px-6 cursor-pointer mt-16">
                     <div className="w-56 text-right">
                       <p className={stage === 3 ? ACTIVE_TEXT:INACTIVE_TEXT}>Employment</p>
                       <p className={stage === 3 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Information about your employment</p>
@@ -142,7 +142,7 @@ export default function Paydayloancreation() {
                     <div className={stage === 3 ? ACTIVE_BGS:INACTIVE_BGS}></div>
                   </div>
 
-                  <div className="flex items-center justify-between px-6 cursor-pointer mt-16" onClick={() => changeStage(4)}>
+                  <div className="flex items-center justify-between px-6 cursor-pointer mt-16">
                     <div className="w-56 text-right">
                       <p className={stage === 4 ? ACTIVE_TEXT:INACTIVE_TEXT}>Loan Details</p>
                       <p className={stage === 4 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Information about the loan application</p>
@@ -154,7 +154,7 @@ export default function Paydayloancreation() {
                     <div className={stage === 4 ? ACTIVE_BGS:INACTIVE_BGS}></div>
                   </div>
 
-                  <div className="flex items-center justify-between px-6 cursor-pointer mt-16" onClick={() => changeStage(5)}>
+                  <div className="flex items-center justify-between px-6 cursor-pointer mt-16">
                     <div className="w-56 text-right">
                       <p className={stage === 5 ? ACTIVE_TEXT:INACTIVE_TEXT}>Upload files</p>
                       <p className={stage === 5 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Upload the neccessary documents</p>
