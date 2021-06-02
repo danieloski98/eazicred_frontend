@@ -10,7 +10,7 @@ import {
   Divider,
   useToast
 } from "@chakra-ui/react"
-import {useLocation, NavLink} from 'react-router-dom'
+import {useLocation, NavLink, useHistory} from 'react-router-dom'
 import { FiHome, FiActivity, FiClock, FiSettings, FiUser } from 'react-icons/fi'
 import { useQuery } from 'react-query'
 import { URL } from '../../../helpers/url'
@@ -33,6 +33,7 @@ const notiFunc = async(id: string) => {
 
 export default function Navbar() {
   const location = useLocation();
+  const history = useHistory();
   const toast = useToast();
   const { user } = useUser();
   const [notifications, setNot] = React.useState([] as Array<INoti>);
@@ -77,6 +78,12 @@ export default function Navbar() {
       })
     }
   }
+
+  const logout = () => {
+    history.push('/');
+    localStorage.clear()
+  }
+
   return (
     <div className="w-full h-24 border-b-2 border-gray-200 bg-white flex items-center xl:px-14 lg:px-14 md:px-6 sm:px-6 justify-between">
       <div className="xl:hidden lg:hidden sm:block md:block" >
@@ -143,6 +150,10 @@ export default function Navbar() {
             <p className="ml-3 mt-1">Profile</p>
           </NavLink>
 
+        </div>
+
+        <div className="w-full h-40 flex justify-center items-center">
+          <button onClick={logout} className="text-customGreen cursor-pointer">Logout</button>
         </div>
       </div>
 
