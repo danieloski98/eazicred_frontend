@@ -101,7 +101,7 @@ export default function PaydayloanForm1(props: IProps) {
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
             <label htmlFor={'newpassword'}>Lastname</label>
-            <select name="lastname" value={formik.values.lastname} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('business_address', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <input name="lastname" value={formik.values.lastname} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('business_address', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.lastname && <p className="text-sm text-red-500 mt-3">{formik.errors.lastname}</p>
             }
@@ -248,7 +248,7 @@ export default function PaydayloanForm1(props: IProps) {
         </div>
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
-            <label htmlFor={'newpassword'}>Next of Kin Phone</label>
+            <label htmlFor={'newpassword'}>Next of Kin Phone number</label>
             <input type="text" name="next_of_kin_phone" value={formik.values.next_of_kin_phone} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('next_of_kin_phone', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.next_of_kin_phone && <p className="text-sm text-red-500 mt-3">{formik.errors.next_of_kin_phone}</p>

@@ -264,7 +264,7 @@ const Home = () => {
                                 <div className="user-profile">
                                     <img src={george} alt="George Anderson"/>
                                     <div>
-                                        <h6 className="h-6">George Anderson</h6>
+                                        <h6 className="h-6">Chidi Okpuzor</h6>
                                     </div>
                                 </div>
                             </div>

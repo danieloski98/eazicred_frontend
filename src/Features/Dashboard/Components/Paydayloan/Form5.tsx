@@ -158,7 +158,7 @@ export default function PaydayloanForm5(props: IProps) {
         </div>
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
-            <label htmlFor={'newpassword'}>government ID</label>
+            <label htmlFor={'newpassword'}>Government ID</label>
             <input type="file" name="government_ID" onBlur={formik.handleBlur}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"
               onChange={(e) => {
                 const f = e.target.files as any;
@@ -168,6 +168,41 @@ export default function PaydayloanForm5(props: IProps) {
             />
             {
               formik.errors.government_ID && <p className="text-sm text-red-500 mt-3">{formik.errors.government_ID}</p>
+            }
+        </div>
+
+      </div>
+
+
+      <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col mt-14">
+
+        <div className="flex-1 flex flex-col">
+            <label htmlFor={'newpassword'}>6 Months Bank Statement</label>
+            <input  type="file" name="HR_letter_of_confirmation" onBlur={formik.handleBlur}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"
+              onChange={(e) => {
+                const f = e.target.files as any;
+                formik.setFieldValue('HR_letter_of_confirmation', f[0], true);
+                formik.setFieldTouched('HR_letter_of_confirmation', true, true)
+                formik.setFieldValue('letter_of_employment', f[0], true);
+                formik.setFieldTouched('letter_of_employment', true, true)
+              } }
+            />
+            {
+              formik.errors.HR_letter_of_confirmation && <p className="text-sm text-red-500 mt-3">{formik.errors.HR_letter_of_confirmation}</p>
+            }
+        </div>
+
+        <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
+            <label htmlFor={'newpassword'}>Utility Bill</label>
+            <input  type="file" name="utility_bill" onBlur={formik.handleBlur}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"
+              onChange={(e) => {
+                const f = e.target.files as any;
+                formik.setFieldValue('utility_bill', f[0], true);
+                formik.setFieldTouched('utility_bill', true, true)
+              } }
+            />
+            {
+              formik.errors.utility_bill && <p className="text-sm text-red-500 mt-3">{formik.errors.utility_bill}</p>
             }
         </div>
 
@@ -200,38 +235,6 @@ export default function PaydayloanForm5(props: IProps) {
               formik.errors.letter_of_employment && <p className="text-sm text-red-500 mt-3">{formik.errors.letter_of_employment}</p>
             }
         </div> */}
-
-      </div>
-
-      <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col mt-14">
-
-        <div className="flex-1 flex flex-col">
-            <label htmlFor={'newpassword'}>6 months bank statement</label>
-            <input  type="file" name="HR_letter_of_confirmation" onBlur={formik.handleBlur}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"
-              onChange={(e) => {
-                const f = e.target.files as any;
-                formik.setFieldValue('HR_letter_of_confirmation', f[0], true);
-                formik.setFieldTouched('HR_letter_of_confirmation', true, true)
-              } }
-            />
-            {
-              formik.errors.HR_letter_of_confirmation && <p className="text-sm text-red-500 mt-3">{formik.errors.HR_letter_of_confirmation}</p>
-            }
-        </div>
-
-        <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
-            <label htmlFor={'newpassword'}>Utility Bill</label>
-            <input  type="file" name="utility_bill" onBlur={formik.handleBlur}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"
-              onChange={(e) => {
-                const f = e.target.files as any;
-                formik.setFieldValue('utility_bill', f[0], true);
-                formik.setFieldTouched('utility_bill', true, true)
-              } }
-            />
-            {
-              formik.errors.utility_bill && <p className="text-sm text-red-500 mt-3">{formik.errors.utility_bill}</p>
-            }
-        </div>
 
       </div>
 
