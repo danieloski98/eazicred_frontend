@@ -74,7 +74,6 @@ export default function PaydayloanForm5(props: IProps) {
 
       const existing_loan_type = parseInt(loan['existing_loan_type']);
 
-      alert(typeof existing_loan_type)
 
       const request1 = await fetch(`${URL}/user/createpaydayloan`, {
         method: 'post',

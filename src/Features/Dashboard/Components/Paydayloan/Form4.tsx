@@ -104,8 +104,12 @@ export default function PaydayloanForm4(props: IProps) {
       <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Existing Loan type</label>
             <select name="existing_loan_type" value={formik.values.existing_loan_type} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('existing_loan_type', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
-              <option value={1}>Payday loan</option>
-              <option value={2}>SME loan</option>
+              <option value={1}>Mortgage</option>
+              <option value={2}>Over draft</option>
+              <option value={3}>Car Loan</option>
+              <option value={4}>Business Loan</option>
+              <option value={5}>Credit card loan</option>
+              <option value={6}>Personal Loan</option>
             </select>
             {
               formik.errors.existing_loan_type && <p className="text-sm text-red-500 mt-3">{formik.errors.existing_loan_type}</p>
