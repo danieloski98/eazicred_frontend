@@ -233,13 +233,13 @@ const Home = () => {
 
                             <div className="testimonial">
                                 <div className="testimonial__user-profile">
-                                    <img src={george} alt="George Anderson"/>
+                                    <img src={hero} alt="George Anderson"/>
                                     <div>
-                                        <h6 className="h-6">George Anderson</h6>
+                                        <h6 className="h-6">Femi Ladi-Philips Anderson</h6>
                                     </div>
                                 </div>
                                 <div className="testimonial__text">
-                                    <p>The process was quite simple and straightforward, I was really impressed. Thank you Eazicred.</p>
+                                    <p>My loan and repayment was so seamless, i did everything from my work computer</p>
                                     <div className="rating">
                                         <i className="fas fa-star"/>
                                         <i className="fas fa-star"/>
