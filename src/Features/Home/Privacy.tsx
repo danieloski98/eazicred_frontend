@@ -13,7 +13,7 @@ const Privacy = () => {
                 <div className="container">
                     <div className="terms__inner">
                         <h2 className="h-2">Privacy Policy</h2>
-                        <p>
+                        <p className="mt-16">
                             We are committed to protecting and respecting your privacy. This policy sets out the basis
                             on which any personal data we collect from you, or that you provide to us, will be processed
                             by us. Please read the following carefully to understand our views and practices regarding

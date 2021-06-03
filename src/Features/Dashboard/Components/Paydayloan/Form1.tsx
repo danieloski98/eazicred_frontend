@@ -21,7 +21,7 @@ const validationSchema = yup.object({
   ID_number: yup.string().required('This field is required'),
   expiry_date: yup.date().required('This field is required'),
   phone: yup.string().required('This field is required'),
-  alt_number: yup.string().required("This field is required"),
+  alt_number: yup.string(),
   marital_status: yup.number().required('This field is required'),
   next_of_kin_surname: yup.string().required('This field is required'),
   next_of_kin_firstname: yup.string().required('This field is required'),
@@ -101,7 +101,7 @@ export default function PaydayloanForm1(props: IProps) {
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
             <label htmlFor={'newpassword'}>Lastname</label>
-            <input type="text" name="lastname" value={formik.values.lastname} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('business_address', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <select name="lastname" value={formik.values.lastname} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('business_address', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.lastname && <p className="text-sm text-red-500 mt-3">{formik.errors.lastname}</p>
             }
@@ -133,7 +133,13 @@ export default function PaydayloanForm1(props: IProps) {
 
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Means of ID</label>
-            <input type="text" name="Means_of_ID" value={formik.values.Means_of_ID} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('Means_of_ID', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <select name="Means_of_ID" value={formik.values.Means_of_ID} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('Means_of_ID', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
+              <option value="Drivers Lincence">Drivers Lincence</option>
+              <option value="NIN Card">NIN Card</option>
+              <option value="Passport">Passport</option>
+              <option value="Voters Card">Voters Card</option>
+              <option value="National Card">National Card</option>
+            </select>
             {
               formik.errors.Means_of_ID && <p className="text-sm text-red-500 mt-3">{formik.errors.Means_of_ID}</p>
             }

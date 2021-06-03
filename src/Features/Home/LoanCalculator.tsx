@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { currency } from './LoansList';
+//import { currency } from './LoansList';
 
 const LoanCalculator = () => {
     const initialRateValue = 7
@@ -63,7 +63,7 @@ const LoanCalculator = () => {
     }
 
     return (
-        <section className="calculator">
+        <section className="calculator w-full">
             <div className="container">
                 <div className="calculator__inner">
                     <div>
@@ -95,12 +95,12 @@ const LoanCalculator = () => {
                             </div>
                             <div>
                                 <label>Monthly Payment</label>
-                                <p className="results-payment">{currency.format(results.monthlyPayment)}</p>
+                                <p className="results-payment">{results.monthlyPayment}</p>
                                 {/*<p className="results-payment">{currency.format(loanRate(form.amount))}</p>*/}
                             </div>
                             <div>
                                 <label>Total Interest</label>
-                                <p className="results-payment">{currency.format(results.totalInterest)}</p>
+                                <p className="results-payment">{results.totalInterest}</p>
                                 {/*<p className="results-payment">{currency.format(interest())}</p>*/}
                             </div>
                             <div>

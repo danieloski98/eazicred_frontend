@@ -16,8 +16,9 @@ import {
   REGISTER_URL,
   TERMS_URL,
 } from '../../routes/paths';
-import LoanCalculator from './LoanCalculator';
+// import LoanCalculator from './LoanCalculator';
 import { useHistory } from 'react-router-dom'
+import NewLoanCalculator from './NewLoanCalculator';
 
 const Home = () => {
   const history = useHistory();
@@ -190,7 +191,7 @@ const Home = () => {
                         </div>
                         <div className="eligibility__text-box">
                             <h2 className="h-2">Check If You Are Eligible</h2>
-                            <p className="pt-14">For An EaziCred Loan</p>
+                            <p className="pt-32">For An EaziCred Loan</p>
                             <p className="p">To be eligible for an Eazicred loan:</p>
                             <ul>
                                 <li>You must be between 22 – 58 years old</li>
@@ -208,7 +209,7 @@ const Home = () => {
             <section className="testimonials">
                 <div className="container">
                     <h2 className="h-2">What People Are Saying</h2>
-                    <p className="pt-14 mb-10">About Us</p>
+                    <p className="pt-32 mb-10">About Us</p>
                     <div className="testimonials__inner">
                         <div className="testimonials__list">
                             <div className="testimonial">
@@ -257,7 +258,7 @@ const Home = () => {
                             </div>
                             <div className="testimonials__details">
                                 <h3 className="h-3">Our customers have amazing reviews<br/> about our service</h3>
-                                <div className="quote">
+                                <div className="quote mt-32">
                                     <p>The process was quite simple and straightforward, I was really impressed. Thank you Eazicred</p>
                                 </div>
                                 <div className="user-profile">
@@ -271,7 +272,10 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <LoanCalculator/>
+            <div className="w-full h-auto py-16 items-center bg-gray-100 flex justify-center">
+              <NewLoanCalculator />
+            </div>
+            {/* <LoanCalculator/> */}
             <OnPageSignUp/>
         </React.Fragment>
     )

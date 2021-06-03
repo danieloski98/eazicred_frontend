@@ -15,8 +15,8 @@ const validationSchema = yup.object({
   current_paydate: yup.date().required('This field is required'),
   existing_loan: yup.bool().required('This field is required'),
   existing_loan_type: yup.number(),
-  loan_amount: yup.number().required('This field is required'),
-  loan_tenure: yup.number().required('This field is required'),
+  loan_amount: yup.number().required('This field is required').max(250000, 'Cannot apply for an amount larger than NGN250000'),
+  loan_tenure: yup.number().required('This field is required').max(4, 'Cannot be greater than 4 month'),
   account_number: yup.string().required('This field is required'),
   account_name: yup.string().required('This field is required'),
   bank_name: yup.string().required('This field is required'),
@@ -78,7 +78,7 @@ export default function PaydayloanForm4(props: IProps) {
       <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col">
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
-            <label htmlFor={'newpassword'}>Current Pay date</label>
+            <label htmlFor={'newpassword'}>Next Pay date</label>
             <input type="date" name="current_paydate" value={formik.values.current_paydate} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('current_paydate', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.current_paydate && <p className="text-sm text-red-500 mt-3">{formik.errors.current_paydate}</p>
@@ -167,7 +167,14 @@ export default function PaydayloanForm4(props: IProps) {
 
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Hear abour us</label>
-            <input  type="text" name="hear_about_us" value={formik.values.hear_about_us} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('hear_about_us', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <select name="hear_about_us" value={formik.values.hear_about_us} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('hear_about_us', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
+              <option value="Radio">Radio</option>
+              <option value="Social Media">Social Media</option>
+              <option value="Referral">Referral</option>
+              <option value="Flier">Flier</option>
+              <option value="Tv">Tv</option>
+              <option value="Others">Others</option>
+            </select>
             {
               formik.errors.hear_about_us && <p className="text-sm text-red-500 mt-3">{formik.errors.hear_about_us}</p>
             }

@@ -172,7 +172,7 @@ export default function PaydayloanForm3(props: IProps) {
       <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col mt-14">
 
         <div className="flex-1 flex flex-col">
-            <label htmlFor={'newpassword'}>Current Employer Office Number</label>
+            <label htmlFor={'newpassword'}>Current Employer Office Phone Number</label>
             <input  type="text" name="current_employer_office_number" value={formik.values.current_employer_office_number} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('current_employer_office_number', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.current_employer_office_number && <p className="text-sm text-red-500 mt-3">{formik.errors.current_employer_office_number}</p>
