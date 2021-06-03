@@ -2,9 +2,11 @@ import React from 'react'
 import * as yup from 'yup';
 import { useFormik } from 'formik'
 import useUser from '../../../../hooks/useUser';
-import { useRecoilState } from 'recoil'
 import { paydayloanAtom } from '../../../../States/paydayloanstate';
 import { useToast } from '@chakra-ui/react'
+//import useForm from './useForm';
+import { useRecoilState } from 'recoil';
+import useForm from './useForm';
 
 interface IProps {
   move: Function;
@@ -33,31 +35,36 @@ const validationSchema = yup.object({
 export default function PaydayloanForm1(props: IProps) {
   const { user } = useUser();
   const [loan, setLoan] = useRecoilState(paydayloanAtom);
+  const { formik } = useForm();
   const toast = useToast();
 
+
   // formik
-  const formik = useFormik({
-    initialValues: {
-      firstname: user.firstname,
-      lastname: user.lastname,
-      phone: user.phone,
-      DOB: '',
-      BVN: '',
-      Means_of_ID: '',
-      date_issued: '',
-      ID_number: '',
-      expiry_date: '',
-      alt_number: '',
-      marital_status: 1,
-      next_of_kin_surname: '',
-      next_of_kin_firstname: '',
-      next_of_kin_relationship: '',
-      next_of_kin_phone: '',
-      next_of_kin_address: '',
-    },
-    onSubmit: () => {},
-    validationSchema
-  })
+  // const formik = useFormik({
+  //   initialValues: {
+  //     firstname: user.firstname,
+  //     lastname: user.lastname,
+  //     phone: user.phone,
+  //     DOB: '',
+  //     BVN: '',
+  //     Means_of_ID: 'Drivers Lincence',
+  //     date_issued: '',
+  //     ID_number: '',
+  //     expiry_date: '',
+  //     alt_number: '',
+  //     marital_status: 1,
+  //     next_of_kin_surname: '',
+  //     next_of_kin_firstname: '',
+  //     next_of_kin_relationship: '',
+  //     next_of_kin_phone: '',
+  //     next_of_kin_address: '',
+  //   },
+  //   onSubmit: () => {},
+  //   validationSchema
+  // });
+
+
+
 
   const submit = () => {
    if (!formik.dirty) {
@@ -70,16 +77,17 @@ export default function PaydayloanForm1(props: IProps) {
      });
      return;
    }
-   if (!formik.isValid) {
-      toast({
-        title: 'Attention',
-        description: 'You have to fill in the form correctly to continue',
-        position: 'top',
-        status: 'error',
-        isClosable: true
-      })
-      return;
-   }else {
+  //  if (!formik.isValid) {
+  //     toast({
+  //       title: 'Attention',
+  //       description: 'You have to fill in the form correctly to continue',
+  //       position: 'top',
+  //       status: 'error',
+  //       isClosable: true
+  //     })
+  //     return;
+  //  }
+   else {
      setLoan({...loan, ...formik.values});
      console.log(loan);
      props.move(2);
@@ -134,7 +142,7 @@ export default function PaydayloanForm1(props: IProps) {
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Means of ID</label>
             <select name="Means_of_ID" value={formik.values.Means_of_ID} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('Means_of_ID', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
-              <option value="Drivers Lincence">Drivers Lincence</option>
+              <option value="Drivers Licence">Drivers Lincence</option>
               <option value="NIN Card">NIN Card</option>
               <option value="Passport">Passport</option>
               <option value="Voters Card">Voters Card</option>
@@ -202,7 +210,7 @@ export default function PaydayloanForm1(props: IProps) {
             <select name="marital_status" value={formik.values.marital_status} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('marital_status', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
               <option value={2}>Married</option>
               <option value={1}>Single</option>
-              <option value={3}>Divored</option>
+              <option value={3}>Divorced</option>
               <option value={4}>Seperated</option>
               <option value={5}>Widowed</option>
             </select>

@@ -5,6 +5,7 @@ import { useToast } from '@chakra-ui/react';
 import { useRecoilState } from 'recoil';
 // import useUser from '../../../../hooks/useUser';
 import { paydayloanAtom } from '../../../../States/paydayloanstate';
+import useForm from './useForm';
 
 interface IProps {
   move: Function;
@@ -26,24 +27,26 @@ const validationSchema = yup.object({
 export default function PaydayloanForm4(props: IProps) {
   // const { user } = useUser();
   const [loan, setLoan] = useRecoilState(paydayloanAtom);
+  const { formik } = useForm();
   const toast = useToast();
 
   // formik
-  const formik = useFormik({
-    initialValues: {
-      current_paydate: '',
-      existing_loan: 1,
-      existing_loan_type: 1,
-      loan_amount: 0,
-      loan_tenure: 0,
-      account_number: '',
-      account_name: '',
-      bank_name: '',
-      hear_about_us: '',
-    },
-    onSubmit: () => {},
-    validationSchema
-  })
+  // const formik = useFormik({
+  //   initialValues: {
+  //     current_paydate: '',
+  //     existing_loan: 1,
+  //     existing_loan_type: 1,
+  //     loan_amount: 0,
+  //     loan_tenure: 0,
+  //     account_number: '',
+  //     account_name: '',
+  //     bank_name: '',
+  //     hear_about_us: 'Radio',
+  //   },
+  //   onSubmit: () => {},
+  //   validationSchema
+  // });
+
 
   const submit = () => {
     if (!formik.dirty) {
@@ -56,16 +59,17 @@ export default function PaydayloanForm4(props: IProps) {
       });
       return;
     }
-    if (!formik.isValid) {
-       toast({
-         title: 'Attention',
-         description: 'You have to fill in the form correctly to continue',
-         position: 'top',
-         status: 'error',
-         isClosable: true
-       })
-       return;
-    }else {
+    // if (!formik.isValid) {
+    //    toast({
+    //      title: 'Attention',
+    //      description: 'You have to fill in the form correctly to continue',
+    //      position: 'top',
+    //      status: 'error',
+    //      isClosable: true
+    //    })
+    //    return;
+    // }
+    else {
       setLoan({...loan, ...formik.values});
       console.log(loan);
       props.move(5);
@@ -86,7 +90,7 @@ export default function PaydayloanForm4(props: IProps) {
         </div>
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-10 sm:mt-10">
-            <label htmlFor={'newpassword'}>Existing Loan</label>
+            <label htmlFor={'newpassword'}>Do You Have An Existing Loan ?</label>
             <select name="existing_loan" value={formik.values.existing_loan} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('existing_loan', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
               <option value={1}>Yes</option>
               <option value={0}>No</option>
@@ -117,7 +121,7 @@ export default function PaydayloanForm4(props: IProps) {
         </div>
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
-            <label htmlFor={'newpassword'}>Loan amount</label>
+            <label htmlFor={'newpassword'}>Loan amount applying for</label>
             <input  type="number" name="loan_amount" value={formik.values.loan_amount} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('loan_amount', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.loan_amount && <p className="text-sm text-red-500 mt-3">{formik.errors.loan_amount}</p>
@@ -129,7 +133,7 @@ export default function PaydayloanForm4(props: IProps) {
       <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col mt-14">
 
         <div className="flex-1 flex flex-col">
-            <label htmlFor={'newpassword'}>Loan tenure</label>
+            <label htmlFor={'newpassword'}>Loan tenure (Months)</label>
             <input  type="number" name="loan_tenure" value={formik.values.loan_tenure} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('loan_tenure', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.loan_tenure && <p className="text-sm text-red-500 mt-3">{formik.errors.loan_tenure}</p>

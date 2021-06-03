@@ -5,6 +5,7 @@ import { useToast } from '@chakra-ui/react';
 import { useRecoilState } from 'recoil';
 // import useUser from '../../../../hooks/useUser';
 import { paydayloanAtom } from '../../../../States/paydayloanstate';
+import useForm from './useForm';
 
 interface IProps {
   move: Function;
@@ -31,43 +32,33 @@ const validationSchema = yup.object({
 export default function PaydayloanForm3(props: IProps) {
   // const { user } = useUser();
   const [loan, setLoan] = useRecoilState(paydayloanAtom);
+  const { formik } = useForm();
   const toast = useToast();
   const detailsRef = React.useRef(null as any);
 
   // formik
-  const formik = useFormik({
-    initialValues: {
-     employment_status: '',
-     current_employer: '',
-     current_employer_address: '',
-     current_employer_landmark: '',
-     current_employer_LGA: '',
-     current_employer_state: '',
-     current_employer_office_number: '',
-     staff_id: '',
-     department: '',
-     job_title: '',
-     date_employed: '',
-     previous_employer: '',
-     previous_employer_address: '',
-     jobs_in_past_5_years: 0,
-    },
-    onSubmit: () => {},
-    validationSchema
-  })
+  // const formik = useFormik({
+  //   initialValues: {
+  //    employment_status: 1,
+  //    current_employer: '',
+  //    current_employer_address: '',
+  //    current_employer_landmark: '',
+  //    current_employer_LGA: '',
+  //    current_employer_state: '',
+  //    current_employer_office_number: '',
+  //    staff_id: '',
+  //    department: '',
+  //    job_title: '',
+  //    date_employed: '',
+  //    previous_employer: '',
+  //    previous_employer_address: '',
+  //    jobs_in_past_5_years: 0,
+  //   },
+  //   onSubmit: () => {},
+  //   validationSchema
+  // })
 
   // effect
-  React.useEffect(() => {
-    if (detailsRef.current === null) {
-      return
-    }else {
-      alert('no')
-      const details = detailsRef.current as any;
-      for (const key of details) {
-        formik.setFieldValue(key, details[key])
-      }
-    }
-  })
 
   const submit = () => {
     if (!formik.dirty) {
@@ -80,16 +71,17 @@ export default function PaydayloanForm3(props: IProps) {
       });
       return;
     }
-    if (!formik.isValid) {
-       toast({
-         title: 'Attention',
-         description: 'You have to fill in the form correctly to continue',
-         position: 'top',
-         status: 'error',
-         isClosable: true
-       })
-       return;
-    }else {
+    // if (!formik.isValid) {
+    //    toast({
+    //      title: 'Attention',
+    //      description: 'You have to fill in the form correctly to continue',
+    //      position: 'top',
+    //      status: 'error',
+    //      isClosable: true
+    //    })
+    //    return;
+    // }
+    else {
       setLoan({...loan, ...formik.values});
       console.log(loan);
       detailsRef.current = formik.values;
@@ -105,8 +97,8 @@ export default function PaydayloanForm3(props: IProps) {
       <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Employment Status</label>
             <select name="employment_status" value={formik.values.employment_status} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('employment_status', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
-              <option value={2}>Partime</option>
-              <option value={1}>Fulltime</option>
+              <option value={1}>Partime</option>
+              <option value={2}>Fulltime</option>
               <option value={3}>Retired</option>
               <option value={4}>Self Employed</option>
               <option value={5}>Temporary Contract</option>

@@ -5,6 +5,7 @@ import { useFormik } from 'formik'
 import { useRecoilState } from 'recoil'
 import { paydayloanAtom } from '../../../../States/paydayloanstate';
 import { useToast } from '@chakra-ui/react'
+import useForm from './useForm';
 
 interface IProps {
   move: Function;
@@ -21,19 +22,22 @@ const validationSchema = yup.object({
 export default function PaydayloanForm2(props: IProps) {
   // const { user } = useUser();
   const [loan, setLoan] = useRecoilState(paydayloanAtom);
+  const { formik } = useForm();
   const toast = useToast();
 
   // formik
-  const formik = useFormik({
-    initialValues: {
-     state: '',
-     landmark: '',
-     LGA_of_residence: '',
-     home_address: ''
-    },
-    onSubmit: () => {},
-    validationSchema
-  })
+  // const formik = useFormik({
+  //   initialValues: {
+  //    state: '',
+  //    landmark: '',
+  //    LGA_of_residence: '',
+  //    home_address: ''
+  //   },
+  //   onSubmit: () => {},
+  //   validationSchema
+  // })
+
+
 
   const submit = () => {
     if (!formik.dirty) {
@@ -46,16 +50,17 @@ export default function PaydayloanForm2(props: IProps) {
       });
       return;
     }
-    if (!formik.isValid) {
-       toast({
-         title: 'Attention',
-         description: 'You have to fill in the form correctly to continue',
-         position: 'top',
-         status: 'error',
-         isClosable: true
-       })
-       return;
-    }else {
+    // if (!formik.isValid) {
+    //    toast({
+    //      title: 'Attention',
+    //      description: 'You have to fill in the form correctly to continue',
+    //      position: 'top',
+    //      status: 'error',
+    //      isClosable: true
+    //    })
+    //    return;
+    // }
+    else {
       setLoan({...loan, ...formik.values});
       console.log(loan);
       props.move(3);

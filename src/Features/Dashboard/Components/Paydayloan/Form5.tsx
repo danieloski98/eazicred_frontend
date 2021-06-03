@@ -10,6 +10,8 @@ import { URL } from '../../../../helpers/url';
 import { IReturn } from '../../../../helpers/ApiReturnType';
 import SMEDialog from '../smeloan/Success';
 import { useHistory } from 'react-router-dom';
+import useForm from './useForm';
+import { date } from 'yup/lib/locale';
 
 
 interface IProps {
@@ -35,6 +37,7 @@ export default function PaydayloanForm5(props: IProps) {
   const [draft, setDraft] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
+  const { formik:data} = useForm();
 
   // formik
   const formik = useFormik({
@@ -60,7 +63,18 @@ export default function PaydayloanForm5(props: IProps) {
          isClosable: true
        })
        return;
-    }else {
+    }
+    if(!data.touched || !data.isValid) {
+      toast({
+        title: 'Attention',
+        description: 'You have to fill in the form correctly to continue',
+        position: 'top',
+        status: 'error',
+        isClosable: true
+      })
+      return;
+    }
+    else {
       // console.log(loan);
       // console.log(formik.values)
 
@@ -81,7 +95,7 @@ export default function PaydayloanForm5(props: IProps) {
           'content-type': 'application/json',
           authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({...loan, type: 1, status:1, draft, user_id: user.id, existing_loan, existing_loan_type}),
+        body: JSON.stringify({...data.values, type: 1, status:1, draft, user_id: user.id, existing_loan, existing_loan_type}),
       })
 
       const json1 = await request1.json() as IReturn;
@@ -109,7 +123,9 @@ export default function PaydayloanForm5(props: IProps) {
 
         if (json2.statusCode === 200) {
           setLoading(false);
-            setSuccess(true);
+          setSuccess(true);
+          localStorage.removeItem('formdata');
+          data.setValues({} as any);
         }else {
           toast({
             title: 'Attention',
