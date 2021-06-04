@@ -142,7 +142,7 @@ export default function PaydayloanForm1(props: IProps) {
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Means of ID</label>
             <select name="Means_of_ID" value={formik.values.Means_of_ID} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('Means_of_ID', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
-              <option value="Drivers Licence">Drivers Lincence</option>
+              <option value="Drivers Licence">Drivers Licence</option>
               <option value="NIN Card">NIN Card</option>
               <option value="Passport">Passport</option>
               <option value="Voters Card">Voters Card</option>

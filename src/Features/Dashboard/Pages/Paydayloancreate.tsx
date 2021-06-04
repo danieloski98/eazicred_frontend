@@ -35,6 +35,14 @@ export default function Paydayloancreation() {
     setStage(st)
   }
 
+  const prev = () => {
+    if(stage === 1) {
+      return;
+    }else {
+      setStage(prev => prev-1);
+    }
+  }
+
   const title = (num: number) => {
     switch(num) {
       case 1: {
@@ -179,6 +187,9 @@ export default function Paydayloancreation() {
 
                 <div className="flex-1 my-6 py-6">
                   {form()}
+                  {stage > 1 && <div className="w-full xl:hidden lg:hidden sm:block md:block">
+                    <button onClick={prev} className="bg-gray-500 w-full h-16 text-white rounded-lg">Previous</button>
+                  </div>}
                 </div>
 
               </div>

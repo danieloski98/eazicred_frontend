@@ -12,22 +12,22 @@ interface IProps {
 }
 
 // validation schema
-const validationSchema = yup.object({
-  employment_status: yup.number().required('This field is required'),
-  current_employer: yup.string().required('This field is required'),
-  current_employer_address: yup.string().required('This field is required'),
-  current_employer_landmark: yup.string().required('This  field is required'),
-  current_employer_LGA: yup.string().required('This field is required'),
-  current_employer_state: yup.string().required('This field is required'),
-  current_employer_office_number: yup.string().required('This field is requred'),
-  staff_id: yup.string(),
-  department: yup.string(),
-  job_title: yup.string(),
-  date_employed: yup.string(),
-  previous_employer: yup.string(),
-  previous_employer_address: yup.string(),
-  jobs_in_past_5_years: yup.number().required(),
-});
+// const validationSchema = yup.object({
+//   employment_status: yup.number().required('This field is required'),
+//   current_employer: yup.string().required('This field is required'),
+//   current_employer_address: yup.string().required('This field is required'),
+//   current_employer_landmark: yup.string().required('This  field is required'),
+//   current_employer_LGA: yup.string().required('This field is required'),
+//   current_employer_state: yup.string().required('This field is required'),
+//   current_employer_office_number: yup.string().required('This field is requred'),
+//   staff_id: yup.string(),
+//   department: yup.string(),
+//   job_title: yup.string(),
+//   date_employed: yup.string(),
+//   previous_employer: yup.string(),
+//   previous_employer_address: yup.string(),
+//   jobs_in_past_5_years: yup.number().required(),
+// });
 
 export default function PaydayloanForm3(props: IProps) {
   // const { user } = useUser();
@@ -235,9 +235,9 @@ export default function PaydayloanForm3(props: IProps) {
 
         <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col mt-14">
 
-          <div className="flex-1 flex flex-col">
+          <div className=" flex-1 flex flex-col">
               <label htmlFor={'newpassword'}> Jobs in the last 5 years </label>
-              <input  type="number" name="jobs_in_past_5_years" value={formik.values.jobs_in_past_5_years} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('jobs_in_past_5_years', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+              <input  type="number" name="jobs_in_past_5_years" value={formik.values.jobs_in_past_5_years} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('jobs_in_past_5_years', true, true)}  className="xl:w-2/5 lg:w-2/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
               {
                 formik.errors.jobs_in_past_5_years && <p className="text-sm text-red-500 mt-3">{formik.errors.jobs_in_past_5_years}</p>
               }

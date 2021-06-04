@@ -265,7 +265,7 @@ export default function PaydayloanForm5(props: IProps) {
       <div className="xl:w-88/100 lg:w-11/12 md:w-full sm:w-full flex justify-end mt-10 mb-10">
         <button disabled={loading} className="xl:w-56 lg:w-56 md:w-full sm:w-full h-14 rounded-lg text-white bg-customGreen" onClick={submit}>
           {loading && <Spinner color="white" size="md" />}
-          Continue
+          Submit
         </button>
       </div>
     </div>
