@@ -209,6 +209,7 @@ export default function PaydayloanForm1(props: IProps) {
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Marital Status</label>
             <select name="marital_status" value={formik.values.marital_status} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('marital_status', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
+            <option selected disabled>Select Marriage status</option>
               <option value={2}>Married</option>
               <option value={1}>Single</option>
               <option value={3}>Divorced</option>

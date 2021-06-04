@@ -108,6 +108,7 @@ export default function PaydayloanForm4(props: IProps) {
       <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Existing Loan type</label>
             <select name="existing_loan_type" value={formik.values.existing_loan_type} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('existing_loan_type', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
+              <option selected disabled>Select existing loan type if any</option>
               <option value={1}>Mortgage</option>
               <option value={2}>Over draft</option>
               <option value={3}>Car Loan</option>
@@ -176,6 +177,7 @@ export default function PaydayloanForm4(props: IProps) {
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Hear abour us</label>
             <select name="hear_about_us" value={formik.values.hear_about_us} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('hear_about_us', true, true)}  className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
+              <option selected disabled>How did you hear about us ?</option>
               <option value="Radio">Radio</option>
               <option value="Social Media">Social Media</option>
               <option value="Referral">Referral</option>
