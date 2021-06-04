@@ -97,6 +97,7 @@ export default function PaydayloanForm3(props: IProps) {
       <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Employment Status</label>
             <select name="employment_status" value={formik.values.employment_status} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('employment_status', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
+            <option disabled>Select employment status</option>
               <option value={1}>Partime</option>
               <option value={2}>Fulltime</option>
               <option value={3}>Retired</option>
