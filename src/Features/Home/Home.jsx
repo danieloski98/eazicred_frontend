@@ -235,7 +235,7 @@ const Home = () => {
                                 <div className="testimonial__user-profile">
                                     <img src={hero} alt="George Anderson"/>
                                     <div>
-                                        <h6 className="h-6">Femi Ladi-Philips Anderson</h6>
+                                        <h6 className="h-6">Femi Ladi-Philips</h6>
                                     </div>
                                 </div>
                                 <div className="testimonial__text">
