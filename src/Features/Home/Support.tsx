@@ -3,27 +3,49 @@ import phone from '../../assets/phone.svg';
 import message from '../../assets/message.svg';
 import emailjs from 'emailjs-com';
 import OnPageSignUp from './OnPageSignUp';
+import { URL } from '../../helpers/url';
+import { useToast, Spinner } from '@chakra-ui/react'
+import { IReturn } from '../../helpers/ApiReturnType';
 
 const Support = () => {
     document.title = 'Eazicred - Support'
-    const [form, setForm] = React.useState({name: '', email: '', message: ""})
+    const [loading, setLoading] = React.useState(false);
+    const [form, setForm] = React.useState({name: '', email: '', message: ""});
+    const toast = useToast();
     const handleChange = (e: any) => {
         const {name, value} = e.target
         setForm({...form, [name]: value})
     }
 
-    function handleSubmit(e: any) {
-        alert(JSON.stringify(form))
-        const template_id = 'o9emy69';
-        const service_id = 'gmail';
-        const user_id = 'user_q4Px58peEZuDjpc9c4wh9';
+    async function handleSubmit(e: any) {
+        setLoading(true);
+        const request = await fetch(`${URL}/admin/support`, {
+          method: 'POST',
+          headers: {
+            'content-type': 'application/json'
+          },
+          body: JSON.stringify(form),
+        })
 
-        emailjs.sendForm(service_id, template_id, e.target, user_id)
-            .then((result) => {
-                console.log(result);
-            }, (error) => {
-                console.log(error);
-            });
+        const json = await request.json() as IReturn;
+        setLoading(false);
+        if (json.statusCode === 200) {
+          toast({
+            title: 'Success',
+            description: `${json.successMessage}`,
+            status: 'success',
+            position: 'top',
+            isClosable: true,
+          })
+        }else {
+          toast({
+            title: 'Error',
+            description: `${json.errorMessage}`,
+            status: 'error',
+            position: 'top',
+            isClosable: true,
+          })
+        }
     }
 
     React.useEffect(() => {
@@ -71,7 +93,10 @@ const Support = () => {
                                     <label htmlFor="message">Message</label>
                                     <textarea value={form.message} onChange={handleChange} name="message" id='message'/>
                                 </div>
-                                <button onClick={handleSubmit} type="submit" className="btn btn-blue">Send Message</button>
+                                <button onClick={handleSubmit} type="submit" className="btn btn-blue">
+                                  {loading && <Spinner size="md" color="white" />}
+                                  Send Message
+                                  </button>
                             </div>
                         </div>
                     </div>

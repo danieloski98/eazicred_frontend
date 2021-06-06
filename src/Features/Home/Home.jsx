@@ -9,6 +9,7 @@ import eligibility_img from '../../assets/eligibility-img.png';
 import george from '../../assets/george.png';
 import hero from '../../assets/hero-image.png';
 import OnPageSignUp from './OnPageSignUp';
+// import newImg from '/assets/chi.jpg';
 //import { gettingStarted } from '../../redux/actions/actions';
 import { useFormik } from 'formik'
 import {
@@ -72,10 +73,10 @@ const Home = () => {
 
                             <div className="flex">
                                 <input value={field.values.email} name="email" onChange={field.handleChange} type="email" className="email h-20" placeholder="Type your e-mail"/>
-                                    <button onClick={getStarted} className="w-32 h-20 rounded text-white font-bold bg-customGreen text-sm">Get Started</button>
+                                    <button onClick={getStarted} className="w-40 h-18 rounded text-white font-bold bg-customGreen text-sm">Get Started</button>
                             </div>
 
-                            <p>{"By clicking \"Get Started\" you confirming that you agree with our following "}
+                            <p className="mt-6">{"By clicking \"Get Started\" you confirming that you agree with our following "}
                                 <Link to={TERMS_URL}>Terms and Conditions</Link>
                             </p>
                         </div>
@@ -241,7 +242,7 @@ const Home = () => {
 
                             <div className="testimonial">
                                 <div className="testimonial__user-profile">
-                                    <img src={hero} alt="George Anderson"/>
+                                    <img src="/assets/chi.jpg" alt="George Anderson" className=" object-cover"/>
                                     <div>
                                         <h6 className="h-6">Femi Ladi-Philips</h6>
                                     </div>
