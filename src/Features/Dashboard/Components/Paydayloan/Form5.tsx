@@ -41,19 +41,19 @@ export default function PaydayloanForm5(props: IProps) {
   // formik
   const formik = useFormik({
     initialValues: {
-      passport: '',
-      government_ID: '',
-      letter_of_employment: '',
-      HR_letter_of_confirmation: '',
-      utility_bill: '',
-      company_id: ''
+      passport: null as any,
+      government_ID: null as any,
+      letter_of_employment: null as any,
+      HR_letter_of_confirmation: null as any,
+      utility_bill: null as any,
+      company_id: null as any
     },
     onSubmit: () => {},
     validationSchema
   })
 
   const submit = async () => {
-    if (!formik.dirty) {
+    if (!formik.values.HR_letter_of_confirmation === null || formik.values.company_id === null || formik.values.government_ID === null || formik.values.letter_of_employment === null || formik.values.passport === null || formik.values.utility_bill === null) {
        toast({
          title: 'Attention',
          description: 'You have to pick the required files to continue',
