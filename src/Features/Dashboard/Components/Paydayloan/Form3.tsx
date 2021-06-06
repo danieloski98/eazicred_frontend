@@ -1,6 +1,6 @@
 import React from 'react'
-import * as yup from 'yup';
-import { useFormik } from 'formik'
+//import * as yup from 'yup';
+//import { useFormik } from 'formik'
 import { useToast } from '@chakra-ui/react';
 import { useRecoilState } from 'recoil';
 // import useUser from '../../../../hooks/useUser';
@@ -173,8 +173,8 @@ export default function PaydayloanForm3(props: IProps) {
         </div>
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
-            <label htmlFor={'newpassword'}>Staff ID </label>
-            <input  type="text" name="staff_id" value={formik.values.staff_id} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('staff_id', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <label htmlFor={'newpassword'}>Staff ID Number </label>
+            <input  type="number" name="staff_id" value={formik.values.staff_id} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('staff_id', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.staff_id && <p className="text-sm text-red-500 mt-3">{formik.errors.staff_id}</p>
             }

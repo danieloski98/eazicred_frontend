@@ -13,7 +13,7 @@ const Support = () => {
     }
 
     function handleSubmit(e: any) {
-        e.preventDefault()
+        alert(JSON.stringify(form))
         const template_id = 'o9emy69';
         const service_id = 'gmail';
         const user_id = 'user_q4Px58peEZuDjpc9c4wh9';
@@ -56,7 +56,7 @@ const Support = () => {
                                 </div>
                             </div>
                             <p>Alternatively, You can also fill the form below</p>
-                            <form className="support__form" onSubmit={handleSubmit}>
+                            <div className="support__form" onSubmit={handleSubmit}>
                                 <div className="input-groups">
                                     <div className="input-group">
                                         <label htmlFor="name">Name</label>
@@ -71,8 +71,8 @@ const Support = () => {
                                     <label htmlFor="message">Message</label>
                                     <textarea value={form.message} onChange={handleChange} name="message" id='message'/>
                                 </div>
-                                <button type="submit" className="btn btn-blue">Send Message</button>
-                            </form>
+                                <button onClick={handleSubmit} type="submit" className="btn btn-blue">Send Message</button>
+                            </div>
                         </div>
                     </div>
                 </div>

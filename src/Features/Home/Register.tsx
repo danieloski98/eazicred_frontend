@@ -24,7 +24,7 @@ const Register = () => {
 
   const formik = useFormik({
     initialValues: {
-      email: '',
+      email: localStorage.getItem('em') as string || '',
       firstname: '',
       lastname: '',
       phone: '',
@@ -35,8 +35,14 @@ const Register = () => {
     validationSchema,
   })
 
+  React.useMemo(() => {
+    // window.scrollTo(0,0);
+  }, [])
+
   React.useEffect(() => {
-    window.scrollTo(0,0);
+    return () => {
+      localStorage.removeItem('em');
+    }
   })
 
   const submit = async () => {
@@ -79,6 +85,7 @@ const Register = () => {
           status: 'success',
           isClosable: true
         })
+        localStorage.removeItem('em');
         history.push('/login');
       }else {
         setLoading(false);

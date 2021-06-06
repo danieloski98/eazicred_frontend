@@ -11,7 +11,6 @@ import { IReturn } from '../../../../helpers/ApiReturnType';
 import SMEDialog from '../smeloan/Success';
 import { useHistory } from 'react-router-dom';
 import useForm from './useForm';
-import { date } from 'yup/lib/locale';
 
 
 interface IProps {
@@ -88,6 +87,10 @@ export default function PaydayloanForm5(props: IProps) {
 
       const existing_loan_type = parseInt(loan['existing_loan_type']);
 
+      const date = new Date().toISOString();
+
+      console.log(new Date(date).toDateString());
+
 
       const request1 = await fetch(`${URL}/user/createpaydayloan`, {
         method: 'post',
@@ -95,7 +98,7 @@ export default function PaydayloanForm5(props: IProps) {
           'content-type': 'application/json',
           authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({...data.values, type: 1, status:1, draft, user_id: user.id, existing_loan, existing_loan_type}),
+        body: JSON.stringify({...data.values, type: 1, status:1, draft, user_id: user.id, existing_loan, existing_loan_type, created_at: new Date(date).toDateString()}),
       })
 
       const json1 = await request1.json() as IReturn;

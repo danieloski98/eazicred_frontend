@@ -1,6 +1,6 @@
 import React from 'react'
-import * as yup from 'yup';
-import { useFormik } from 'formik'
+//import * as yup from 'yup';
+//import { useFormik } from 'formik'
 import { useToast } from '@chakra-ui/react';
 import { useRecoilState } from 'recoil';
 // import useUser from '../../../../hooks/useUser';
@@ -12,17 +12,18 @@ interface IProps {
 }
 
 // validation schema
-const validationSchema = yup.object({
-  current_paydate: yup.date().required('This field is required'),
-  existing_loan: yup.bool().required('This field is required'),
-  existing_loan_type: yup.number(),
-  loan_amount: yup.number().required('This field is required').max(250000, 'Cannot apply for an amount larger than NGN250000'),
-  loan_tenure: yup.number().required('This field is required').max(4, 'Cannot be greater than 4 month'),
-  account_number: yup.string().required('This field is required'),
-  account_name: yup.string().required('This field is required'),
-  bank_name: yup.string().required('This field is required'),
-  hear_about_us: yup.string(),
-});
+// const validationSchema = yup.object({
+//   current_paydate: yup.date().required('This field is required'),
+//   existing_loan: yup.bool().required('This field is required'),
+//   existing_loan_type: yup.number(),
+//   loan_amount: yup.number().required('This field is required').max(250000, 'Cannot apply for an amount larger than NGN250000'),
+//   loan_tenure: yup.number().required('This field is required').max(4, 'Cannot be greater than 4 month'),
+//   account_number: yup.string().required('This field is required'),
+//   account_name: yup.string().required('This field is required'),
+//   bank_name: yup.string().required('This field is required'),
+//   hear_about_us: yup.string(),
+// });
+
 
 export default function PaydayloanForm4(props: IProps) {
   // const { user } = useUser();
@@ -46,6 +47,8 @@ export default function PaydayloanForm4(props: IProps) {
   //   onSubmit: () => {},
   //   validationSchema
   // });
+
+  React.useEffect(() => {}, [formik.values.existing_loan]);
 
 
   const submit = () => {
@@ -109,6 +112,7 @@ export default function PaydayloanForm4(props: IProps) {
             <label htmlFor={'newpassword'}>Existing Loan type</label>
             <select name="existing_loan_type" value={formik.values.existing_loan_type} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('existing_loan_type', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3">
               <option selected disabled>Select existing loan type if any</option>
+              <option value={0}>None</option>
               <option value={1}>Mortgage</option>
               <option value={2}>Over draft</option>
               <option value={3}>Car Loan</option>

@@ -11,7 +11,7 @@ import Login from "../Features/Home/Login";
 import Privacy from "../Features/Home/Privacy";
 import Support from "../Features/Home/Support";
 import Terms from "../Features/Home/Terms";
-import RegisterContainer from "../containers/RegisterContainer";
+import RegisterContainer from "../Features/Home/Register";
 import Dashboard from "../Features/Dashboard/Pages/Index";
 import {
   LOGIN_URL,

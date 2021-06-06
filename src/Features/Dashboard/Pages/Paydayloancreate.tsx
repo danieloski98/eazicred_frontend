@@ -32,7 +32,8 @@ export default function Paydayloancreation() {
   const history = useHistory();
 
   const changeStage = (st: number) => {
-    setStage(st)
+    setStage(st);
+    window.scrollTo(0,0);
   }
 
   const prev = () => {

@@ -1,7 +1,7 @@
 import React from 'react'
-import * as yup from 'yup';
-import { useFormik } from 'formik'
-import useUser from '../../../../hooks/useUser';
+//import * as yup from 'yup';
+// import { useFormik } from 'formik'
+//import useUser from '../../../../hooks/useUser';
 import { paydayloanAtom } from '../../../../States/paydayloanstate';
 import { useToast } from '@chakra-ui/react'
 //import useForm from './useForm';
@@ -13,27 +13,27 @@ interface IProps {
 }
 
 // validation schema
-const validationSchema = yup.object({
-  firstname: yup.string().required('This field is required'),
-  lastname: yup.string().required('This field is required'),
-  DOB: yup.date().required('This field is required'),
-  BVN: yup.string().required('This field is required'),
-  Means_of_ID: yup.string().required('This field is required'),
-  date_issued: yup.date().required('This field is required'),
-  ID_number: yup.string().required('This field is required'),
-  expiry_date: yup.date().required('This field is required'),
-  phone: yup.string().required('This field is required'),
-  alt_number: yup.string(),
-  marital_status: yup.number().required('This field is required'),
-  next_of_kin_surname: yup.string().required('This field is required'),
-  next_of_kin_firstname: yup.string().required('This field is required'),
-  next_of_kin_relationship: yup.string().required('This field is required'),
-  next_of_kin_phone: yup.string().required('This field is required'),
-  next_of_kin_address: yup.string().required('This field is required')
-});
+// const validationSchema = yup.object({
+//   firstname: yup.string().required('This field is required'),
+//   lastname: yup.string().required('This field is required'),
+//   DOB: yup.date().required('This field is required'),
+//   BVN: yup.string().required('This field is required'),
+//   Means_of_ID: yup.string().required('This field is required'),
+//   date_issued: yup.date().required('This field is required'),
+//   ID_number: yup.string().required('This field is required'),
+//   expiry_date: yup.date().required('This field is required'),
+//   phone: yup.string().required('This field is required'),
+//   alt_number: yup.string(),
+//   marital_status: yup.number().required('This field is required'),
+//   next_of_kin_surname: yup.string().required('This field is required'),
+//   next_of_kin_firstname: yup.string().required('This field is required'),
+//   next_of_kin_relationship: yup.string().required('This field is required'),
+//   next_of_kin_phone: yup.string().required('This field is required'),
+//   next_of_kin_address: yup.string().required('This field is required')
+// });
 
 export default function PaydayloanForm1(props: IProps) {
-  const { user } = useUser();
+  // const { user } = useUser();
   const [loan, setLoan] = useRecoilState(paydayloanAtom);
   const { formik } = useForm();
   const toast = useToast();
@@ -188,7 +188,7 @@ export default function PaydayloanForm1(props: IProps) {
 
         <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Phone number</label>
-            <input type="text" name="phone" value={formik.values.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('phone', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <input type="number" name="phone" value={formik.values.phone} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('phone', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.phone && <p className="text-sm text-red-500 mt-3">{formik.errors.phone}</p>
             }
@@ -196,7 +196,7 @@ export default function PaydayloanForm1(props: IProps) {
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
             <label htmlFor={'newpassword'}>Alt number</label>
-            <input type="text" name="alt_number" value={formik.values.alt_number} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('alt_number', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
+            <input type="number" name="alt_number" value={formik.values.alt_number} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('alt_number', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.alt_number && <p className="text-sm text-red-500 mt-3">{formik.errors.alt_number}</p>
             }

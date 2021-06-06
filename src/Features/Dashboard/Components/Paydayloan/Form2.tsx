@@ -1,6 +1,6 @@
 import React from 'react'
-import * as yup from 'yup';
-import { useFormik } from 'formik'
+//import * as yup from 'yup';
+//import { useFormik } from 'formik'
 // import useUser from '../../../../hooks/useUser';
 import { useRecoilState } from 'recoil'
 import { paydayloanAtom } from '../../../../States/paydayloanstate';
@@ -12,12 +12,12 @@ interface IProps {
 }
 
 // validation schema
-const validationSchema = yup.object({
-  state: yup.string().required('This field is required'),
-  landmark: yup.string().required('This field is required'),
-  LGA_of_residence: yup.string().required('This field is required'),
-  home_address: yup.string().required(),
-});
+// const validationSchema = yup.object({
+//   state: yup.string().required('This field is required'),
+//   landmark: yup.string().required('This field is required'),
+//   LGA_of_residence: yup.string().required('This field is required'),
+//   home_address: yup.string().required(),
+// });
 
 export default function PaydayloanForm2(props: IProps) {
   // const { user } = useUser();

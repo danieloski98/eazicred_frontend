@@ -1,6 +1,6 @@
 import React from 'react';
 
-import { useDispatch } from 'react-redux';
+//import { useDispatch } from 'react-redux';
 import { Link } from 'react-router-dom';
 
 import care from '../../assets/care.jpg';
@@ -9,7 +9,8 @@ import eligibility_img from '../../assets/eligibility-img.png';
 import george from '../../assets/george.png';
 import hero from '../../assets/hero-image.png';
 import OnPageSignUp from './OnPageSignUp';
-import { gettingStarted } from '../../redux/actions/actions';
+//import { gettingStarted } from '../../redux/actions/actions';
+import { useFormik } from 'formik'
 import {
   ABOUT_URL,
   // DASHBOARD_LOAN_APPLICATION_URL,
@@ -20,7 +21,16 @@ import {
 import { useHistory } from 'react-router-dom'
 import NewLoanCalculator from './NewLoanCalculator';
 
+
 const Home = () => {
+  const field = useFormik({
+    initialValues: {
+      email: ''
+    },
+    onSubmit: () => {},
+  });
+
+
   const history = useHistory();
     document.title = "EaziCred - Better Loan Offers"
     React.useEffect(() => {
@@ -44,12 +54,10 @@ const Home = () => {
             nextArrow: false
         });
     }, [])
-    const [form, setForm] = React.useState('')
-
-    const dispatch = useDispatch()
 
     const getStarted = () => {
-        dispatch(gettingStarted(form))
+        localStorage.setItem('em', field.values.email);
+        // dispatch(gettingStarted(form))
         history.push(REGISTER_URL)
     }
 
@@ -62,10 +70,10 @@ const Home = () => {
                             <h1 className="h-1">Loans For Everyone</h1>
                             <p className="p-1 md:mt-32 sm:mt-32 xl:mt-20 lg:mt-20">Apply &amp; Get Credited</p>
 
-                            <form>
-                                <input value={form} onChange={(e) => setForm(e.target.value)} type="email" className="email" placeholder="Type your e-mail"/>
-                                    <button onClick={getStarted} className="btn btn-blue">Get Started</button>
-                            </form>
+                            <div className="flex">
+                                <input value={field.values.email} name="email" onChange={field.handleChange} type="email" className="email h-20" placeholder="Type your e-mail"/>
+                                    <button onClick={getStarted} className="w-32 h-20 rounded text-white font-bold bg-customGreen text-sm">Get Started</button>
+                            </div>
 
                             <p>{"By clicking \"Get Started\" you confirming that you agree with our following "}
                                 <Link to={TERMS_URL}>Terms and Conditions</Link>

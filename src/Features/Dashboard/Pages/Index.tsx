@@ -25,7 +25,7 @@ export default function Dashboard() {
     <div className="w-full h-screen flex overflow-hidden">
 
       <div className="w-80 h-full bg-gray-100 z-10 pt-10 pl-0 xl:flex lg:flex sm:hidden md:hidden flex-col">
-        <img src="/assets/logo-black.png" alt="" className="w-4/5 ml-10" />
+        <img src="/assets/eazicred-logo.svg" alt="" className="w-4/5 ml-10" />
 
         <div className="flex-1 mt-24">
 
