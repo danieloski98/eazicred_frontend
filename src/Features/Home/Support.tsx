@@ -17,12 +17,12 @@ const Support = () => {
         setForm({...form, [name]: value})
     }
 
-    async function handleSubmit(e: any) {
+    const  handleSubmit = async(e: any) => {
         setLoading(true);
         const request = await fetch(`${URL}/admin/support`, {
-          method: 'POST',
+          method: 'Post',
           headers: {
-            'content-type': 'application/json'
+            'Content-Type': 'application/json'
           },
           body: JSON.stringify(form),
         })

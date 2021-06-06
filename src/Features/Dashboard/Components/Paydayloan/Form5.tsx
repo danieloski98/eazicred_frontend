@@ -19,12 +19,12 @@ interface IProps {
 
 // validation schema
 const validationSchema = yup.object({
-  passport: yup.mixed().required('This field is required'),
-  government_ID: yup.mixed().required('This field is required'),
-  letter_of_employment: yup.mixed().required('This field is required'),
-  HR_letter_of_confirmation: yup.mixed().required('This field is required'),
-  utility_bill: yup.mixed().required('This field is required'),
-  company_id: yup.mixed().required(),
+  passport: yup.mixed(),
+  government_ID: yup.mixed(),
+  letter_of_employment: yup.mixed(),
+  HR_letter_of_confirmation: yup.mixed(),
+  utility_bill: yup.mixed(),
+  company_id: yup.mixed(),
 });
 
 
@@ -53,10 +53,10 @@ export default function PaydayloanForm5(props: IProps) {
   })
 
   const submit = async () => {
-    if (!formik.isValid) {
+    if (!formik.dirty) {
        toast({
          title: 'Attention',
-         description: 'You have to fill in the form correctly to continue',
+         description: 'You have to pick the required files to continue',
          position: 'top',
          status: 'error',
          isClosable: true
