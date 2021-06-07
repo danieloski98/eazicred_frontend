@@ -104,6 +104,8 @@ export default function PaydayloanForm5(props: IProps) {
       const json1 = await request1.json() as IReturn;
       console.log(json1);
       if (json1.statusCode === 200) {
+        localStorage.removeItem('formdata');
+        // data.resetForm();
         // make second request
         const formdata = new FormData();
         formdata.append('HR_letter_of_confirmation', formik.values.HR_letter_of_confirmation);
@@ -128,7 +130,7 @@ export default function PaydayloanForm5(props: IProps) {
           setLoading(false);
           setSuccess(true);
           localStorage.removeItem('formdata');
-          data.setValues({} as any);
+          data.resetForm();
         }else {
           toast({
             title: 'Attention',
