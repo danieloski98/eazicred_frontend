@@ -137,7 +137,7 @@ export default function SMELoanForm() {
       <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col mt-14">
 
         <div className="flex-1 flex flex-col">
-            <label htmlFor={'newpassword'}>How long as the business been in existence (in years)</label>
+            <label htmlFor={'newpassword'}>How long has the business been in existence <br /> (in years)</label>
             <input type="text" name="business_up_time" value={formik.values.business_up_time} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('business_up_time', true, true)} className="xl:w-4/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"/>
             {
               formik.errors.business_up_time && <p className="text-sm text-red-500 mt-3">{formik.errors.business_up_time}</p>
