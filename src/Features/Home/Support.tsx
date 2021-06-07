@@ -1,30 +1,60 @@
 import React from 'react';
-import phone from '../../assets/phone.svg';
-import message from '../../assets/message.svg';
-import emailjs from 'emailjs-com';
 import OnPageSignUp from './OnPageSignUp';
 import { URL } from '../../helpers/url';
 import { useToast, Spinner } from '@chakra-ui/react'
 import { IReturn } from '../../helpers/ApiReturnType';
+import { FiPhone, FiMail } from 'react-icons/fi'
+import * as yup from 'yup';
+import { useFormik } from 'formik'
+
+// validation
+const validationSchema = yup.object({
+  name: yup.string().required('This field is required'),
+  email: yup.string().email('Invalida email').required('This field is required'),
+  message: yup.string().required('this field is required')
+});
 
 const Support = () => {
     document.title = 'Eazicred - Support'
     const [loading, setLoading] = React.useState(false);
-    const [form, setForm] = React.useState({name: '', email: '', message: ""});
     const toast = useToast();
-    const handleChange = (e: any) => {
-        const {name, value} = e.target
-        setForm({...form, [name]: value})
-    }
+
+    const formik = useFormik({
+      initialValues: {
+        name: '',
+        email: '',
+        message: '',
+      },
+      onSubmit: () => {},
+      validationSchema
+    })
+
 
     const  handleSubmit = async(e: any) => {
+      if (!formik.dirty) {
+        toast({
+          title: 'Error',
+          description: `Fill the form to be able to submit`,
+          status: 'warning',
+          position: 'top',
+          isClosable: true,
+        })
+      }else if (!formik.isValid) {
+        toast({
+          title: 'Error',
+          description: `Fill in the form correctly to be able to submit`,
+          status: 'error',
+          position: 'top',
+          isClosable: true,
+        })
+      }else {
         setLoading(true);
         const request = await fetch(`${URL}/admin/support`, {
           method: 'Post',
           headers: {
             'Content-Type': 'application/json'
           },
-          body: JSON.stringify(form),
+          body: JSON.stringify(formik.values),
         })
 
         const json = await request.json() as IReturn;
@@ -46,6 +76,8 @@ const Support = () => {
             isClosable: true,
           })
         }
+      }
+
     }
 
     React.useEffect(() => {
@@ -56,49 +88,72 @@ const Support = () => {
         <React.Fragment>
             <header>
                 <div className="hero-support">
-                    <div className="container">
-                        <div className="support-box">
-                            <h2 className="h-2">Support</h2>
-                            <p className="pt-14">Get in touch and a representative will respond shortly</p>
-                            <div className="support__inner">
-                                <div className="support__col--1">
-                                    <h3 className="h-3">Lagos</h3>
-                                    <p className="address pt-5">5 Adebisi Ladejobi street, Ilupeju<br/>
-                                        +234 802 074 0286<br/>
-                                        contact@eazicred.com
-                                    </p>
-                                </div>
-                                <div className="support__col--1">
-                                    <a href="tel:+2349016888927">
-                                        <img src={phone} alt="phone icon"/>
-                                    </a>
-                                    <a href="mailto:contact@eazicred.com">
-                                        <img src={message} alt="message icon"/>
-                                    </a>
-                                </div>
-                            </div>
-                            <p>Alternatively, You can also fill the form below</p>
-                            <div className="support__form" onSubmit={handleSubmit}>
-                                <div className="input-groups">
-                                    <div className="input-group">
-                                        <label htmlFor="name">Name</label>
-                                        <input value={form.name} onChange={handleChange} name="name" id="name" type="text"/>
-                                    </div>
-                                    <div className="input-group">
-                                        <label htmlFor="email">Email Address</label>
-                                        <input value={form.email} onChange={handleChange} name="email" id="email" type="email"/>
-                                    </div>
-                                </div>
-                                <div className="message-box">
-                                    <label htmlFor="message">Message</label>
-                                    <textarea value={form.message} onChange={handleChange} name="message" id='message'/>
-                                </div>
-                                <button onClick={handleSubmit} type="submit" className="btn btn-blue">
-                                  {loading && <Spinner size="md" color="white" />}
-                                  Send Message
-                                  </button>
-                            </div>
+                    <div className="sm:px-12">
+
+
+                    <div className="xl:w-400px lg:w-300px md:w-full sm:w-full xl:h-auto lg:h-auto md:h-auto sm:h-auto rounded-lg bg-white p-10 flex flex-col xl:ml-10 lg:ml-10 md:ml-0 sm:ml-0 sm:mx-10 md:mx-12 xl:mx-0 lg:mx-0">
+
+                      <h2 className="text-3xl font-bold">Support</h2>
+                      <p className="pt-0 text-xl mt-4">Get in touch and a representative will respond shortly</p>
+
+                      <div className="flex items-center justify-between mt-4">
+
+                        <div className="">
+                          <h3 className="h-3 text-2xl">Lagos</h3>
+                            <p className=" pt-4 mt-4 text-xl">5 Adebisi Ladejobi street, Ilupeju<br/>
+                                +234 802 074 0286<br/>
+                                contact@eazicred.com
+                            </p>
                         </div>
+
+                        <div className="h-full flex flex-col justify-end">
+                          <a href="tel:+2349016888927">
+                            <FiPhone  color="lightgrey" size={30} />
+                          </a>
+                          <a href="mailto:contact@eazicred.com" className="mt-2">
+                            <FiMail color="lightgrey" size={30} />
+                          </a>
+                        </div>
+
+                      </div>
+
+                      <div className="w-full flex-col flex mt-10">
+
+                        <div className="flex xl:flex-row lg:flex-row md:flex-col sm:flex-col w-full">
+
+                          <div className="flex-col flex w-full flex-1 xl:mr-2 lg:mr-2 sm:mb-6">
+                            <label> Name</label>
+                            <input type="text" name="name" value={formik.values.name} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('name', true, true)} id="" className="w-full border-2 border-gray-300 rounded-lg h-20 px-4" />
+                            {formik.touched.name && formik.errors.name && <p className="mt-2 text-red-500">{formik.errors.name}</p>}
+                          </div>
+
+                          <div className="flex-col flex w-full flex-1 xl:ml-2 lg:ml-2">
+                            <label> Email</label>
+                            <input type="text" name="email" value={formik.values.email} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('email', true, true)} id="" className="w-full border-2 border-gray-300 rounded-lg h-20 px-4" />
+                            {formik.touched.email && formik.errors.email && <p className="mt-2 text-red-500">{formik.errors.email}</p>}
+                          </div>
+
+
+                        </div>
+
+                        <div className="flex-col flex w-full xl:ml-2 sm:mt-6">
+                            <label> Message</label>
+                            <textarea name="message" value={formik.values.message} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('message', true, true)}  className="w-full rounded-lg border-2 border-gray-300 h-40 p-4" />
+                            {formik.touched.message && formik.errors.message && <p className="mt-2 text-red-500">{formik.errors.message}</p>}
+                        </div>
+
+                        <div className="flex-col flex w-full xl:ml-2 sm:mt-6">
+                            <button onClick={handleSubmit} className="w-full rounded-lg bg-customGreen text-white h-20">
+                              {loading && <Spinner color="white" size="md" />}
+                              Submit
+                            </button>
+                        </div>
+
+                      </div>
+
+                    </div>
+
+
                     </div>
                 </div>
             </header>
@@ -108,3 +163,47 @@ const Support = () => {
 }
 
 export default Support;
+
+
+// <div className="support-box">
+//                             <h2 className="h-2">Support</h2>
+//                             <p className="pt-14">Get in touch and a representative will respond shortly</p>
+//                             <div className="support__inner">
+//                                 <div className="support__col--1">
+//                                     <h3 className="h-3">Lagos</h3>
+//                                     <p className="address pt-5">5 Adebisi Ladejobi street, Ilupeju<br/>
+//                                         +234 802 074 0286<br/>
+//                                         contact@eazicred.com
+//                                     </p>
+//                                 </div>
+//                                 <div className="support__col--1">
+//                                     <a href="tel:+2349016888927">
+//                                         <img src={phone} alt="phone icon"/>
+//                                     </a>
+//                                     <a href="mailto:contact@eazicred.com">
+//                                         <img src={message} alt="message icon"/>
+//                                     </a>
+//                                 </div>
+//                             </div>
+//                             <p>Alternatively, You can also fill the form below</p>
+//                             <div className="support__form" onSubmit={handleSubmit}>
+//                                 <div className="input-groups">
+//                                     <div className="input-group">
+//                                         <label htmlFor="name">Name</label>
+//                                         <input value={form.name} onChange={handleChange} name="name" id="name" type="text"/>
+//                                     </div>
+//                                     <div className="input-group">
+//                                         <label htmlFor="email">Email Address</label>
+//                                         <input value={form.email} onChange={handleChange} name="email" id="email" type="email"/>
+//                                     </div>
+//                                 </div>
+//                                 <div className="message-box">
+//                                     <label htmlFor="message">Message</label>
+//                                     <textarea value={form.message} onChange={handleChange} name="message" id='message'/>
+//                                 </div>
+//                                 <button onClick={handleSubmit} type="submit" className="btn btn-blue">
+//                                   {loading && <Spinner size="md" color="white" />}
+//                                   Send Message
+//                                   </button>
+//                             </div>
+//                         </div>
