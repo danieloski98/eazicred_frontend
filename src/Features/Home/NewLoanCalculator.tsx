@@ -14,7 +14,7 @@ export default function NewLoanCalculator() {
     initialValues: {
       months: 0,
       amount: 0,
-      interest: 0,
+      interest: 8,
     },
     onSubmit: () => {},
     validationSchema,
@@ -82,12 +82,12 @@ export default function NewLoanCalculator() {
 
         <div className="xl:mt-0 lg:mt-0 md:mt-6 sm:mt-6">
           <p>Monthly Payment</p>
-          <p className="text-5xl font-bold">NGN{results.monthlyPayment}</p>
+          <p className="text-5xl font-bold">NGN {results.monthlyPayment}.00</p>
         </div>
 
         <div className="xl:mt-0 lg:mt-0 md:mt-6 sm:mt-6">
           <p>Total Interest</p>
-          <p className="text-5xl font-bold">NGN{results.totalInterest}</p>
+          <p className="text-5xl font-bold">NGN {results.totalInterest}.00</p>
         </div>
 
         <div className="xl:mt-0 lg:mt-0 md:mt-6 sm:mt-6">

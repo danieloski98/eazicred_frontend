@@ -112,7 +112,7 @@ export default function Paydayloancreation() {
                 <p className="mt-6 font-normal text-xl">Fill in the forms to complete your loan application</p>
             </div>
 
-            <div className="w-full h-full border-t-2 border-gray-200 mt-16 flex mb-10">
+            <div className="w-full h-full border-t-2 border-gray-200 mt-16 flex mb-0">
 
               <div className="w-1/4 h-full border-r-2 border-gray-200 xl:flex lg:flex md:hidden sm:hidden flex-col justify-center">
                   <div onClick={() => changeStage(1)} className="flex items-center justify-between px-6 cursor-pointer">

@@ -47,8 +47,12 @@ const Faqs = () => {
                         </div>
                         <div className="faq">
                             <h6 className="h-6">Q: How long does it take for loan to be disbursed?</h6>
-                            <p>A: 24 hours or less after terms of the loan are agreed Q: Can I liquidate an existing
+                            <p>A: 24 hours or less after terms of the loan are agreed
                                 loan?</p>
+                        </div>
+                        <div className="faq">
+                            <h6 className="h-6"> Q: Can I liquidate an existing?</h6>
+                            <p>Yes. The prorated interest rate will be applied</p>
                         </div>
                         <div className="faq">
                             <h6 className="h-6">Q: Can I change repayment date?</h6>

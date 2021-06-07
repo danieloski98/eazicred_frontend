@@ -30,7 +30,7 @@ const Support = () => {
     })
 
 
-    const  handleSubmit = async(e: any) => {
+    const  handleSubmit = async() => {
       if (!formik.dirty) {
         toast({
           title: 'Error',
@@ -52,7 +52,7 @@ const Support = () => {
         const request = await fetch(`${URL}/admin/support`, {
           method: 'Post',
           headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json',
           },
           body: JSON.stringify(formik.values),
         })

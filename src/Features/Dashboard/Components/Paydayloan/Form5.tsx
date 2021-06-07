@@ -161,6 +161,7 @@ export default function PaydayloanForm5(props: IProps) {
   return (
     <div className="w-full flex flex-col">
       <SMEDialog isOpen={success} onClose={close} />
+
       <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col">
 
         <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
@@ -228,7 +229,7 @@ export default function PaydayloanForm5(props: IProps) {
 
       <div className="w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col mt-14">
 
-      <div className="flex-1 flex flex-col xl:mt-0 lg:mt-0 md:mt-14 sm:mt-14">
+      <div className="flex-1 flex flex-col">
             <label htmlFor={'newpassword'}>Company ID</label>
             <input type="file" name="company_id" onBlur={formik.handleBlur} className="xl:w-2/5 lg:w-4/5 md:w-full sm:w-full rounded-lg border-2 border-gray-200 h-16 mt-3 p-3"
               onChange={(e) => {
@@ -257,15 +258,15 @@ export default function PaydayloanForm5(props: IProps) {
       </div>
 
 
-      <div className="xl:w-6/12 lg:w-6/12 md:w-full sm:w-full flex xl:flex-row lg:flex-row md:flex-col sm:flex-col mt-14">
+      {/* <div className="xl:w-6/12 lg:w-6/12 md:w-full sm:w-full flex xl:flex-row lg:flex-row md:flex-row sm:flex-row mt-14">
 
        <Switch size="lg" onChange={() => setDraft(prev => !prev)}/>
        <p>Save as draft </p>
 
-        </div>
+        </div> */}
 
 
-      <div className="xl:w-88/100 lg:w-11/12 md:w-full sm:w-full flex justify-end mt-10 mb-10">
+      <div className="xl:w-88/100 lg:w-11/12 md:w-full sm:w-full flex justify-end mt-6 mb-6">
         <button disabled={loading} className="xl:w-56 lg:w-56 md:w-full sm:w-full h-14 rounded-lg text-white bg-customGreen" onClick={submit}>
           {loading && <Spinner color="white" size="md" />}
           Submit
