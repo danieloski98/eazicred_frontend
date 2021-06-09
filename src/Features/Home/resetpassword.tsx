@@ -45,7 +45,7 @@ const ResetPassword = (props: any) => {
         alert('Please fill in the form correctly');
       }else {
         setLoading(true);
-        const request = await fetch(`${URL}/auth/resetpassword/${id}`, {
+        const request = await fetch(`${URL}/auth/resetpassword/${props.match.params.id}`, {
           method: 'post',
           headers: {
             'Content-Type': 'application/json',
