@@ -15,7 +15,7 @@ import { IReturn } from '../../helpers/ApiReturnType';
 
 // validation schema
 const validationSchema = yup.object({
-  password: yup.string().required('This field is required').email('Invalid Email'),
+  password: yup.string().min(8, 'Minimium of 8 characters').required('This field is required'),
   confirmpassword: yup.string().min(8, 'Minimium of 8 characters').required('This field is required'),
 })
 
