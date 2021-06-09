@@ -16,6 +16,12 @@ export default function Dashboard() {
   const location = useLocation();
   const history = useHistory()
 
+  React.useEffect(() => {
+    if (localStorage.getItem('user') === null) {
+      history.push('/login');
+    }
+  });
+
   const logout = () => {
     history.push('/');
     localStorage.clear()

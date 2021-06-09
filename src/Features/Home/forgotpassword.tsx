@@ -1,14 +1,11 @@
 import React from 'react';
 import {
   Link,
-  useHistory
 } from 'react-router-dom';
 
 // formik and yup
 import * as yup from 'yup'
 import { useFormik } from 'formik'
-import { LoginController } from '../../controllers/Login/Index';
-import useUser from '../../hooks/useUser';
 import { Spinner, useToast } from '@chakra-ui/react'
 import { URL } from '../../helpers/url';
 import { IReturn } from '../../helpers/ApiReturnType';
@@ -21,10 +18,8 @@ const validationSchema = yup.object({
 
 const ForgotPassword = () => {
     document.title = "Eazicred - Login to eazicred"
-    const {setUser, setToken} = useUser();
     const toast = useToast();
     const [loading, setLoading] = React.useState(false);
-    const location = useHistory();
 
 
     // formik

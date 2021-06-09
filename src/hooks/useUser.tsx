@@ -36,18 +36,18 @@ export default function useUser() {
 
   React.useEffect(() => {
     if (localStorage.getItem('user') === null) {
-      history.push('/login');
-  }else {
-    const user = localStorage.getItem('user') as string;
-    seUser(JSON.parse(user));
-
-    // check for token
-    if (localStorage.getItem('token') === null) {
-      history.push('/login');
+      // history.push('/login');
     }else {
-      seToken(localStorage.getItem('token') as string);
+      const user = localStorage.getItem('user') as string;
+      seUser(JSON.parse(user));
+
+      // check for token
+      if (localStorage.getItem('token') === null) {
+        history.push('/login');
+      }else {
+        seToken(localStorage.getItem('token') as string);
+      }
     }
-  }
   }, [history, seToken, seUser])
   // React.useEffect(() => {
 
