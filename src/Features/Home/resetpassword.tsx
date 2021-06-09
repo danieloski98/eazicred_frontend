@@ -86,7 +86,7 @@ const ResetPassword = (props: any) => {
                             <div className="input-group">
                                 <label htmlFor="email">New Password</label>
                                 <input
-                                    value={formik.values.password} name="password" id="email" type="email"
+                                    value={formik.values.password} name="password" id="email" type="password"
                                     placeholder="example@eazycred.com" onChange={formik.handleChange} onFocus={() => formik.setFieldTouched('password', true, true)} onBlur={formik.handleBlur} className="email"
                                 />
                                 {formik.errors.password && <div className="text-sm text-red-500 mt-3">{formik.errors.password}</div>}
@@ -104,7 +104,7 @@ const ResetPassword = (props: any) => {
                                 loading ?
                                 <Spinner color="white" size="md" />
                                 :
-                                <span>Login</span>
+                                <span>Submit</span>
                               }
                             </button>
                         </div>

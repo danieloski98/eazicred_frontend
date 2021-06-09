@@ -95,7 +95,7 @@ const ForgotPassword = () => {
                             </button>
                             <p className="text-center mt-5">Already Have An Account?
                                 <Link to='/login' className="primary-color">
-                                    Login
+                                    submit
                                 </Link>
                             </p>
                         </div>
