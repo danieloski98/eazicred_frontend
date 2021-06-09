@@ -10,26 +10,26 @@ import { useFormik } from 'formik'
 import { LoginController } from '../../controllers/Login/Index';
 import useUser from '../../hooks/useUser';
 import { Spinner, useToast } from '@chakra-ui/react'
+import { URL } from '../../helpers/url';
+import { IReturn } from '../../helpers/ApiReturnType';
 
 // validation schema
 const validationSchema = yup.object({
   email: yup.string().required('This field is required').email('Invalid Email'),
-  password: yup.string().min(8, 'Minimium of 8 characters').required('This field is required'),
 })
 
 
-const Login = () => {
+const ForgotPassword = () => {
     document.title = "Eazicred - Login to eazicred"
     const {setUser, setToken} = useUser();
     const toast = useToast();
     const [loading, setLoading] = React.useState(false);
     const location = useHistory();
 
-    const loginController = new LoginController();
 
     // formik
     const formik = useFormik({
-      initialValues: {email: '', password: ''},
+      initialValues: {email: ''},
       onSubmit: () => {},
       validationSchema,
     })
@@ -42,26 +42,27 @@ const Login = () => {
         alert('Please fill in the form correctly');
       }else {
         setLoading(true);
-        const data = await loginController.login(formik.values);
-        if (data.statusCode === 200) {
+        const request = await fetch(`${URL}/auth/forgotpassword/${formik.values.email}`, {
+          method: 'post',
+        });
 
-          const tok = data.data['token'];
-          const user = data.data['user'];
-          // const obj = {token:token, ...user};
-          setUser(user);
-          setToken(tok);
-          setLoading(false);
-          localStorage.setItem('user', JSON.stringify(user));
-          localStorage.setItem('token', tok);
-          location.push('/dashboard/');
+        const json = await request.json() as IReturn;
+        setLoading(false);
+        if (json.statusCode === 200) {
+          toast({
+            title: 'Success',
+            description: json.successMessage,
+            status: 'success',
+            position: 'top',
+            isClosable: true
+          })
         }else {
-          setLoading(false);
           toast({
             title: 'Error',
-            description: `${data.errorMessage}`,
+            description: json.errorMessage,
+            status: 'error',
             position: 'top',
-            isClosable: true,
-            status: 'error'
+            isClosable: true
           })
         }
 
@@ -73,8 +74,8 @@ const Login = () => {
             <div className="account">
                 <div className="account__details">
                     <div className="account__inner">
-                        <h2 className="font-bold text-4xl mb-3">Welcome Back</h2>
-                        <p className="mb-5 text-md">Enter your credentials to continue</p>
+                        <h2 className="font-bold text-4xl mb-3">Request Link</h2>
+                        <p className="mb-5 text-md">Enter your email address</p>
                         <div className="form">
                             <div className="input-group">
                                 <label htmlFor="email">Email Address</label>
@@ -84,14 +85,6 @@ const Login = () => {
                                 />
                                 {formik.errors.email && <div className="text-sm text-red-500 mt-3">{formik.errors.email}</div>}
                             </div>
-                            <div className="input-group">
-                                <label htmlFor="password">Password</label>
-                                <input
-                                    name="password" value={formik.values.password} id="password" type="password" required
-                                    onChange={formik.handleChange} onFocus={() => formik.setFieldTouched('password', true, true)} onBlur={formik.handleBlur} className="password"
-                                />
-                                {formik.errors.password && <div className="text-sm text-red-500 mt-3">{formik.errors.password}</div>}
-                            </div>
                             <button className="btn btn-blue w-full h-20" onClick={submit} disabled={loading}>
                               {
                                 loading ?
@@ -100,16 +93,9 @@ const Login = () => {
                                 <span>Login</span>
                               }
                             </button>
-
-                            <p className="text-center mt-5">
-                                <Link to='/forgotpassword' className="primary-color">
-                                  Forgot password ?
-                                </Link>
-                            </p>
-
-                            <p className="text-center mt-5">Don't Have An Account?
-                                <Link to='/register' className="primary-color">
-                                    Register
+                            <p className="text-center mt-5">Already Have An Account?
+                                <Link to='/login' className="primary-color">
+                                    Login
                                 </Link>
                             </p>
                         </div>
@@ -122,4 +108,4 @@ const Login = () => {
 }
 
 
-export default Login;
+export default ForgotPassword;

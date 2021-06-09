@@ -23,12 +23,16 @@ import {
   PRIVACY_URL,
   TERMS_URL,
 } from "../routes/paths";
+import ForgotPassword from "../Features/Home/forgotpassword";
+import ResetPassword from "../Features/Home/resetpassword";
 
 export default function Index() {
   return (
       <>
         <Route path={HOME_URL} component={Home} exact />
         <Route path={LOGIN_URL} component={Login} exact />
+        <Route path='/forgotpassword' component={ForgotPassword} exact />
+        <Route path='/resetpassword/:id' component={ResetPassword} exact />
         <Route path={REGISTER_URL} component={RegisterContainer} exact />
         <Route path={ABOUT_URL} component={About} exact />
         <Route path={SUPPORT_URL} component={Support} exact />
