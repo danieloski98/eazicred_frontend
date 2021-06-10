@@ -85,12 +85,12 @@ const ForgotPassword = () => {
                                 loading ?
                                 <Spinner color="white" size="md" />
                                 :
-                                <span>Login</span>
+                                <span>Submit</span>
                               }
                             </button>
                             <p className="text-center mt-5">Already Have An Account?
                                 <Link to='/login' className="primary-color">
-                                    submit
+                                    Login
                                 </Link>
                             </p>
                         </div>

@@ -69,7 +69,7 @@ const Home = () => {
                     <div className="hero__inner">
                         <div className="hero__text-box">
                             <h1 className="h-1">Loans For Everyone</h1>
-                            <p className="p-1 md:mt-32 sm:mt-32 xl:mt-20 lg:mt-20">Apply &amp; Get Credited</p>
+                            <p className="p-1 md:mt-16 sm:mt-16 xl:mt-20 lg:mt-20">Apply &amp; Get Credited</p>
 
                             <div className="flex">
                                 <input value={field.values.email} name="email" onChange={field.handleChange} type="email" className="email h-20" placeholder="Type your e-mail"/>
@@ -122,7 +122,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className="choice">
+            <section className="choice xl:px-16 lg:px-16">
                 <div className="container">
                     <div className="choice__inner">
                         <div className="choice__text-box">
@@ -144,7 +144,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className="loans loans-pc">
+            <section className="loans loans-pc xl:px-16 lg:px-16">
                 <div className="container">
                     <div className="loans__inner-pc">
                         <div>
@@ -192,7 +192,7 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className="eligibility">
+            <section className="eligibility xl:px-16 lg:px-16">
                 <div className="container">
                     <div className="eligibility__inner">
                         <div className="eligibility__image-box">
@@ -215,10 +215,10 @@ const Home = () => {
                     </div>
                 </div>
             </section>
-            <section className="testimonials">
+            <section className="testimonials xl:px-16 lg:px-16">
                 <div className="container">
-                    <h2 className="h-2">What People Are Saying</h2>
-                    <p className="pt-32 mb-10">About Us</p>
+                    <h2 className="h-2">What People Are Saying About Us</h2>
+                    <p className="pt-32 mb-10"></p>
                     <div className="testimonials__inner">
                         <div className="testimonials__list">
                             <div className="testimonial">
@@ -262,8 +262,8 @@ const Home = () => {
                         </div>
                         <div className="testimonials__overview">
                             <div className="arrow-btns">
-                                <button><i className="fas fa-chevron-right"/></button>
-                                <button><i className="fas fa-chevron-left"/></button>
+                                {/* <button><i className="fas fa-chevron-right"/></button>
+                                <button><i className="fas fa-chevron-left"/></button> */}
                             </div>
                             <div className="testimonials__details">
                                 <h3 className="h-3">Our customers have amazing reviews<br/> about our service</h3>
