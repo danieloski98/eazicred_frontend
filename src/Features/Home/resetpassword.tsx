@@ -21,14 +21,10 @@ const validationSchema = yup.object({
 
 
 const ResetPassword = (props: any) => {
-    const id = React.useRef(props.match.params.id);
     document.title = "Eazicred - Login to eazicred"
-    const {setUser, setToken} = useUser();
     const toast = useToast();
     const [loading, setLoading] = React.useState(false);
     const location = useHistory();
-
-    const loginController = new LoginController();
 
     // formik
     const formik = useFormik({
@@ -62,6 +58,7 @@ const ResetPassword = (props: any) => {
             isClosable: true,
             position: 'top',
           })
+          location.push('/login');
         }else {
           toast({
             title: 'Error',
