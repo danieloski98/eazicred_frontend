@@ -10,8 +10,8 @@ import { useFormik } from 'formik'
 // validation
 const validationSchema = yup.object({
   name: yup.string().required('This field is required'),
-  email: yup.string().email('Invalida email').required('This field is required'),
-  message: yup.string().required('this field is required')
+  email: yup.string().email('Invalid email').required('This field is required'),
+  message: yup.string(),
 });
 
 const Support = () => {
@@ -139,7 +139,7 @@ const Support = () => {
                         <div className="flex-col flex w-full xl:ml-2 sm:mt-6">
                             <label> Message</label>
                             <textarea name="message" value={formik.values.message} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('message', true, true)}  className="w-full rounded-lg border-2 border-gray-300 h-40 p-4" />
-                            {formik.touched.message && formik.errors.message && <p className="mt-2 text-red-500">{formik.errors.message}</p>}
+                            {/* {formik.touched.message && formik.errors.message && <p className="mt-2 text-red-500">{formik.errors.message}</p>} */}
                         </div>
 
                         <div className="flex-col flex w-full xl:ml-2 sm:mt-6">
@@ -164,46 +164,3 @@ const Support = () => {
 
 export default Support;
 
-
-// <div className="support-box">
-//                             <h2 className="h-2">Support</h2>
-//                             <p className="pt-14">Get in touch and a representative will respond shortly</p>
-//                             <div className="support__inner">
-//                                 <div className="support__col--1">
-//                                     <h3 className="h-3">Lagos</h3>
-//                                     <p className="address pt-5">5 Adebisi Ladejobi street, Ilupeju<br/>
-//                                         +234 802 074 0286<br/>
-//                                         contact@eazicred.com
-//                                     </p>
-//                                 </div>
-//                                 <div className="support__col--1">
-//                                     <a href="tel:+2349016888927">
-//                                         <img src={phone} alt="phone icon"/>
-//                                     </a>
-//                                     <a href="mailto:contact@eazicred.com">
-//                                         <img src={message} alt="message icon"/>
-//                                     </a>
-//                                 </div>
-//                             </div>
-//                             <p>Alternatively, You can also fill the form below</p>
-//                             <div className="support__form" onSubmit={handleSubmit}>
-//                                 <div className="input-groups">
-//                                     <div className="input-group">
-//                                         <label htmlFor="name">Name</label>
-//                                         <input value={form.name} onChange={handleChange} name="name" id="name" type="text"/>
-//                                     </div>
-//                                     <div className="input-group">
-//                                         <label htmlFor="email">Email Address</label>
-//                                         <input value={form.email} onChange={handleChange} name="email" id="email" type="email"/>
-//                                     </div>
-//                                 </div>
-//                                 <div className="message-box">
-//                                     <label htmlFor="message">Message</label>
-//                                     <textarea value={form.message} onChange={handleChange} name="message" id='message'/>
-//                                 </div>
-//                                 <button onClick={handleSubmit} type="submit" className="btn btn-blue">
-//                                   {loading && <Spinner size="md" color="white" />}
-//                                   Send Message
-//                                   </button>
-//                             </div>
-//                         </div>
