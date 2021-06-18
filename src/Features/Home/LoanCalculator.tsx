@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 //import { currency } from './LoansList';
 
 const LoanCalculator = () => {
-    const initialRateValue = 7
+    const initialRateValue = 5
     const [form, setForm] = useState({
         amount: 1000,
         period: 1,

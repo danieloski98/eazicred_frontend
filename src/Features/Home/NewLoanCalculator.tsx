@@ -14,7 +14,7 @@ export default function NewLoanCalculator() {
     initialValues: {
       months: 0,
       amount: 0,
-      interest: 8,
+      interest: 5,
     },
     onSubmit: () => {},
     validationSchema,

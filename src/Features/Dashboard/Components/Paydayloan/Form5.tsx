@@ -1,7 +1,6 @@
 import React from 'react'
 import * as yup from 'yup';
 import { useFormik } from 'formik'
-import { Switch } from "@chakra-ui/react"
 import { useToast, Spinner } from '@chakra-ui/react';
 import { useRecoilState } from 'recoil';
 import useUser from '../../../../hooks/useUser';
@@ -33,7 +32,7 @@ export default function PaydayloanForm5(props: IProps) {
   const history = useHistory();
   const [loan, setLoan] = useRecoilState(paydayloanAtom);
   const toast = useToast();
-  const [draft, setDraft] = React.useState(false);
+  const [draft, ] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
   const { formik:data} = useForm();
