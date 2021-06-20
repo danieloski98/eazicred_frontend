@@ -85,11 +85,11 @@ export default function PaydayModal(props: IProps) {
           <div className="w-full flex justify-between mt-10 text-left">
             <div className="flex-1">
                 <h3 className="font-bold">Interest</h3>
-                <p>{props.loan.loan_tenure * 4000}</p>
+                <p>{props.loan.loan_amount/100*5}</p>
             </div>
             <div className="flex-1 flex flex-col items-end text-left">
                 <h3 className="font-bold">Monthly Payment</h3>
-                <p>N{props.loan.loan_amount / props.loan.loan_tenure}</p>
+                <p>N{(props.loan.loan_amount/100*5) + props.loan.loan_amount / props.loan.loan_tenure}</p>
             </div>
           </div>
 
@@ -99,7 +99,7 @@ export default function PaydayModal(props: IProps) {
 
             </div>
             <div className="flex-1 flex flex-col items-end text-left">
-                <p>N{props.loan.loan_tenure * 4000 + props.loan.loan_amount / props.loan.loan_tenure}</p>
+                <p>N{props.loan.loan_amount+ (props.loan.loan_amount/100*5)}</p>
             </div>
           </div>
 
