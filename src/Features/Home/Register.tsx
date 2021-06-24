@@ -14,7 +14,7 @@ const validationSchema = yup.object({
   lastname: yup.string().required('This field is required'),
   phone: yup.string().required('This field is required').min(11, 'Minimium of 11 numbers').max(11, 'Maximium of 11 number'),
   password: yup.string().required('This field is required').min(3, 'Minimium of 3 characters'),
-  referralcode: yup.string(),
+  referralCode: yup.number(),
 })
 
 const Register = () => {
@@ -29,7 +29,7 @@ const Register = () => {
       lastname: '',
       phone: '',
       password: '',
-      referralcode: '',
+      referralCode: undefined,
     },
     onSubmit: () => {},
     validationSchema,
@@ -147,10 +147,10 @@ const Register = () => {
                             </div>
                             <div className="input-group">
                                 <label htmlFor="code">Referral Code</label>
-                                <input id="code" type="text"
-                                name="referralcode" value={formik.values.referralcode} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('referralcode', true, true)}
+                                <input id="code" type="number"
+                                name="referralCode" value={formik.values.referralCode} onChange={formik.handleChange} onBlur={formik.handleBlur} onFocus={() => formik.setFieldTouched('referralCode', true, true)}
                                        className="phone"/>
-                              {formik.errors.referralcode && <p className="mt-6 text-xl text-red-500">{formik.errors.referralcode}</p>}
+                              {formik.errors.referralCode && <p className="mt-6 text-xl text-red-500">{formik.errors.referralCode}</p>}
                             </div>
                             <p className="blue">Enter the referral code if you have one.</p>
 
