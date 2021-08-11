@@ -100,19 +100,27 @@ const Support = () => {
 
                         <div className="">
                           <h3 className="h-3 text-2xl">Lagos</h3>
-                            <p className=" pt-4 mt-4 text-xl">Block 81, Plot 71A, Emma Abimbola Cole Street, Off Freedom Way Lekki Phase One, Lagos Nigeria.<br/>
-                                +234 802 074 0286<br/>
-                                contact@eazicred.com
+
+                            <p className=" pt-4 mt-4 text-xl">Block 81, Plot 71A, Emma Abimbola Cole Street, Off Freedom Way Lekki Phase One, Lagos Nigeria.
                             </p>
+
+                            <p className="mt-4">
+                            +234 802 074 0286<br/>
+                            </p>
+                              
+                            <p className="mt-4">
+                              contact@eazicred.com
+                            </p>
+                                
                         </div>
 
                         <div className="h-full flex flex-col justify-end">
-                          <a href="tel:+2349016888927">
+                          {/* <a href="tel:+2349016888927">
                             <FiPhone  color="lightgrey" size={30} />
                           </a>
                           <a href="mailto:contact@eazicred.com" className="mt-2">
                             <FiMail color="lightgrey" size={30} />
-                          </a>
+                          </a> */}
                         </div>
 
                       </div>
