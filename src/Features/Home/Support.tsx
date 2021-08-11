@@ -100,7 +100,7 @@ const Support = () => {
 
                         <div className="">
                           <h3 className="h-3 text-2xl">Lagos</h3>
-                            <p className=" pt-4 mt-4 text-xl">5 Adebisi Ladejobi street, Ilupeju<br/>
+                            <p className=" pt-4 mt-4 text-xl">Block 81, Plot 71A, Emma Abimbola Cole Street, Off Freedom Way Lekki Phase One, Lagos Nigeria.<br/>
                                 +234 802 074 0286<br/>
                                 contact@eazicred.com
                             </p>
