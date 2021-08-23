@@ -17,10 +17,12 @@ export const validationSchema = yup.object({
   next_of_kin_relationship: yup.string().required('This field is required'),
   next_of_kin_phone: yup.string().required('This field is required'),
   next_of_kin_address: yup.string().required('This field is required'),
+  // ending of form1
   state: yup.string().required('This field is required'),
   landmark: yup.string().required('This field is required'),
   LGA_of_residence: yup.string().required('This field is required'),
-  home_address: yup.string().required(),
+  home_address: yup.string().required('This Field is required'),
+  //ending of form2
   employment_status: yup.number().required('This field is required'),
   current_employer: yup.string().required('This field is required'),
   current_employer_address: yup.string().required('This field is required'),
@@ -35,13 +37,15 @@ export const validationSchema = yup.object({
   previous_employer: yup.string(),
   previous_employer_address: yup.string(),
   jobs_in_past_5_years: yup.number(),
+  // ending of form3
   current_paydate: yup.date().required('This field is required'),
   existing_loan: yup.bool().required('This field is required'),
   existing_loan_type: yup.number(),
-  loan_amount: yup.number().required('This field is required').max(250000, 'Cannot apply for an amount larger than NGN250000'),
-  loan_tenure: yup.number().required('This field is required').max(4, 'Cannot be greater than 4 month'),
+  loan_amount: yup.number().required('This field is required').max(500000, 'Cannot apply for an amount larger than NGN250000'),
+  loan_tenure: yup.number().required('This field is required').max(6, 'Cannot be greater than 4 month'),
   account_number: yup.string().required('This field is required'),
   account_name: yup.string().required('This field is required'),
   bank_name: yup.string().required('This field is required'),
   hear_about_us: yup.string(),
+  //ending of form4
 })
