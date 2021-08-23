@@ -3,8 +3,8 @@ import { useFormik } from 'formik'
 import * as yup from 'yup'
 
 const validationSchema = yup.object({
-  months: yup.number().max(4, 'Cannot be greater than 4 months'),
-  amount: yup.number().max(250000, 'Cannot be greater than NGN250000.00'),
+  months: yup.number().max(6, 'Cannot be greater than 6 months'),
+  amount: yup.number().max(500000, 'Cannot be greater than NGN500000.00'),
   interest: yup.number(),
 })
 
