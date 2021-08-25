@@ -190,11 +190,15 @@ export default function Navbar() {
                       notifications.map((item, index) => (
                         <div key={index} className="w-full px-5 my-6">
                           <div className="flex justify-between items-center">
-                            <div key={index} className="mb-6 flex-1 mr-5">{item.message}</div>
+                            <div key={index} className="mb-6 flex-1 mr-5 font-semibold">{item.message}</div>
                             <div className="justify-e">
                               <FiTrash2 color="red" size={20} onClick={() => del(item.id)} />
                             </div>
                           </div>
+                          <span className="mt-4 flex">
+                          <FiClock color="grey" size={20} />
+                          <span className="ml-3">{new Date(item.created_at).toLocaleDateString()}</span>
+                          </span>
                           <Divider />
                         </div>
                       ))

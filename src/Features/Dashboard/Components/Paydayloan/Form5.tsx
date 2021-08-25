@@ -14,6 +14,8 @@ import useForm from './useForm';
 
 interface IProps {
   move: Function;
+  isValid: boolean;
+  values: any;
 }
 
 // validation schema
@@ -35,7 +37,7 @@ export default function PaydayloanForm5(props: IProps) {
   const [draft, ] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
   const [loading, setLoading] = React.useState(false);
-  const { formik:data} = useForm();
+  const { formik:data } = useForm();
 
   // formik
   const formik = useFormik({
@@ -62,7 +64,7 @@ export default function PaydayloanForm5(props: IProps) {
        })
        return;
     }
-    if(!data.touched || !data.isValid) {
+    if(!props.isValid) {
       toast({
         title: 'Attention',
         description: 'You have to fill in the form correctly to continue',
@@ -73,23 +75,15 @@ export default function PaydayloanForm5(props: IProps) {
       return;
     }
     else {
-      // console.log(loan);
-      // console.log(formik.values)
 
-      // make request
-      setLoan({...loan, })
-      console.log(loan);
       setLoading(true);
 
-      const existing_loan = loan['existing_loan'] ===1 ?true:false
+      const existing_loan = props.values['existing_loan'] === 1 ?true:false
 
 
-      const existing_loan_type = parseInt(loan['existing_loan_type']);
+      const existing_loan_type = parseInt(props.values['existing_loan_type']);
 
       const date = new Date().toISOString();
-
-      console.log(new Date(date).toDateString());
-
 
       const request1 = await fetch(`${URL}/user/createpaydayloan`, {
         method: 'post',
@@ -97,7 +91,7 @@ export default function PaydayloanForm5(props: IProps) {
           'content-type': 'application/json',
           authorization: `Bearer ${token}`
         },
-        body: JSON.stringify({...data.values, type: 1, status:1, draft, user_id: user.id, existing_loan, existing_loan_type, created_at: new Date(date).toDateString()}),
+        body: JSON.stringify({...props.values, type: 1, status:1, draft, user_id: user.id, existing_loan, existing_loan_type, created_at: new Date(date).toDateString()}),
       })
 
       const json1 = await request1.json() as IReturn;

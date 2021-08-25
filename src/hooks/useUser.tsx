@@ -29,7 +29,7 @@ export default function useUser() {
   useQuery(['getuserdetails', user.id, token], () => fetchDetails(user.id, token), {
     onSuccess: (dt: IReturn) => {
       setUser({...dt.data});
-      console.log(user);
+      // console.log(user);
     }
   });
 

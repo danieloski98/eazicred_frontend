@@ -53,6 +53,9 @@ export default function useForm() {
     },
     onSubmit: () => {},
     validationSchema,
+    validateOnChange: true,
+    validateOnBlur: true,
+    validateOnMount: true,
   })
 
   React.useEffect(() => {

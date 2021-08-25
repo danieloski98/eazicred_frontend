@@ -1,0 +1,33 @@
+{
+  "next_of_kin_firstname": "This field is required",
+  "DOB": "This field is required",
+  "BVN": "This field is required",
+  "date_issued": "This field is required",
+  "ID_number": "This field is required",
+  "expiry_date": "This field is required",
+  "next_of_kin_phone": "This field is required",
+  "next_of_kin_surname": "This field is required",
+  "next_of_kin_relationship": "This field is required",
+  "next_of_kin_address": "This field is required",
+
+  "current_employer_state": "This field is required",
+
+  "state": "This field is required",
+  
+  "current_employer_landmark": "This  field is required",
+
+  "landmark": "This field is required",
+  "LGA_of_residence": "This field is required",
+  "home_address": "This Field is required",
+
+  "current_employer_office_number": "This field is requred",
+  "current_employer_LGA": "This field is required",
+  "current_employer_address": "This field is required",
+  "current_employer": "This field is required",
+  "department": "This field is required",
+  "job_title": "This field is required",
+  "current_paydate": "This field is required",
+  "account_number": "This field is required",
+  "account_name": "This field is required",
+  "bank_name": "This field is required"
+}

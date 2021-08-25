@@ -3,4 +3,5 @@ export interface INoti {
   user_id: string;
   message: string;
   read: boolean;
+  created_at: string;
 }
