@@ -1,10 +1,6 @@
-import React, { ChangeEventHandler, FocusEventHandler } from 'react'
-import { paydayloanAtom } from '../../../../States/paydayloanstate';
+import React from 'react'
 import { useToast } from '@chakra-ui/react'
-import { useRecoilState } from 'recoil';
-import useForm from './useForm';
-import useForm1Validator from '../../../../hooks/useForm1Validator';
-// import { globalFormError } from '../../../../States/globalformerror';
+
 
 interface IProps {
   move: Function;

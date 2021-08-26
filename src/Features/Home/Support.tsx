@@ -3,7 +3,6 @@ import OnPageSignUp from './OnPageSignUp';
 import { URL } from '../../helpers/url';
 import { useToast, Spinner } from '@chakra-ui/react'
 import { IReturn } from '../../helpers/ApiReturnType';
-import { FiPhone, FiMail } from 'react-icons/fi'
 import * as yup from 'yup';
 import { useFormik } from 'formik'
 

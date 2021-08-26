@@ -195,9 +195,9 @@ export default function Navbar() {
                               <FiTrash2 color="red" size={20} onClick={() => del(item.id)} />
                             </div>
                           </div>
-                          <span className="mt-4 flex">
+                          <span className="mt-4 flex mb-3">
                           <FiClock color="grey" size={20} />
-                          <span className="ml-3">{new Date(item.created_at).toLocaleDateString()}</span>
+                          <span className="ml-3">{`${new Date(item.created_at).toLocaleDateString()} - ${new Date(item.created_at).toLocaleTimeString()}`}</span>
                           </span>
                           <Divider />
                         </div>

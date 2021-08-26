@@ -1,10 +1,5 @@
 import React from 'react'
-//import * as yup from 'yup';
-//import { useFormik } from 'formik'
 import { useToast } from '@chakra-ui/react';
-import { useRecoilState } from 'recoil';
-// import useUser from '../../../../hooks/useUser';
-import { paydayloanAtom } from '../../../../States/paydayloanstate';
 import useForm from './useForm';
 
 interface IProps {
@@ -17,8 +12,7 @@ interface IProps {
 
 
 export default function PaydayloanForm4({ values, handleChange, handleBlur, errors, move}: IProps) {
-  // const { user } = useUser();
-  const [loan, setLoan] = useRecoilState(paydayloanAtom);
+  
   const { formik } = useForm();
   const toast = useToast();
 

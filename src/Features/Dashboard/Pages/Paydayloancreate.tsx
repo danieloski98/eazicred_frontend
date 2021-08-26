@@ -2,22 +2,16 @@ import React, { ChangeEventHandler, FocusEventHandler } from 'react'
 import { useHistory } from 'react-router-dom'
 import { FiUser, FiBriefcase, FiMapPin, FiDollarSign, FiFile } from 'react-icons/fi'
 import {useRecoilState} from 'recoil'
-//import SMELoanForm from '../Components/smeloan/form';
 import PaydayloanForm1 from '../Components/Paydayloan/Form1';
 import PaydayloanForm2 from '../Components/Paydayloan/Form2';
 import PaydayloanForm3 from '../Components/Paydayloan/Form3';
 import PaydayloanForm4 from '../Components/Paydayloan/Form4';
 import PaydayloanForm5 from '../Components/Paydayloan/Form5';
-import { globalFormError } from '../../../States/globalformerror';
-import useForm1Validator from '../../../hooks/useForm1Validator';
-import useForm2Validator from '../../../hooks/useForm2Validator';
-import useForm3Validator from '../../../hooks/useForm3Validator';
-import useForm4Validator from '../../../hooks/useForm4Validator';
-import useForm from '../Components/Paydayloan/useForm';
 import { Formik } from 'formik';
 import { VALUES } from '../../../helpers/paydayloanInitialValue';
 import { UserState } from '../../../States/UserState';
 import { validationSchema } from '../Components/Paydayloan/schema';
+import FilesneededPopup from '../Components/Paydayloan/FilesneededPopup';
 
 // classname
 
@@ -41,11 +35,11 @@ export default function Paydayloancreation() {
 
   
   const [stage, setStage] = React.useState(1);
-  const [user, setUser] = useRecoilState(UserState);
+  const [user,] = useRecoilState(UserState);
 
   const history = useHistory();
 
-  const changeStage = async (st: number, errors: any) => {
+  const changeStage = async (st: number, errors: any, dirty: boolean) => {
    switch (stage) {
      case 1: {
        if (errors.firstname ||
@@ -198,8 +192,9 @@ export default function Paydayloancreation() {
       validationSchema={validationSchema}
       onSubmit={() =>{}}
     >
-      {({ values, handleChange, handleBlur, touched, errors, isValid }) => (
+      {({ values, handleChange, handleBlur, touched, errors, isValid, dirty }) => (
         <div className="w-full h-full flex flex-col">
+          <FilesneededPopup />
         <div>
              <span onClick={() => history.goBack()}  className="text-xl font-semibold text-black cursor-pointer">&lt; Go Back</span>
              <h2 className="mt-6 font-bold text-4xl text-black">Payday / Emergency Loan Application</h2>
@@ -209,7 +204,7 @@ export default function Paydayloancreation() {
          <div className="w-full h-full border-t-2 border-gray-200 mt-16 flex mb-0">
 
            <div className="w-1/4 h-full border-r-2 border-gray-200 xl:flex lg:flex md:hidden sm:hidden flex-col justify-center">
-               <div onClick={() => changeStage(1, errors)} className="flex items-center justify-between px-6 cursor-pointer">
+               <div onClick={() => changeStage(1, errors, dirty)} className="flex items-center justify-between px-6 cursor-pointer">
                  <div className="w-56 text-right">
                    <p className={stage === 1 ? ACTIVE_TEXT:INACTIVE_TEXT}>Personal Info</p>
                    <p className={stage === 1 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Enter your personal information</p>
@@ -221,7 +216,7 @@ export default function Paydayloancreation() {
                  <div className={stage === 1 ? ACTIVE_BGS:INACTIVE_BGS}></div>
                </div>
 
-               <div onClick={() => changeStage(2, errors)} className="flex items-center justify-between px-6 cursor-pointer mt-16">
+               <div onClick={() => changeStage(2, errors, dirty)} className="flex items-center justify-between px-6 cursor-pointer mt-16">
                  <div className="w-56 text-right">
                    <p className={stage === 2 ? ACTIVE_TEXT:INACTIVE_TEXT}>Location</p>
                    <p className={stage === 2 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Information about where you are located</p>
@@ -233,7 +228,7 @@ export default function Paydayloancreation() {
                  <div className={stage === 2 ? ACTIVE_BGS:INACTIVE_BGS}></div>
                </div>
 
-               <div onClick={() => changeStage(3, errors)} className="flex items-center justify-between px-6 cursor-pointer mt-16">
+               <div onClick={() => changeStage(3, errors, dirty)} className="flex items-center justify-between px-6 cursor-pointer mt-16">
                  <div className="w-56 text-right">
                    <p className={stage === 3 ? ACTIVE_TEXT:INACTIVE_TEXT}>Employment</p>
                    <p className={stage === 3 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Information about your employment</p>
@@ -245,7 +240,7 @@ export default function Paydayloancreation() {
                  <div className={stage === 3 ? ACTIVE_BGS:INACTIVE_BGS}></div>
                </div>
 
-               <div onClick={() => changeStage(4, errors)} className="flex items-center justify-between px-6 cursor-pointer mt-16">
+               <div onClick={() => changeStage(4, errors, dirty)} className="flex items-center justify-between px-6 cursor-pointer mt-16">
                  <div className="w-56 text-right">
                    <p className={stage === 4 ? ACTIVE_TEXT:INACTIVE_TEXT}>Loan Details</p>
                    <p className={stage === 4 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Information about the loan application</p>
@@ -257,7 +252,7 @@ export default function Paydayloancreation() {
                  <div className={stage === 4 ? ACTIVE_BGS:INACTIVE_BGS}></div>
                </div>
 
-               <div onClick={() => changeStage(5, errors)} className="flex items-center justify-between px-6 cursor-pointer mt-16">
+               <div onClick={() => changeStage(5, errors, dirty)} className="flex items-center justify-between px-6 cursor-pointer mt-16">
                  <div className="w-56 text-right">
                    <p className={stage === 5 ? ACTIVE_TEXT:INACTIVE_TEXT}>Upload files</p>
                    <p className={stage === 5 ? ACTIVE_TEXTs:INACTIVE_TEXTs}>Upload the neccessary documents</p>

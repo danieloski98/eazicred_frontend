@@ -2,9 +2,7 @@ import React from 'react'
 import * as yup from 'yup';
 import { useFormik } from 'formik'
 import { useToast, Spinner } from '@chakra-ui/react';
-import { useRecoilState } from 'recoil';
 import useUser from '../../../../hooks/useUser';
-import { paydayloanAtom } from '../../../../States/paydayloanstate';
 import { URL } from '../../../../helpers/url';
 import { IReturn } from '../../../../helpers/ApiReturnType';
 import SMEDialog from '../smeloan/Success';
@@ -32,7 +30,6 @@ const validationSchema = yup.object({
 export default function PaydayloanForm5(props: IProps) {
   const { user, token } = useUser();
   const history = useHistory();
-  const [loan, setLoan] = useRecoilState(paydayloanAtom);
   const toast = useToast();
   const [draft, ] = React.useState(false);
   const [success, setSuccess] = React.useState(false);
