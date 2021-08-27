@@ -14,10 +14,9 @@ export default function FilesneededPopup() {
                     </div>
 
                     <ol className="list-decimal list-inside mt-10 text-xl">
-                        <li>HR Letter of Confirmation</li>
+                        <li>6 Months Banks Statement </li>
                         <li>Utility Bill</li>
                         <li>Passport</li>
-                        <li>Letter of Employment</li>
                         <li>Government Issued ID</li>
                         <li>Company ID</li>
                     </ol>
