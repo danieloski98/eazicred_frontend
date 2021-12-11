@@ -40,8 +40,8 @@ const Navbar = () => {
                     <NavLink activeClassName="text-customGreen" exact to={FAQS_URL} className="nav__link">FAQs</NavLink>
                   </div>
                   <div className="xl:flex flex-col">
-                    <Link  to={REGISTER_URL} className="btn btn-blue mb-6">Create Account</Link>
-                    <Link to={LOGIN_URL} className="btn btn-white">Log In</Link>
+                    <a  href="https://loans.eazicred.com" className="btn btn-blue mb-6">Create Account</a>
+                    <a href="https://loans.eazicred.com" className="btn btn-white">Log In</a>
                 </div>
                 </div>
                 </div>
@@ -75,8 +75,8 @@ const Navbar = () => {
                 </div>
 
                 <div className="xl:flex lg:flex md:hidden sm:hidden">
-                    <Link  to={REGISTER_URL} className="btn btn-blue mr-6">Create Account</Link>
-                    <Link to={LOGIN_URL} className="btn btn-white">Log In</Link>
+                    <a  href="https://loans.eazicred.com" className="btn btn-blue mr-6">Create Account</a>
+                    <a href="https://loans.eazicred.com" className="btn btn-white">Log In</a>
                 </div>
 
             </nav>

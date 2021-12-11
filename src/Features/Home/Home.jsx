@@ -59,7 +59,7 @@ const Home = () => {
     const getStarted = () => {
         localStorage.setItem('em', field.values.email);
         // dispatch(gettingStarted(form))
-        history.push(REGISTER_URL)
+        history.push('https://loans.eazicred.com')
     }
 
     return (

@@ -1,5 +1,5 @@
-export const LOGIN_URL = '/login'
-export const REGISTER_URL = '/register'
+export const LOGIN_URL = 'https://loans.eazicred.com'
+export const REGISTER_URL = 'https://loans.eazicred.com'
 export const ABOUT_URL = '/about'
 export const HOME_URL = '/'
 export const SUPPORT_URL = '/support'
